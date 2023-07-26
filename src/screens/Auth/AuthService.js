@@ -14,14 +14,14 @@ export const signIn = async (username, password) => {
     return res;
 };
 
-export const signUp = async(username,password,email, phoneNumber,fullName,gender,birthday) =>{
+export const signUp = async(username,password,email, phoneNumber,fullName,birthday) =>{
     const data ={
         username:username,
         userPassword:password,
         email:email,
         phonenumber:phoneNumber,
         fullname:fullName,
-        gender:gender,
+        gender:'Unknown',
         birthday:birthday,
     };
     console.warn(data);

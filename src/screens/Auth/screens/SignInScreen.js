@@ -10,13 +10,19 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import {textTheme} from '../../../themes/textTheme';
+import Snackbar from '../../../components/molecules/Snackbar';
 
-const SignInScreen = ({navigation}) => {
+const SignInScreen = ({navigation, route}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
+  const [message, setMessage] = useState('');
 
+  if (route.params) {
+    const {title} = route.params;
+    setMessage(title);
+  }
   const {onSignIn, checkSaveUser, onGoogleSignIn, checkEmail} =
     useContext(AuthContext);
   const getUserInfo = async () => {
@@ -121,7 +127,10 @@ const SignInScreen = ({navigation}) => {
         disabled={isDisabled}>
         Google
       </CustomButton>
-      <CustomButton type={'tertiary'} disabled={isDisabled}>
+      <CustomButton
+        type={'tertiary'}
+        onPress={onToSignUpPress}
+        disabled={isDisabled}>
         <CustomView type={'row'} marginTop={24}>
           <CustomText marginTop={0}>Don't have an account? </CustomText>
           <CustomText
@@ -133,6 +142,7 @@ const SignInScreen = ({navigation}) => {
           </CustomText>
         </CustomView>
       </CustomButton>
+      <Snackbar message={message} />
     </CustomView>
   );
 };

@@ -12,17 +12,20 @@ import CustomView from '../../../components/atoms/CustomView';
 const VerificationScreen = ({navigation, route}) => {
   const [email, setEmail] = useState();
   const [verificationCode, setVerificationCode] = useState();
-  const [receivedCode, setReceivedCode] = useState('aesd');
+  const [receivedCode, setReceivedCode] = useState();
   const [error, setError] = useState('');
   const [timer, setTimer] = useState();
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const {onSendVerificationCode, onCheckEmail} = useContext(AuthContext);
   const {paramKey} = route.params;
 
-  const onSendPress = async () => {
+  const onSendPressed = async () => {
+    setIsDisabled(true);
     let checkEmailResult = await onCheckEmail(email, paramKey);
 
     if (checkEmailResult.response_code == 1) {
+      setError('');
       let result2 = await onSendVerificationCode(email);
       setReceivedCode(result2.data);
       if (result2.response_code == 1) {
@@ -36,6 +39,7 @@ const VerificationScreen = ({navigation, route}) => {
     } else {
       setError(checkEmailResult.message);
     }
+    setIsDisabled(false);
   };
 
   const myTimer = () => {
@@ -53,7 +57,7 @@ const VerificationScreen = ({navigation, route}) => {
       setVerificationCode();
       switch (paramKey) {
         case 'CHANGEPASSWORD':
-          navigation.navigate('Forgot password', {
+          navigation.navigate('Forgot Password', {
             email: email,
             type: 'PASSWORD',
           });
@@ -69,7 +73,7 @@ const VerificationScreen = ({navigation, route}) => {
     }
   };
 
-  const onToSignInPress = () => {
+  const onSignInHerePressed = () => {
     navigation.navigate('Sign In');
   };
 
@@ -84,6 +88,7 @@ const VerificationScreen = ({navigation, route}) => {
             keyboardType={'email-address'}
             value={email}
             onChangeText={setEmail}
+            disabled={!isDisabled}
           />
           <CustomText
             textColor={'textVariant'}
@@ -92,7 +97,7 @@ const VerificationScreen = ({navigation, route}) => {
             We will send a verification code to your email
           </CustomText>
           {error != null ? (
-            <CustomText textColor={'err'} textStyle={textTheme.text_normal}>
+            <CustomText textColor={'err'} textStyle={'normal'}>
               {error}
             </CustomText>
           ) : (
@@ -100,17 +105,21 @@ const VerificationScreen = ({navigation, route}) => {
           )}
           <CustomButton
             type={'primary'}
-            // onPress={onSendPress}
+            onPress={onSendPressed}
+            disabled={isDisabled}
             marginTop={40}>
             Send
           </CustomButton>
-          <CustomButton type={'tertiary'}>
+          <CustomButton
+            type={'tertiary'}
+            onPress={onSignInHerePressed}
+            disabled={isDisabled}>
             <CustomView type={'row'} marginTop={24}>
               <CustomText marginTop={0}>Already have an account? </CustomText>
               <CustomText
                 type={'highlight'}
                 textColor={'primary'}
-                textStyle={textTheme.text_normalBold}
+                textStyle={'normalBold'}
                 marginTop={0}>
                 Sign In here
               </CustomText>
@@ -124,27 +133,28 @@ const VerificationScreen = ({navigation, route}) => {
             placeholder={'Verification code'}
             keyboardType={'numeric'}
             marginTop={103}
+            disabled={!isDisabled}
             onChangeText={setVerificationCode}
           />
           <CustomImage source={images.ic_timer} type={'logo'} marginTop={32} />
-          <CustomText textStyle={textTheme.text_subtitleBold} marginTop={12}>
+          <CustomText textStyle={'subtitleBold'} marginTop={12}>
             Please verify before the timer expire
           </CustomText>
-          <CustomText
-            value={timer}
-            textStyle={textTheme.text_header}
-            marginTop={12}
-          />
+          <CustomText textStyle={'header'} marginTop={12}>
+            {timer}
+          </CustomText>
           <CustomButton
             value={'Resend verification code'}
             type={'tertiary'}
             marginTop={52}
             alignSelf={'flex-end'}
-            // onPress={onSendPress}
+            disabled={isDisabled}
+            onPress={onSendPressed}
           />
           <CustomButton
-            // onPress={onVerifyPress}
+            onPress={onVerifyPress}
             type={'primary'}
+            disabled={isDisabled}
             marginTop={16}>
             Verify
           </CustomButton>

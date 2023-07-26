@@ -17,7 +17,7 @@ const CustomText = ({
       numberOfLines={maxLines}
       style={[
         textColor != null ? {color: colors[`${textColor}Color`]} : {},
-        textStyle,
+        textStyle != null ? textTheme[`text_${textStyle}`] : {},
         marginTop != null ? {marginTop: marginTop} : {marginTop: 8},
         customStyles,
       ]}>

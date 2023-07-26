@@ -57,7 +57,6 @@ export const AuthContextProvider = ({children}) => {
     email,
     phoneNumber,
     fullName,
-    gender,
     birthday,
   ) => {
     try {
@@ -67,7 +66,6 @@ export const AuthContextProvider = ({children}) => {
         email,
         phoneNumber,
         fullName,
-        gender,
         birthday,
       );
       return res.data;

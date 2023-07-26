@@ -73,7 +73,9 @@ const CustomButton = ({
           <></>
         )}
         {type != 'image' ? (
-          disabled != true ? (
+          disabled == true && type == 'primary' ? (
+            <ActivityIndicator size={'large'} />
+          ) : (
             <CustomText
               marginTop={0}
               textColor={textColor}
@@ -86,8 +88,6 @@ const CustomButton = ({
               }>
               {children}
             </CustomText>
-          ) : (
-            <ActivityIndicator size={'large'} />
           )
         ) : (
           <></>
