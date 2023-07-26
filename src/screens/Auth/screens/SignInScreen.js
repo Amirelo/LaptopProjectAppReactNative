@@ -9,11 +9,13 @@ import * as images from '../../../assets/images';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
+import {textTheme} from '../../../themes/textTheme';
 
 const SignInScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const {onSignIn, checkSaveUser, onGoogleSignIn, checkEmail} =
     useContext(AuthContext);
@@ -91,26 +93,42 @@ const SignInScreen = ({navigation}) => {
         onChangeText={setUsername}
         placeholder={'username'}
         source={images.ic_person}
+        disabled={isDisabled}
         marginTop={50}
       />
       <CustomInput
         value={password}
         onChangeText={setPassword}
         placeholder={'password'}
-        source={images.ic_person}
+        source={images.ic_password}
+        disabled={isDisabled}
       />
 
-      <CustomButton alignSelf={'flex-end'} type={'tertiary'}>
+      <CustomButton
+        onPress={onToForgotPasswordPress}
+        alignSelf={'flex-end'}
+        type={'tertiary'}
+        disabled={isDisabled}>
         Forgot password
       </CustomButton>
-      <CustomButton type={'primary'}>Sign In</CustomButton>
-      <CustomButton type={'social'} source={images.ic_apple}>
+      <CustomButton type={'primary'} disabled={isDisabled}>
         Sign In
       </CustomButton>
-      <CustomButton type={'tertiary'}>
+      <CustomText marginTop={18}>OR Sign In with</CustomText>
+      <CustomButton
+        type={'social'}
+        source={images.ic_google}
+        disabled={isDisabled}>
+        Google
+      </CustomButton>
+      <CustomButton type={'tertiary'} disabled={isDisabled}>
         <CustomView type={'row'} marginTop={24}>
           <CustomText marginTop={0}>Don't have an account? </CustomText>
-          <CustomText type={'highlight'} textColor={'primary'} marginTop={0}>
+          <CustomText
+            type={'highlight'}
+            textColor={'primary'}
+            textStyle={textTheme.text_normalBold}
+            marginTop={0}>
             Sign Up here
           </CustomText>
         </CustomView>

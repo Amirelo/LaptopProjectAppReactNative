@@ -1,4 +1,4 @@
-import {Animated, Pressable, StyleSheet} from 'react-native';
+import {Animated, Pressable, StyleSheet, ActivityIndicator} from 'react-native';
 import React, {useRef} from 'react';
 import CustomImage from '../atoms/CustomImage';
 import CustomText from '../atoms/CustomText';
@@ -13,6 +13,7 @@ const CustomButton = ({
   source,
   onPress,
   customStyles,
+  disabled,
 }) => {
   const colors = useThemeColors();
   const buttonBackgroundColor =
@@ -48,7 +49,8 @@ const CustomButton = ({
     <Pressable
       style={alignSelf != null ? {alignSelf: alignSelf} : {}}
       onPress={onPress}
-      onPressIn={fadeIn}>
+      onPressIn={fadeIn}
+      disabled={disabled}>
       <Animated.View
         style={[
           type != null ? styles[`button_${type}`] : {},
@@ -71,18 +73,22 @@ const CustomButton = ({
           <></>
         )}
         {type != 'image' ? (
-          <CustomText
-            marginTop={0}
-            textColor={textColor}
-            textStyle={
-              type == 'tertiary'
-                ? 'normal'
-                : type == 'social'
-                ? 'center'
-                : 'normalBold'
-            }>
-            {children}
-          </CustomText>
+          disabled != true ? (
+            <CustomText
+              marginTop={0}
+              textColor={textColor}
+              textStyle={
+                type == 'tertiary'
+                  ? 'normal'
+                  : type == 'social'
+                  ? 'center'
+                  : 'normalBold'
+              }>
+              {children}
+            </CustomText>
+          ) : (
+            <ActivityIndicator size={'large'} />
+          )
         ) : (
           <></>
         )}
