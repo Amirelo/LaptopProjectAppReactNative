@@ -1,6 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
+import FavoriteScreen from './screens/FavoriteScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ const MainNavigation = () => {
         options={{headerShown: false}}
         component={HomeScreen}
       />
+      <Stack.Screen name="Favorite" component={FavoriteScreen} />
     </Stack.Navigator>
   );
 };

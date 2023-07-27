@@ -12,9 +12,13 @@ const SplashScreen = ({navigation}) => {
     });
   }, 2000);
   return (
-    <CustomView>
-      <CustomImage source={images.app_logo_splash} type={'header'} />
-      <CustomText type={'titleBold'} marginTop={20}>
+    <CustomView backgroundColor={'primary'}>
+      <CustomImage
+        source={images.app_logo_splash}
+        marginTop={'50%'}
+        type={'header'}
+      />
+      <CustomText type={'titleBold'} textColor={'textConstrast'} marginTop={20}>
         Simplify your life
       </CustomText>
     </CustomView>

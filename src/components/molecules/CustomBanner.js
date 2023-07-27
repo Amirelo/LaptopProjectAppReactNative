@@ -1,6 +1,7 @@
 import {Pressable, StyleSheet, View, Image} from 'react-native';
 import React from 'react';
 import CustomText from '../atoms/CustomText';
+import CustomView from '../atoms/CustomView';
 
 const bannerData = {
   day: 21,
@@ -17,8 +18,7 @@ const CustomBanner = ({source, data, marginTop}) => {
     }
   };
   return (
-    <Pressable
-      style={[styles.container, marginTop ? {marginTop: marginTop} : {}]}>
+    <CustomView type={'banner'}>
       <Image style={styles.banner_image} source={source} />
       <CustomText
         customStyles={{marginStart: '5%'}}
@@ -28,17 +28,23 @@ const CustomBanner = ({source, data, marginTop}) => {
         Super Flash Sale
       </CustomText>
       <View style={styles.timerContainer}>
-        <CustomText hasBox={true}>{timeLengthCheck(bannerData.day)}</CustomText>
-        <CustomText textColor={'textConstrast'}>:</CustomText>
-        <CustomText hasBox={true}>
+        <CustomText hasBox={true} textStyle={'normalBold'}>
+          {timeLengthCheck(bannerData.day)}
+        </CustomText>
+        <CustomText textColor={'textConstrast'} textStyle={'normalBold'}>
+          :
+        </CustomText>
+        <CustomText hasBox={true} textStyle={'normalBold'}>
           {timeLengthCheck(bannerData.hour)}
         </CustomText>
-        <CustomText textColor={'textConstrast'}>:</CustomText>
-        <CustomText hasBox={true}>
+        <CustomText textColor={'textConstrast'} textStyle={'normalBold'}>
+          :
+        </CustomText>
+        <CustomText hasBox={true} textStyle={'normalBold'}>
           {timeLengthCheck(bannerData.minute)}
         </CustomText>
       </View>
-    </Pressable>
+    </CustomView>
   );
 };
 
@@ -55,6 +61,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'absolute',
+    borderRadius: 20,
   },
   timerContainer: {
     flexDirection: 'row',

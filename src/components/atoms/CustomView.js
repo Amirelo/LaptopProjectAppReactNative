@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     flexGrow: 0,
+    width: '90%',
   },
   container_left: {
     alignSelf: 'flex-start',
@@ -89,13 +90,17 @@ const styles = StyleSheet.create({
   container_scrollView: {
     alignItems: 'center',
     width: deviceWidth,
-    paddingBottom: 64,
+    paddingBottom: 32,
   },
   container_header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '90%',
+    width: deviceWidth * 0.9,
     paddingVertical: 8,
+  },
+  container_banner: {
+    width: deviceWidth * 0.9,
+    height: deviceHeight * 0.3,
   },
 });

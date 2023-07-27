@@ -1,6 +1,4 @@
-import {View, Text} from 'react-native';
 import React, {useState, useContext, useEffect} from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {AuthContext} from '../AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomText from '../../../components/atoms/CustomText';
@@ -11,8 +9,6 @@ import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import {textTheme} from '../../../themes/textTheme';
 import Snackbar from '../../../components/molecules/Snackbar';
-import ProductHItem from '../../../components/molecules/ProductHItem';
-import ProductVItem from '../../../components/molecules/ProductVItem';
 
 const SignInScreen = ({navigation, route}) => {
   const [username, setUsername] = useState('');
@@ -51,6 +47,7 @@ const SignInScreen = ({navigation, route}) => {
   };
 
   const onSignInPress = async () => {
+    setIsDisabled(true);
     if (signInCheck() === true) {
       console.warn(signInCheck());
       const result = await onSignIn(username, password);
@@ -61,6 +58,7 @@ const SignInScreen = ({navigation, route}) => {
         setError('Wrong username or password');
       }
     }
+    setIsDisabled(false);
   };
 
   const signInCheck = () => {
@@ -118,7 +116,10 @@ const SignInScreen = ({navigation, route}) => {
         disabled={isDisabled}>
         Forgot password
       </CustomButton>
-      <CustomButton type={'primary'} disabled={isDisabled}>
+      <CustomButton
+        onPress={onSignInPress}
+        type={'primary'}
+        disabled={isDisabled}>
         Sign In
       </CustomButton>
       <CustomText marginTop={18}>OR Sign In with</CustomText>

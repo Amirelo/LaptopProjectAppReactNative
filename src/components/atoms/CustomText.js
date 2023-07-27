@@ -11,6 +11,7 @@ const CustomText = ({
   textStyle,
   customStyles,
   marginTop,
+  hasBox,
   maxLines,
 }) => {
   const colors = useThemeColors();
@@ -21,6 +22,7 @@ const CustomText = ({
         textColor != null ? {color: colors[`${textColor}Color`]} : {},
         textStyle != null ? textTheme[`text_${textStyle}`] : {},
         marginTop != null ? {marginTop: marginTop} : {marginTop: 8},
+        hasBox ? styles.box : {},
         customStyles,
       ]}>
       {children}
@@ -29,3 +31,11 @@ const CustomText = ({
 };
 
 export default CustomText;
+
+const styles = StyleSheet.create({
+  box: {
+    padding: 16,
+    backgroundColor: 'white',
+    borderRadius: 10,
+  },
+});

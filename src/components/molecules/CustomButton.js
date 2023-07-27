@@ -107,9 +107,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10,
   },
-  button_tertiary: {
-    marginHorizontal: '5%',
-  },
   button_social: {
     flexDirection: 'row',
     width: deviceWidth * 0.9,
