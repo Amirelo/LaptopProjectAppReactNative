@@ -42,3 +42,4 @@ export const ic_explore = require('./explore.png');
 export const ic_cart = require('./shopping_cart.png');
 
 export const banner = require('./banner.png');
+export const header = require('./header.png');

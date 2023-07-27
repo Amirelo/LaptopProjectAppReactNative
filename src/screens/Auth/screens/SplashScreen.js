@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import * as images from '../../../assets/images';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomImage from '../../../components/atoms/CustomImage';
@@ -14,7 +13,7 @@ const SplashScreen = ({navigation}) => {
   }, 2000);
   return (
     <CustomView>
-      <CustomImage imageLink={images.app_logo_splash} type={'header'} />
+      <CustomImage source={images.app_logo_splash} type={'header'} />
       <CustomText type={'titleBold'} marginTop={20}>
         Simplify your life
       </CustomText>

@@ -11,6 +11,8 @@ import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import {textTheme} from '../../../themes/textTheme';
 import Snackbar from '../../../components/molecules/Snackbar';
+import ProductHItem from '../../../components/molecules/ProductHItem';
+import ProductVItem from '../../../components/molecules/ProductVItem';
 
 const SignInScreen = ({navigation, route}) => {
   const [username, setUsername] = useState('');
@@ -19,14 +21,11 @@ const SignInScreen = ({navigation, route}) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [message, setMessage] = useState('');
 
-  if (route.params) {
-    const {title} = route.params;
-    setMessage(title);
-  }
   const {onSignIn, checkSaveUser, onGoogleSignIn, checkEmail} =
     useContext(AuthContext);
   const getUserInfo = async () => {
     try {
+      setIsDisabled(true);
       const respone = await fetch('https://www.googleapis.com/userinfo/v2/me', {
         headers: {
           Authorization: `Bearer ${respone.authentication.accessToken}`,
@@ -40,8 +39,10 @@ const SignInScreen = ({navigation, route}) => {
       } else {
         navigation.navigate('Sign Up', {email: user.email, userData: user});
       }
+      setIsDisabled(false);
     } catch (error) {
       console.log(error);
+      setIsDisabled(false);
     }
   };
 
@@ -99,7 +100,7 @@ const SignInScreen = ({navigation, route}) => {
         onChangeText={setUsername}
         placeholder={'username'}
         source={images.ic_person}
-        disabled={isDisabled}
+        disabled={!isDisabled}
         marginTop={50}
       />
       <CustomInput
@@ -107,7 +108,7 @@ const SignInScreen = ({navigation, route}) => {
         onChangeText={setPassword}
         placeholder={'password'}
         source={images.ic_password}
-        disabled={isDisabled}
+        disabled={!isDisabled}
       />
 
       <CustomButton

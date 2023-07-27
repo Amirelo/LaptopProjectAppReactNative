@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import AuthNavigation from '../Auth/AuthNavigation';
 import {NavigationContainer} from '@react-navigation/native';
-import CustomView from '../../components/atoms/CustomView';
+import {AuthContext} from '../Auth/AuthContext';
+import MainNavigation from '../Main/MainNavigation';
 
 const AppNavigation = () => {
+  const {isLoggedIn} = useContext(AuthContext);
   return (
     <NavigationContainer>
-      <AuthNavigation />
+      {isLoggedIn ? <MainNavigation /> : <AuthNavigation />}
     </NavigationContainer>
   );
 };

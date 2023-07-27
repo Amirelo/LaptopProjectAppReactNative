@@ -18,6 +18,11 @@ import {
   deleteCart,
   insertUserOrder,
   insertOrderDetail,
+  getProductProcessor,
+  getProductMemory,
+  getProductScreen,
+  getProductStorage,
+  getProductOperatingSystem,
 } from './MainService';
 
 export const MainContext = createContext();
@@ -75,12 +80,32 @@ export const MainContextProvider = props => {
     }
   };
 
+  const onGetProductProcessor = async processorID => {
+    try {
+      const res = await getProductProcessor(processorID);
+      return res.data[0];
+    } catch (error) {
+      console.log('On get product processor error', error);
+      return null;
+    }
+  };
+
   const onGetAllMemories = async () => {
     try {
       const res = await getAllMemories();
       return res.data;
     } catch (error) {
       console.log('On get all memories error', error);
+      return null;
+    }
+  };
+
+  const onGetProductMemory = async memoryID => {
+    try {
+      const res = await getProductMemory(memoryID);
+      return res.data[0];
+    } catch (error) {
+      console.log('On get product memory error', error);
       return null;
     }
   };
@@ -95,12 +120,32 @@ export const MainContextProvider = props => {
     }
   };
 
+  const onGetProductScreen = async screenID => {
+    try {
+      const res = await getProductScreen(screenID);
+      return res.data[0];
+    } catch (error) {
+      console.log('On get product screen error', error);
+      return null;
+    }
+  };
+
   const onGetAllStorages = async () => {
     try {
       const res = await getAllStorages();
       return res.data;
     } catch (error) {
       console.log('On get all storages error', error);
+      return null;
+    }
+  };
+
+  const onGetProductStorage = async storageID => {
+    try {
+      const res = await getProductStorage(storageID);
+      return res.data[0];
+    } catch (error) {
+      console.log('On get product processor error', error);
       return null;
     }
   };
@@ -121,6 +166,16 @@ export const MainContextProvider = props => {
       return res.data;
     } catch (error) {
       console.log('On get all OS error', error);
+      return null;
+    }
+  };
+
+  const onGetProductOS = async operatingSystemID => {
+    try {
+      const res = await getProductOperatingSystem(operatingSystemID);
+      return res.data[0];
+    } catch (error) {
+      console.log('On get product OS error', error);
       return null;
     }
   };
@@ -247,6 +302,11 @@ export const MainContextProvider = props => {
         onGetAllScreens,
         onGetAllStorages,
         onGetAllOS,
+        onGetProductProcessor,
+        onGetProductMemory,
+        onGetProductScreen,
+        onGetProductStorage,
+        onGetProductOS,
         onGetProductImagesByProductID,
         onUpdateCartQuantity,
         onCheckUserFavorite,

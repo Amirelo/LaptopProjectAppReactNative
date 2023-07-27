@@ -8,11 +8,14 @@
 import React from 'react';
 import {AuthContextProvider} from './src/screens/Auth/AuthContext';
 import AppNavigation from './src/screens/Navigation/AppNavigation';
+import {MainContextProvider} from './src/screens/Main/MainContext';
 
 function App() {
   return (
     <AuthContextProvider>
-      <AppNavigation />
+      <MainContextProvider>
+        <AppNavigation />
+      </MainContextProvider>
     </AuthContextProvider>
   );
 }
