@@ -11,6 +11,7 @@ const CustomView = ({
   borderStyle,
   borderColor,
   scrollable,
+  alignSelf,
 }) => {
   const colors = useThemeColors();
   let containerStyle = type ? styles[`container_${type}`] : styles.container;
@@ -47,6 +48,7 @@ const CustomView = ({
         containerStyle,
         borderStyle,
         borderColor,
+        alignSelf ? {alignSelf: alignSelf} : {},
         marginTop
           ? {marginTop: marginTop}
           : type == null
@@ -102,5 +104,10 @@ const styles = StyleSheet.create({
   container_banner: {
     width: deviceWidth * 0.9,
     height: deviceHeight * 0.3,
+  },
+  container_tab: {
+    width: deviceWidth * 0.9,
+    paddingBottom: 8,
+    paddingHorizontal: 8,
   },
 });

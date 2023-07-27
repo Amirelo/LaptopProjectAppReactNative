@@ -13,6 +13,9 @@ import {
   getUserCards,
   getAddressesByEmail,
   getUserByEmail,
+  getUserNotification,
+  updateNotificationStatus,
+  insertNotification,
 } from './AuthService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -23,8 +26,8 @@ export const AuthContextProvider = ({children}) => {
 
   const checkSaveUser = async () => {
     try {
-      let username = await AsyncStorage.getItem('email');
-      username != null ? setIsLoggedIn(true) : {};
+      let email = await AsyncStorage.getItem('email');
+      email != null ? setIsLoggedIn(true) : {};
     } catch (error) {
       console.warn('On check save user error', error);
     }
@@ -193,6 +196,47 @@ export const AuthContextProvider = ({children}) => {
     }
   };
 
+  const onGetUserNotification = async userID => {
+    try {
+      const res = await getUserNotification(userID);
+      console.log('On Get User Notification success', res.data);
+      return res.data;
+    } catch (error) {
+      console.log('On Get User Notification error', error);
+      return null;
+    }
+  };
+
+  const onUpdateUserNotificationStatus = async (
+    status,
+    userID,
+    notificationID,
+  ) => {
+    try {
+      const res = await updateNotificationStatus(
+        status,
+        userID,
+        notificationID,
+      );
+      console.log('On Update User Notification success', res.data);
+      return res.data;
+    } catch (error) {
+      console.log('On Update User Notification error', error);
+      return null;
+    }
+  };
+
+  const onInsertNotification = async (title, detail, userID) => {
+    try {
+      const res = await insertNotification(title, detail, userID);
+      console.log('On Get User Notification success', res.data);
+      return res.data;
+    } catch (error) {
+      console.log('On Get User Notification error', error);
+      return null;
+    }
+  };
+
   const onGetUserOrder = async userID => {
     try {
       const res = await getUserOrders(userID);
@@ -251,6 +295,9 @@ export const AuthContextProvider = ({children}) => {
         updateUserAddress,
         onCheckEmail,
         checkSaveUser,
+        onGetUserNotification,
+        onUpdateUserNotificationStatus,
+        onInsertNotification,
         onGetUserByUsername,
         onGetUserOrder,
         onGetUserOrderDetail,

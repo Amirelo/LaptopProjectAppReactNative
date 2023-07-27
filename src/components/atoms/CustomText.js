@@ -2,8 +2,6 @@ import {ActivityIndicator, StyleSheet, Text} from 'react-native';
 import React from 'react';
 import useThemeColors from '../../themes/colorTheme';
 import {textTheme} from '../../themes/textTheme';
-import CustomView from './CustomView';
-import CustomImage from './CustomImage';
 
 const CustomText = ({
   children,
