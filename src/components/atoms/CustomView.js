@@ -103,13 +103,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     flexGrow: 0,
+    flex: 1,
   },
   container_rowJustify90: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     flexGrow: 0,
-    width: deviceWidth * 0.9,
+    width: '90%',
   },
   container_left: {
     alignSelf: 'flex-start',

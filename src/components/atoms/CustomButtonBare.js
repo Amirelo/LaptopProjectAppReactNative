@@ -1,6 +1,7 @@
 import {Animated, Pressable, StyleSheet} from 'react-native';
 import React, {useRef} from 'react';
 import {deviceWidth} from '../../utils/helper';
+import useThemeColors from '../../themes/colorTheme';
 
 const CustomButtonBare = ({
   children,
@@ -8,7 +9,12 @@ const CustomButtonBare = ({
   onPress,
   alignSelf,
   marginTop,
+  backgroundColor,
+  borderStyle,
 }) => {
+  const colors = useThemeColors();
+  backgroundColor =
+    backgroundColor != null ? colors[`${backgroundColor}Color`] : '';
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const fadeIn = () => {
     Animated.sequence([
@@ -30,6 +36,8 @@ const CustomButtonBare = ({
       style={[
         alignSelf != null ? {alignSelf: alignSelf} : {},
         marginTop ? {marginTop: marginTop} : {},
+        borderStyle,
+        {backgroundColor: backgroundColor},
       ]}
       onPress={onPress}
       onPressIn={fadeIn}

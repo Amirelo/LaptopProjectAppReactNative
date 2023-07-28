@@ -11,6 +11,7 @@ import useThemeColors from '../../themes/colorTheme';
 import CustomBanner from '../../components/molecules/CustomBanner';
 import CustomHeader from '../../components/molecules/CustomHeader';
 import ExploreFilterScreen from './screens/ExploreFilterScreen';
+import CartScreen from './screens/CartScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,6 +52,24 @@ const TabNavigation = () => {
                 tintColor={focused ? colors.primaryColor : colors.textColor}
                 type={'inputIcon'}
                 source={images.ic_explore}
+              />
+            );
+          },
+        }}
+      />
+
+      <Tab.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{
+          tabBarActiveTintColor: '#02A9F7',
+
+          tabBarIcon: ({focused}) => {
+            return (
+              <CustomImage
+                tintColor={focused ? colors.primaryColor : colors.textColor}
+                type={'inputIcon'}
+                source={images.ic_cart}
               />
             );
           },

@@ -143,7 +143,7 @@ export const updateCartQuantity = async (cartID, quantity) => {
     itemQuantity: quantity,
   };
   const res = await axiosInstance.post('/cart/update-cart-quantity.php', data);
-  return res.data;
+  return res;
 };
 
 export const deleteCart = async cartID => {

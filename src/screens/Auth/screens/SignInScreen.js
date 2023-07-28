@@ -113,7 +113,8 @@ const SignInScreen = ({navigation, route}) => {
         onPress={onToForgotPasswordPress}
         alignSelf={'flex-end'}
         type={'tertiary'}
-        disabled={isDisabled}>
+        disabled={isDisabled}
+        customStyles={{marginRight: '5%'}}>
         Forgot password
       </CustomButton>
       <CustomButton
@@ -144,7 +145,6 @@ const SignInScreen = ({navigation, route}) => {
           </CustomText>
         </CustomView>
       </CustomButton>
-      <Snackbar message={message} />
     </CustomView>
   );
 };

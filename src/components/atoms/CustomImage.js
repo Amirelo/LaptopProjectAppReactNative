@@ -55,12 +55,10 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   cartItem: {
-    width: 120,
+    width: 100,
     height: 70,
-    marginTop: 16,
-    marginHorizontal: 8,
     alignSelf: 'center',
-    borderRadius: 4,
+    marginHorizontal: 4,
   },
   searchBarIcon: {
     width: 24,

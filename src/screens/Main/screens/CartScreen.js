@@ -1,21 +1,18 @@
-import { ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
-import { FlatList } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import customStyle from '../../../assets/stylesheets/customStyle'
-import { CustomButton, CustomText, ProductHorizontal, ProductVertical } from '../../../components'
-import * as images from '../../../assets/images'
-import CartItems from '../../../components/CartItems'
-import { MainContext } from '../MainContext'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { priceFormat } from '../../../utils/helper'
-import ProductPressOption from '../../../components/ProductPressOption'
+import React, {useContext, useEffect, useState} from 'react';
+import {FlatList, View, ScrollView, StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {MainContext} from '../MainContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import CartItem from '../../../components/molecules/CartItem';
+import CustomButton from '../../../components/molecules/CustomButton';
+import SortOption from '../../../components/molecules/SortOption';
+import CustomText from '../../../components/atoms/CustomText';
+import {deviceHeight, priceFormat} from '../../../utils/helper';
+import CustomView from '../../../components/atoms/CustomView';
+import CartOption from '../../../components/molecules/CartOption';
 
-const deviceWidth = Dimensions.get('window').width;
-const deviceHeight = Dimensions.get('window').height;
-const Cart = ({ navigation }) => {
-
-  const { onGetCartByEmail, onDeleteCart } = useContext(MainContext);
+const CartScreen = ({navigation}) => {
+  const {onGetCartByEmail, onDeleteCart} = useContext(MainContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState();
@@ -23,49 +20,48 @@ const Cart = ({ navigation }) => {
   const [selectedItem, setSelectedItem] = useState();
 
   const onCheckOutPressed = () => {
-    navigation.navigate("Recipient Info", { totalPrice: totalPrice, cart: data });
-  }
+    navigation.navigate('Recipient Info', {
+      totalPrice: totalPrice,
+      CartScreen: data,
+    });
+  };
 
   const onDeleteFromListPressed = async () => {
     const result = await onDeleteCart(selectedItem.cartID);
-    console.log(result)
-    setTotalPrice(prev => prev - (item.productPrice * item.itemQuantity))
+    console.log(result);
+    setTotalPrice(
+      prev => prev - selectedItem.productPrice * selectedItem.itemQuantity,
+    );
     setData(data.filter(item => item.productID != selectedItem.productID));
-    setOnItemOptionPressed(false)
+    setOnItemOptionPressed(false);
+  };
 
-  }
-
-  const onActionOptionPressed = (item) => {
-    setOnItemOptionPressed(true)
-    setSelectedItem(item)
-    console.log(item)
-  }
-
-
+  const onActionOptionPressed = item => {
+    setOnItemOptionPressed(true);
+    setSelectedItem(item);
+    console.log(item);
+  };
 
   const getData = async () => {
-    email = await AsyncStorage.getItem('email');
+    let email = await AsyncStorage.getItem('email');
     const cartData = await onGetCartByEmail(email);
-    console.log(cartData)
-    setData(cartData.data);
+    console.log(cartData);
+    setData(cartData);
     setTotalPrice(0);
-    let myPrice = 0
-    if (cartData.data != null) {
-      cartData.data.map(item => {
-        myPrice += (item.productPrice * item.itemQuantity);
+    let myPrice = 0;
+    if (cartData != null) {
+      cartData.map(item => {
+        myPrice += item.productPrice * item.itemQuantity;
       });
       setTotalPrice(myPrice);
+    } else {
+      setTotalPrice(0);
     }
-    else {
-      setTotalPrice(0)
-    }
-
-  }
+  };
 
   const onOptionHidePressed = () => {
-    setOnItemOptionPressed(false)
-  }
-
+    setOnItemOptionPressed(false);
+  };
 
   useEffect(() => {
     const load = navigation.addListener('focus', () => {
@@ -73,53 +69,57 @@ const Cart = ({ navigation }) => {
     });
 
     return load;
-  }, [navigation])
-
-
-
+  }, [navigation]);
 
   return (
-    <SafeAreaView style={customStyle.container}>
-      {isLoading == false ?
-        <>
-          <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false} contentContainerStyle={{}}>
-
-            <FlatList
-              width={'100%'}
-              height={'100%'}
-              scrollEnabled={false}
-              showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ gap: 8, marginBottom: 16, alignItems: 'center' }}
-              data={data}
-              keyExtractor={item => item.productID}
-              renderItem={({ item }) => {
-                return <CartItems setTotalPrice={setTotalPrice} onActionOptionPressed={onActionOptionPressed}
-                  item={item}
-                />
-              }}
+    <CustomView>
+      <FlatList
+        width={'100%'}
+        height={'50%'}
+        style={{marginTop: 24}}
+        scrollEnabled={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          gap: 8,
+          marginBottom: 16,
+          alignItems: 'center',
+        }}
+        data={data}
+        keyExtractor={item => item.productID}
+        renderItem={({item}) => {
+          return (
+            <CartItem
+              setTotalPrice={setTotalPrice}
+              onActionOptionPressed={onActionOptionPressed}
+              item={item}
             />
-          </ScrollView>
-          {onItemOptionPressed ?
-        <View style={{width:'100%', position:'absolute'}}>
-          <CustomButton onPress={onOptionHidePressed} customStyles={styles.unselectable} />
-          <ProductPressOption onDelete={onDeleteFromListPressed} />
-        </View>
-        : <></>}
-          <View style={styles.rowContainer}>
-            <CustomText value={"Total"} />
-            <CustomText textColor={"cancel"} fontWeight={'heavy'} value={priceFormat(totalPrice)} />
-          </View>
-          <CustomButton value={"Place order"} type={`primary`} marginTop={32} onPress={onCheckOutPressed} />
-          <CustomText />
-        </> :
-        <></>
-      }
-      
-    </SafeAreaView>
-  )
-}
+          );
+        }}
+      />
+      <CustomView type={'rowJustify90'}>
+        <CustomText fontWeight={'heavy'}>Total</CustomText>
+        <CustomText textColor={'err'} textStyle={'normalBold'}>
+          {priceFormat(totalPrice)}
+        </CustomText>
+      </CustomView>
+      <CustomButton type={'primary'} marginTop={32} onPress={onCheckOutPressed}>
+        Place Order
+      </CustomButton>
+      <CustomText />
 
-export default Cart
+      {onItemOptionPressed ? (
+        <CartOption
+          onDeletePressed={onDeleteFromListPressed}
+          onBackgroundPressed={onOptionHidePressed}
+        />
+      ) : (
+        <></>
+      )}
+    </CustomView>
+  );
+};
+
+export default CartScreen;
 
 const styles = StyleSheet.create({
   scrollContainer: {
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '90%'
+    width: '90%',
   },
   unselectable: {
     backgroundColor: '#00000020',
@@ -138,6 +138,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: deviceHeight,
     alignItems: 'center',
-    paddingTop: '40%'
-  }
-})
+    paddingTop: '40%',
+  },
+});
