@@ -154,7 +154,7 @@ const ExploreScreen = ({navigation}) => {
             extraData={sortOption}
             contentContainerStyle={{
               gap: 8,
-              marginBottom: 16,
+              paddingVertical: 16,
               alignItems: 'center',
             }}
             data={filterProduct.slice(0, showAmount)}
@@ -171,7 +171,11 @@ const ExploreScreen = ({navigation}) => {
             marginTop={24}
             scrollEnabled={true}
             columnWrapperStyle={{gap: 16}}
-            contentContainerStyle={{gap: 16, alignItems: 'center'}}
+            contentContainerStyle={{
+              gap: 16,
+              alignItems: 'center',
+              paddingVertical: 16,
+            }}
             data={filterProduct.slice(0, showAmount)}
             onEndReached={() => loadMore()}
             onEndReachedThreshold={0.5}
