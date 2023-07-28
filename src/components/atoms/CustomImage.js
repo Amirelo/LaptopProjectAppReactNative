@@ -1,7 +1,14 @@
 import {StyleSheet, Image} from 'react-native';
 import React from 'react';
 
-const CustomImage = ({source, type, marginTop, customStyles, linkType}) => {
+const CustomImage = ({
+  source,
+  type,
+  marginTop,
+  customStyles,
+  linkType,
+  tintColor,
+}) => {
   return (
     <Image
       resizeMode="cover"
@@ -9,6 +16,7 @@ const CustomImage = ({source, type, marginTop, customStyles, linkType}) => {
       style={[
         type != null ? styles[`${type}`] : {},
         marginTop != null ? {marginTop: marginTop} : {},
+        tintColor ? {tintColor: tintColor} : {},
         customStyles ? customStyles : {},
       ]}
     />
@@ -25,8 +33,8 @@ const styles = StyleSheet.create({
     marginTop: 103,
   },
   inputIcon: {
-    width: 18,
-    height: 18,
+    width: 24,
+    height: 24,
     marginStart: 16,
     marginEnd: 12,
     borderTopLeftRadius: 9,
@@ -67,5 +75,9 @@ const styles = StyleSheet.create({
     width: 240,
     height: 200,
     borderRadius: 10,
+  },
+  headerImage: {
+    width: '50%',
+    height: 30,
   },
 });

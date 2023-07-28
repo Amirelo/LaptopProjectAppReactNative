@@ -51,11 +51,6 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <CustomView>
-      <CustomHeader
-        type={'home'}
-        onFavoritePress={onToFavoritePress}
-        onNotificationPress={onToNotificationPress}
-      />
       <CustomView scrollable={true}>
         <CustomButtonBare marginTop={24}>
           <CustomBanner source={images.banner} header={'Super Flash Sale'} />

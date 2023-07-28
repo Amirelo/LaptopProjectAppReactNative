@@ -1,4 +1,4 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import * as images from '../../assets/images/';
 import CustomInput from './CustomInput';
@@ -6,23 +6,30 @@ import CustomButton from './CustomButton';
 import CustomImage from '../atoms/CustomImage';
 import CustomText from '../atoms/CustomText';
 import CustomView from '../atoms/CustomView';
-import {deviceWidth} from '../../utils/helper';
+import {useNavigation} from '@react-navigation/native';
 
 const CustomHeader = ({
   type,
-  onFavoritePress,
-  onNotificationPress,
   onSearchText,
   onViewListPressed,
   onSortPressed,
   sortType,
 }) => {
   const [viewListPressed, setViewListPressed] = useState(true);
+  const navigation = useNavigation();
+  const onFavoritePress = () => {
+    navigation.navigate('Favorite');
+  };
+
+  const onNotificationPress = () => {
+    navigation.navigate('Notification');
+  };
+
   return (
     <>
       {type == 'home' ? (
         <CustomView type={'header'}>
-          <CustomImage source={images.header} />
+          <CustomImage type={'headerImage'} source={images.header} />
           <CustomView type={'row'}>
             <CustomButton
               type={'image'}
