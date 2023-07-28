@@ -1,14 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import {MainContext} from '../MainContext';
 import CustomView from '../../../components/atoms/CustomView';
-import {deviceHeight, discountFormat, priceFormat} from '../../../utils/helper';
 import CustomHeader from '../../../components/molecules/CustomHeader';
 import ProductVItem from '../../../components/molecules/ProductVItem';
 import ProductHItem from '../../../components/molecules/ProductHItem';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomText from '../../../components/atoms/CustomText';
 import SortOption from '../../../components/molecules/SortOption';
+import {deviceHeight} from '../../../utils/helper';
 
 const ExploreScreen = ({navigation}) => {
   const {onGetAllProduct} = useContext(MainContext);
@@ -45,10 +45,6 @@ const ExploreScreen = ({navigation}) => {
 
   const onOptionHidePressed = () => {
     setSortPressed(false);
-  };
-
-  const onItemPressed = item => {
-    navigation.navigate('Product Details', {item: item});
   };
 
   const sortListItem = async () => {
@@ -104,8 +100,8 @@ const ExploreScreen = ({navigation}) => {
 
   const initData = async () => {
     const prodRes = await onGetAllProduct();
-    setListProducts(prodRes.data);
-    setFilterProduct(prodRes.data);
+    setListProducts(prodRes);
+    setFilterProduct(prodRes);
   };
 
   useEffect(() => {
@@ -132,7 +128,7 @@ const ExploreScreen = ({navigation}) => {
         onViewListPressed={onViewListPressed}
         sortType={sortType}
       />
-      <View>
+      <CustomView>
         {searchText ? (
           <CustomText
             type={'header'}
@@ -146,8 +142,9 @@ const ExploreScreen = ({navigation}) => {
         {itemViewVertical == true ? (
           <FlatList
             width={'100%'}
+            height={deviceHeight}
             customStyle={{flex: 1}}
-            scrollEnabled={false}
+            scrollEnabled={true}
             marginTop={24}
             showsVerticalScrollIndicator={false}
             extraData={sortOption}
@@ -156,7 +153,7 @@ const ExploreScreen = ({navigation}) => {
               marginBottom: 16,
               alignItems: 'center',
             }}
-            data={filterProduct}
+            data={filterProduct.slice(0, showAmount)}
             onEndReached={() => loadMore()}
             onEndReachedThreshold={0.5}
             keyExtractor={item => item.productID}
@@ -167,12 +164,11 @@ const ExploreScreen = ({navigation}) => {
         ) : (
           <FlatList
             width={'100%'}
-            height={'100%'}
             marginTop={24}
             scrollEnabled={true}
             columnWrapperStyle={{gap: 16}}
             contentContainerStyle={{gap: 16, alignItems: 'center'}}
-            data={filterProduct}
+            data={filterProduct.slice(0, showAmount)}
             onEndReached={() => loadMore()}
             onEndReachedThreshold={0.5}
             numColumns={2}
@@ -184,18 +180,13 @@ const ExploreScreen = ({navigation}) => {
             }}
           />
         )}
-      </View>
+      </CustomView>
       {sortPressed ? (
-        <>
-          <CustomButton
-            onPress={onOptionHidePressed}
-            customStyles={styles.unselectable}
-          />
-          <SortOption
-            setSortOption={setSortOption}
-            setSortPressed={setSortPressed}
-          />
-        </>
+        <SortOption
+          setSortOption={setSortOption}
+          setSortPressed={setSortPressed}
+          onBackgroundPressed={onOptionHidePressed}
+        />
       ) : (
         <></>
       )}
@@ -213,6 +204,5 @@ const styles = StyleSheet.create({
     width: '100%',
     height: deviceHeight,
     alignItems: 'center',
-    paddingTop: '40%',
   },
 });

@@ -125,17 +125,3 @@ const HomeScreen = ({navigation}) => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  productHeaderContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '90%',
-    marginTop: 48,
-  },
-  scrollview: {
-    width: '90%',
-    height: '100%',
-    marginTop: 12,
-  },
-});

@@ -1,56 +1,114 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Animated, Easing} from 'react-native';
+import {useEffect, useRef} from 'react';
 import React from 'react';
 import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
+import CustomView from '../atoms/CustomView';
+import {deviceHeight} from '../../utils/helper';
 
-const SortOption = ({setSortOption, setSortPressed}) => {
+const SortOption = ({setSortOption, setSortPressed, onBackgroundPressed}) => {
   const changeOption = type => {
     setSortOption(type);
     setSortPressed(false);
   };
+  const animatedValue = useRef(new Animated.Value(255)).current;
+  const slideIn = () => {
+    Animated.timing(animatedValue, {
+      toValue: 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  };
 
+  const slideOut = () => {
+    Animated.timing(animatedValue, {
+      toValue: 255,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const onOutsidePressed = () => {
+    slideOut();
+    fadeOut();
+    setTimeout(() => {
+      onBackgroundPressed();
+    }, 200);
+  }
+
+  const backgroundAnimated = useRef(new Animated.Value(0)).current;
+
+  const fadeOut = () => {
+    Animated.timing(backgroundAnimated, {
+      toValue: 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const fadeIn = () => {
+    Animated.timing(backgroundAnimated, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  useEffect(() => {
+    slideIn();
+    fadeIn();
+  }, []);
   return (
-    <View style={styles.container}>
-      <CustomText
-        value={'Sort by'}
-        customStyles={styles.spacing}
-        fontWeight={'heavy'}
-        fontSize={'title'}
-      />
+    <CustomView
+      type={'absolute'}
+      animated={true}
+      customStyles={{opacity: backgroundAnimated}}>
       <CustomButton
-        value={'Popularity'}
-        onPress={() => changeOption(1)}
-        customStyles={styles.spacing}
+        onPress={onOutsidePressed}
+        noAnim={true}
+        customStyles={styles.unselectable}
+        marginTop={0}
       />
-      <CustomButton
-        value={'Newest'}
-        onPress={() => changeOption(2)}
-        customStyles={styles.spacing}
-      />
-      <CustomButton
-        value={'Price: low to high'}
-        onPress={() => changeOption(3)}
-        customStyles={styles.spacing}
-      />
-      <CustomButton
-        value={'Price: high to low'}
-        onPress={() => changeOption(4)}
-        customStyles={styles.spacing}
-      />
-    </View>
+      <CustomView
+        customStyles={{transform: [{translateY: animatedValue}]}}
+        animated={true}
+        type={'absoluteBottomItem'}>
+        <CustomText
+          customStyles={styles.spacing}
+          fontWeight={'heavy'}
+          fontSize={'title'}>
+          Sort By
+        </CustomText>
+        <CustomButton onPress={() => changeOption(1)} type={'tertiary'}>
+          Popularity
+        </CustomButton>
+        <CustomButton onPress={() => changeOption(2)} type={'tertiary'}>
+          New
+        </CustomButton>
+        <CustomButton onPress={() => changeOption(3)} type={'tertiary'}>
+          Price Ascending
+        </CustomButton>
+        <CustomButton
+          customStyles={{marginBottom: 32}}
+          onPress={() => changeOption(4)}
+          type={'tertiary'}>
+          Price Descending
+        </CustomButton>
+      </CustomView>
+    </CustomView>
   );
 };
 
 export default SortOption;
 
 const styles = StyleSheet.create({
-  container: {
+  unselectable: {
+    backgroundColor: 'transparent',
+    position: 'absolute',
+    flex: 1,
     width: '100%',
-    backgroundColor: '#fff',
-    justifyContentL: 'center',
+    height: deviceHeight,
     alignItems: 'center',
-    borderTopStartRadius: 60,
-    borderTopEndRadius: 60,
   },
   spacing: {
     padding: 16,

@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {Animated, ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import useThemeColors from '../../themes/colorTheme';
 import {deviceHeight, deviceWidth} from '../../utils/helper';
@@ -12,6 +12,8 @@ const CustomView = ({
   borderColor,
   scrollable,
   alignSelf,
+  animated,
+  customStyles,
 }) => {
   const colors = useThemeColors();
   let containerStyle = type ? styles[`container_${type}`] : styles.container;
@@ -39,6 +41,25 @@ const CustomView = ({
       ]}>
       {children}
     </ScrollView>
+  ) : animated ? (
+    <Animated.View
+      style={[
+        {
+          backgroundColor: backgroundColor,
+        },
+        containerStyle,
+        borderStyle,
+        borderColor,
+        alignSelf ? {alignSelf: alignSelf} : {},
+        marginTop
+          ? {marginTop: marginTop}
+          : type == null
+          ? {marginTop: 0}
+          : {marginTop: 8},
+        customStyles ? customStyles : {},
+      ]}>
+      {children}
+    </Animated.View>
   ) : (
     <View
       style={[
@@ -109,5 +130,21 @@ const styles = StyleSheet.create({
     width: deviceWidth * 0.9,
     paddingBottom: 8,
     paddingHorizontal: 8,
+  },
+  container_absolute: {
+    width: deviceWidth,
+    position: 'absolute',
+    height: '100%',
+    backgroundColor: '#00000020',
+  },
+  container_absoluteBottomItem: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderTopStartRadius: 60,
+    borderTopEndRadius: 60,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    position: 'absolute', //Here is the trick
+    bottom: 0,
   },
 });

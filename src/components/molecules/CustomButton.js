@@ -14,6 +14,7 @@ const CustomButton = ({
   onPress,
   customStyles,
   disabled,
+  noAnim,
 }) => {
   const colors = useThemeColors();
   const buttonBackgroundColor =
@@ -60,10 +61,7 @@ const CustomButton = ({
             borderColor: borderColor,
           },
           customStyles != null ? customStyles : {},
-          {
-            // Bind opacity to animated value
-            opacity: fadeAnim,
-          },
+          noAnim ? {} : {opacity: fadeAnim},
         ]}>
         {type == 'social' ? (
           <CustomImage source={source} type={'socialIcon'} />
