@@ -8,10 +8,10 @@ import ExploreScreen from './screens/ExploreScreen';
 import * as images from '../../assets/images';
 import CustomImage from '../../components/atoms/CustomImage';
 import useThemeColors from '../../themes/colorTheme';
-import CustomBanner from '../../components/molecules/CustomBanner';
 import CustomHeader from '../../components/molecules/CustomHeader';
 import ExploreFilterScreen from './screens/ExploreFilterScreen';
 import CartScreen from './screens/CartScreen';
+import CartRecipientScreen from './screens/CartRecipientScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,6 +92,7 @@ const MainNavigation = () => {
       <Stack.Screen name="Favorite" component={FavoriteScreen} />
       <Stack.Screen name="Notification" component={NotificationScreen} />
       <Stack.Screen name="Filter" component={ExploreFilterScreen} />
+      <Stack.Screen name="Recipient Info" component={CartRecipientScreen} />
     </Stack.Navigator>
   );
 };

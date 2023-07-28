@@ -1,20 +1,17 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {FlatList, View, ScrollView, StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {FlatList} from 'react-native';
 import {MainContext} from '../MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CartItem from '../../../components/molecules/CartItem';
 import CustomButton from '../../../components/molecules/CustomButton';
-import SortOption from '../../../components/molecules/SortOption';
 import CustomText from '../../../components/atoms/CustomText';
-import {deviceHeight, priceFormat} from '../../../utils/helper';
+import {priceFormat} from '../../../utils/helper';
 import CustomView from '../../../components/atoms/CustomView';
 import CartOption from '../../../components/molecules/CartOption';
 
 const CartScreen = ({navigation}) => {
   const {onGetCartByEmail, onDeleteCart} = useContext(MainContext);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState();
   const [onItemOptionPressed, setOnItemOptionPressed] = useState(false);
   const [selectedItem, setSelectedItem] = useState();
@@ -120,24 +117,3 @@ const CartScreen = ({navigation}) => {
 };
 
 export default CartScreen;
-
-const styles = StyleSheet.create({
-  scrollContainer: {
-    width: '100%',
-    height: '70%',
-  },
-  rowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '90%',
-  },
-  unselectable: {
-    backgroundColor: '#00000020',
-    position: 'absolute',
-    flex: 1,
-    width: '100%',
-    height: deviceHeight,
-    alignItems: 'center',
-    paddingTop: '40%',
-  },
-});

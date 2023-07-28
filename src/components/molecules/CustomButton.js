@@ -22,7 +22,7 @@ const CustomButton = ({
       ? colors.primaryColor
       : type == 'social'
       ? colors.backgroundInputColor
-      : '';
+      : 'transparent';
   const borderColor = type == 'social' ? colors.borderColor : '';
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const textColor =
@@ -48,14 +48,16 @@ const CustomButton = ({
 
   return (
     <Pressable
-      style={alignSelf != null ? {alignSelf: alignSelf} : {}}
+      style={[
+        alignSelf != null ? {alignSelf: alignSelf} : {},
+        marginTop != null ? {marginTop: marginTop} : {marginTop: 16},
+      ]}
       onPress={onPress}
       onPressIn={fadeIn}
       disabled={disabled}>
       <Animated.View
         style={[
           type != null ? styles[`button_${type}`] : {},
-          marginTop != null ? {marginTop: marginTop} : {marginTop: 16},
           {
             backgroundColor: buttonBackgroundColor,
             borderColor: borderColor,
@@ -113,6 +115,7 @@ const styles = StyleSheet.create({
     borderColor: '#B3B3B3',
     borderWidth: 1,
     borderRadius: 10,
+    paddingHorizontal: 32,
   },
   text_social: {
     flex: 1,
