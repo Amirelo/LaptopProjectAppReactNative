@@ -1,11 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {StyleSheet, View, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import CustomView from '../../../components/atoms/CustomView';
 import {MainContext} from '../MainContext';
 import ProductHItem from '../../../components/molecules/ProductHItem';
 import CustomText from '../../../components/atoms/CustomText';
 import {deviceWidth} from '../../../utils/helper';
-import CustomHeader from '../../../components/molecules/CustomHeader';
 import CustomButton from '../../../components/molecules/CustomButton';
 import ProductVItem from '../../../components/molecules/ProductVItem';
 import * as images from '../../../assets/images';
@@ -56,7 +55,7 @@ const HomeScreen = ({navigation}) => {
           <CustomBanner source={images.banner} header={'Super Flash Sale'} />
         </CustomButtonBare>
 
-        <CustomView type={'rowJustify'} marginTop={48}>
+        <CustomView type={'rowJustify90'} marginTop={48}>
           <CustomText textStyle={'normalBold'}>Popular</CustomText>
           <CustomButton type={'tertiary'}>See more</CustomButton>
         </CustomView>
@@ -78,7 +77,7 @@ const HomeScreen = ({navigation}) => {
           }}
         />
 
-        <CustomView type={'rowJustify'} marginTop={16}>
+        <CustomView type={'rowJustify90'} marginTop={16}>
           <CustomText textStyle={'normalBold'}>Best buy</CustomText>
           <CustomButton type={'tertiary'}>See more</CustomButton>
         </CustomView>
@@ -101,7 +100,7 @@ const HomeScreen = ({navigation}) => {
           }}
         />
 
-        <CustomView type={'rowJustify'} marginTop={16}>
+        <CustomView type={'rowJustify90'} marginTop={16}>
           <CustomText textStyle={'normalBold'}>You might like</CustomText>
           <CustomButton type={'tertiary'}>See more</CustomButton>
         </CustomView>

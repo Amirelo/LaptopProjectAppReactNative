@@ -1,4 +1,4 @@
-import {StyleSheet, View, Animated, Easing} from 'react-native';
+import {StyleSheet, Animated} from 'react-native';
 import {useEffect, useRef} from 'react';
 import React from 'react';
 import CustomText from '../atoms/CustomText';
@@ -34,7 +34,7 @@ const SortOption = ({setSortOption, setSortPressed, onBackgroundPressed}) => {
     setTimeout(() => {
       onBackgroundPressed();
     }, 200);
-  }
+  };
 
   const backgroundAnimated = useRef(new Animated.Value(0)).current;
 

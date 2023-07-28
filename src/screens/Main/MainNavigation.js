@@ -10,6 +10,7 @@ import CustomImage from '../../components/atoms/CustomImage';
 import useThemeColors from '../../themes/colorTheme';
 import CustomBanner from '../../components/molecules/CustomBanner';
 import CustomHeader from '../../components/molecules/CustomHeader';
+import ExploreFilterScreen from './screens/ExploreFilterScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,7 +24,9 @@ const TabNavigation = () => {
         component={HomeScreen}
         options={{
           tabBarActiveTintColor: '#02A9F7',
-          headerTitle: ()=> {return null},
+          headerTitle: () => {
+            return null;
+          },
           headerRight: () => <CustomHeader type={'home'} />,
           tabBarIcon: ({focused}) => {
             return (
@@ -41,7 +44,7 @@ const TabNavigation = () => {
         component={ExploreScreen}
         options={{
           tabBarActiveTintColor: '#02A9F7',
-          
+
           tabBarIcon: ({focused}) => {
             return (
               <CustomImage
@@ -69,6 +72,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen name="Favorite" component={FavoriteScreen} />
       <Stack.Screen name="Notification" component={NotificationScreen} />
+      <Stack.Screen name="Filter" component={ExploreFilterScreen} />
     </Stack.Navigator>
   );
 };

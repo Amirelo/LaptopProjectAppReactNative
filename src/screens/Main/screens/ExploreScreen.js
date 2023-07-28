@@ -36,7 +36,6 @@ const ExploreScreen = ({navigation}) => {
   const onViewListPressed = () => {
     setShowAmount(6);
     setItemViewVertical(!itemViewVertical);
-    console.warn('pressed');
   };
 
   const onSortPressed = () => {
@@ -45,6 +44,10 @@ const ExploreScreen = ({navigation}) => {
 
   const onOptionHidePressed = () => {
     setSortPressed(false);
+  };
+
+  const onFiltersPressed = () => {
+    navigation.navigate('Filter');
   };
 
   const sortListItem = async () => {
@@ -126,6 +129,7 @@ const ExploreScreen = ({navigation}) => {
         onSearchText={setSearchText}
         onSortPressed={onSortPressed}
         onViewListPressed={onViewListPressed}
+        onFilterPressed={onFiltersPressed}
         sortType={sortType}
       />
       <CustomView>

@@ -7,12 +7,14 @@ import CustomImage from '../atoms/CustomImage';
 import CustomText from '../atoms/CustomText';
 import CustomView from '../atoms/CustomView';
 import {useNavigation} from '@react-navigation/native';
+import CustomButtonBare from '../atoms/CustomButtonBare';
 
 const CustomHeader = ({
   type,
   onSearchText,
   onViewListPressed,
   onSortPressed,
+  onFilterPressed,
   sortType,
 }) => {
   const [viewListPressed, setViewListPressed] = useState(true);
@@ -23,6 +25,11 @@ const CustomHeader = ({
 
   const onNotificationPress = () => {
     navigation.navigate('Notification');
+  };
+
+  const onViewIconPressed = () => {
+    setViewListPressed(!viewListPressed);
+    onViewListPressed();
   };
 
   return (
@@ -55,15 +62,23 @@ const CustomHeader = ({
             width={'90%'}
           />
           <View style={styles.sortContainer}>
-            <Pressable style={styles.itemContainer}>
-              <CustomImage source={images.ic_filter} type={'searchBarIcon'} />
-              <CustomText value={'Filters'} type={'subtitle'} />
-            </Pressable>
-            <Pressable style={styles.itemContainer} onPress={onSortPressed}>
-              <CustomImage source={images.ic_sort} type={'searchBarIcon'} />
-              <CustomText value={sortType} type={'subtitle'} />
-            </Pressable>
-            <Pressable onPress={onViewListPressed}>
+            <CustomButtonBare onPress={onFilterPressed}>
+              <CustomView type={'rowJustify'}>
+                <CustomImage source={images.ic_filter} type={'searchBarIcon'} />
+                <CustomText textStyle={'normal'} marginTop={0}>
+                  Filters
+                </CustomText>
+              </CustomView>
+            </CustomButtonBare>
+            <CustomButtonBare onPress={onSortPressed}>
+              <CustomView type={'rowJustify'}>
+                <CustomImage source={images.ic_sort} type={'searchBarIcon'} />
+                <CustomText textStyle={'normal'} marginTop={0}>
+                  {sortType}
+                </CustomText>
+              </CustomView>
+            </CustomButtonBare>
+            <CustomButtonBare onPress={onViewIconPressed}>
               {viewListPressed ? (
                 <CustomImage
                   source={images.ic_view_list}
@@ -75,7 +90,7 @@ const CustomHeader = ({
                   type={'searchBarIcon'}
                 />
               )}
-            </Pressable>
+            </CustomButtonBare>
           </View>
         </View>
       )}
