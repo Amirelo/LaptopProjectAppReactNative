@@ -20,15 +20,32 @@ const UpdateInfoScreen = ({route, navigation}) => {
   const {onUpdateUserInfo} = useContext(AuthContext);
 
   const onChangeButtonPresses = async () => {
-    const res = await onUpdateUserInfo(data, email, type);
-    if (res.response_code == 1) {
-      console.warn('Success');
-      await AsyncStorage.setItem(type.toLowerCase(), data);
-      route.params.onGoBack(data, type);
-      navigation.goBack(null);
+    if (type == 'PASSWORD') {
+      if (dat > 6 || data == confirmData) {
+        const res = await onUpdateUserInfo(data, email, type);
+        if (res.response_code == 1) {
+          console.warn('Success');
+          await AsyncStorage.setItem(type.toLowerCase(), data);
+          route.params.onGoBack(data, type);
+          navigation.goBack(null);
+        } else {
+          console.warn('Fail');
+          navigation.goBack(null);
+        }
+      } else {
+        console.warn('Check your password info');
+      }
     } else {
-      console.warn('Fail');
-      navigation.goBack(null);
+      const res = await onUpdateUserInfo(data, email, type);
+      if (res.response_code == 1) {
+        console.warn('Success');
+        await AsyncStorage.setItem(type.toLowerCase(), data);
+        route.params.onGoBack(data, type);
+        navigation.goBack(null);
+      } else {
+        console.warn('Fail');
+        navigation.goBack(null);
+      }
     }
   };
 
