@@ -4,18 +4,36 @@ import CustomView from '../atoms/CustomView';
 import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import {borderTheme} from '../../themes/borderTheme';
+import { useNavigation } from '@react-navigation/native';
 
 const AddressItem = ({data, onlyInfo}) => {
+  const navigation = useNavigation();
+  console.log(data);
+
+  const onEditPressed = () => {
+    navigation.navigate('New Address');
+  }
   return (
     <CustomView
       type={'tab'}
       borderStyle={borderTheme.textInput}
       backgroundColor={'backgroundInput'}>
-      <CustomText textStyle={'normalBold'}>{data.fullname}</CustomText>
-      <CustomText>{data.address}</CustomText>
-      <CustomText>{data.phonenumber}</CustomText>
+      <CustomText>
+        {data.addressName +
+          ', P.' +
+          data.ward +
+          ', Q.' +
+          data.district +
+          ', ' +
+          data.city}
+      </CustomText>
+
       {onlyInfo ? (
-        <></>
+        <CustomView backgroundColor={'none'}>
+          <CustomText textStyle={'normalBold'}>{data.fullname}</CustomText>
+
+          <CustomText>{data.phonenumber}</CustomText>
+        </CustomView>
       ) : (
         <CustomView backgroundColor={'transparent'} type={'rowJustify90'}>
           <CustomView backgroundColor={'transparent'} type={'row'}>
@@ -29,7 +47,7 @@ const AddressItem = ({data, onlyInfo}) => {
             )}
             <CustomText>Use as default address</CustomText>
           </CustomView>
-          <CustomButton type={'tertiary'}>Edit</CustomButton>
+          <CustomButton onPress={onEditPressed} type={'tertiary'}>Edit</CustomButton>
         </CustomView>
       )}
     </CustomView>
@@ -37,4 +55,3 @@ const AddressItem = ({data, onlyInfo}) => {
 };
 
 export default AddressItem;
-

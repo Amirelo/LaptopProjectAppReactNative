@@ -111,7 +111,7 @@ const AccountScreen = ({route, navigation}) => {
         />
         <AccountTab
           title={'Payment methods'}
-          subtitle={'Union'}
+          subtitle={'Cash'}
           onPress={onCardScreenPressed}
         />
         <AccountTab

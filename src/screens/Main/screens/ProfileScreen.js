@@ -9,6 +9,7 @@ const ProfileScreen = ({route, navigation}) => {
   console.log(userInfo);
 
   const onGoBack = (data, type) => {
+    console.log('goback')
     switch (type) {
       case 'USERNAME':
         userInfo.username = data;
@@ -51,36 +52,34 @@ const ProfileScreen = ({route, navigation}) => {
   };
 
   return (
-    <CustomView>
-      <CustomView scrollable={true}>
-        <CustomButtonBare>
-          <CustomImage
-            source={userInfo.imageLink}
-            linkType={'uri'}
-            type={'logo'}
-            marginTop={50}
-          />
-        </CustomButtonBare>
+    <CustomView scrollable={true}>
+      <CustomButtonBare>
+        <CustomImage
+          source={userInfo.imageLink}
+          linkType={'uri'}
+          type={'logo'}
+          marginTop={50}
+        />
+      </CustomButtonBare>
 
-        <AccountTab
-          type={'profile'}
-          onPress={() => onAccountTabPressed('USERNAME')}
-          title={'Username'}
-          subtitle={userInfo.username}
-        />
-        <AccountTab
-          type={'profile'}
-          onPress={() => onAccountTabPressed('PHONENUMBER')}
-          title={'Phone number'}
-          subtitle={userInfo.phonenumber}
-        />
-        <AccountTab
-          type={'profile'}
-          onPress={() => onAccountTabPressed('BIRTHDAY')}
-          title={'Birthday'}
-          subtitle={userInfo.birthday}
-        />
-      </CustomView>
+      <AccountTab
+        type={'profile'}
+        onPress={() => onAccountTabPressed('USERNAME')}
+        title={'Username'}
+        subtitle={userInfo.username}
+      />
+      <AccountTab
+        type={'profile'}
+        onPress={() => onAccountTabPressed('PHONENUMBER')}
+        title={'Phone number'}
+        subtitle={userInfo.phonenumber}
+      />
+      <AccountTab
+        type={'profile'}
+        onPress={() => onAccountTabPressed('BIRTHDAY')}
+        title={'Birthday'}
+        subtitle={userInfo.birthday}
+      />
     </CustomView>
   );
 };

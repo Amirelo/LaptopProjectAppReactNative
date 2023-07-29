@@ -54,10 +54,14 @@ const CustomInput = ({
       marginTop={marginTop}
       borderStyle={borderStyle}
       borderColor={borderColor}>
-      <CustomImage source={source} type={'inputIcon'} />
+      {source != null ? (
+        <CustomImage source={source} type={'inputIcon'} />
+      ) : (
+        <></>
+      )}
       <TextInput
         onChangeText={onChangeText}
-        style={styles.inputStyle}
+        style={[styles.inputStyle, source == null ? {paddingStart: 10} : {}]}
         value={value}
         onFocus={onFocus}
         onBlur={onBlur}

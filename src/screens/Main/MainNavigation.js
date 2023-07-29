@@ -15,6 +15,9 @@ import CartRecipientScreen from './screens/CartRecipientScreen';
 import CheckOutScreen from './screens/CheckOutScreen';
 import AccountScreen from './screens/AccountScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import UpdateInfoScreen from './screens/UpdateInfoScreen';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import InsertAddressScreen from './screens/InsertAddressScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -116,6 +119,12 @@ const MainNavigation = () => {
       <Stack.Screen name="Recipient Info" component={CartRecipientScreen} />
       <Stack.Screen name="Checkout" component={CheckOutScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="New Address" component={InsertAddressScreen} />
+      <Stack.Screen
+        name="Update User Information"
+        component={UpdateInfoScreen}
+      />
+      <Stack.Screen name="Shipping Address" component={ShippingAddressScreen} />
     </Stack.Navigator>
   );
 };
