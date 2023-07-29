@@ -17,6 +17,7 @@ const AccountScreen = ({route, navigation}) => {
   const [userData, setUserData] = useState({});
   const [userAddresses, setUserAddresses] = useState({});
   const [userOrders, setUserOrders] = useState({});
+  const [orderInProgress, setOrderInProgress] = useState(0);
   const [userPromoCodes, setUserPromoCodes] = useState({});
   const [userCards, setUserCards] = useState({});
 
@@ -29,6 +30,12 @@ const AccountScreen = ({route, navigation}) => {
     setUserAddresses(userAddress.data);
     const userOrder = await onGetUserOrder(userInfo.data.userId);
     setUserOrders(userOrder.data);
+
+    userOrder.data.map(item => {
+      if (item.status == 0) {
+        setOrderInProgress(prev => prev + 1);
+      }
+    });
 
     const userCoupon = await onGetUserCoupon(userInfo.data.userId);
     setUserPromoCodes(userCoupon.data);
@@ -94,12 +101,12 @@ const AccountScreen = ({route, navigation}) => {
         />
         <AccountTab
           title={'My order'}
-          subtitle={'12 orders in progress'}
+          subtitle={orderInProgress + ' order(s) in progress'}
           onPress={onMyOrderPressed}
         />
         <AccountTab
           title={'Shipping address'}
-          subtitle={'3 addresses'}
+          subtitle={userAddresses.length + ' address(es)'}
           onPress={onShippingAddressPress}
         />
         <AccountTab
@@ -109,7 +116,7 @@ const AccountScreen = ({route, navigation}) => {
         />
         <AccountTab
           title={'Promocodes'}
-          subtitle={'3 promocodes available'}
+          subtitle={userPromoCodes.length + ' promocode(s) available'}
           onPress={onPromoCodesScreenPressed}
         />
         <AccountTab

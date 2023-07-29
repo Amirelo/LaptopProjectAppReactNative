@@ -26,7 +26,7 @@ const CustomInput = ({
   const [isSelected, setIsSelected] = useState(false);
   let borderColor = isSelected
     ? {borderColor: colors.primaryColor}
-    : {borderColor: colors.backgroundInputColor};
+    : {borderColor: colors.borderColor};
   let borderStyle = borderTheme.textInput;
   const onPressVisibility = () => {
     setSecure(!secure);

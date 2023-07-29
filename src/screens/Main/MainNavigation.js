@@ -14,6 +14,7 @@ import CartScreen from './screens/CartScreen';
 import CartRecipientScreen from './screens/CartRecipientScreen';
 import CheckOutScreen from './screens/CheckOutScreen';
 import AccountScreen from './screens/AccountScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -114,6 +115,7 @@ const MainNavigation = () => {
       <Stack.Screen name="Filter" component={ExploreFilterScreen} />
       <Stack.Screen name="Recipient Info" component={CartRecipientScreen} />
       <Stack.Screen name="Checkout" component={CheckOutScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 };
