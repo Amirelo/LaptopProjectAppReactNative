@@ -103,8 +103,8 @@ const ExploreScreen = ({navigation}) => {
 
   const initData = async () => {
     const prodRes = await onGetAllProduct();
-    setListProducts(prodRes);
-    setFilterProduct(prodRes);
+    setListProducts(prodRes.data);
+    setFilterProduct(prodRes.data);
   };
 
   useEffect(() => {

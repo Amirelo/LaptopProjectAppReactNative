@@ -23,6 +23,7 @@ import {
   getProductScreen,
   getProductStorage,
   getProductOperatingSystem,
+  demoPaymentVNPay,
 } from './MainService';
 
 export const MainContext = createContext();
@@ -83,7 +84,7 @@ export const MainContextProvider = props => {
   const onGetProductProcessor = async processorID => {
     try {
       const res = await getProductProcessor(processorID);
-      return res.data[0];
+      return res.data;
     } catch (error) {
       console.log('On get product processor error', error);
       return null;
@@ -103,7 +104,7 @@ export const MainContextProvider = props => {
   const onGetProductMemory = async memoryID => {
     try {
       const res = await getProductMemory(memoryID);
-      return res.data[0];
+      return res.data;
     } catch (error) {
       console.log('On get product memory error', error);
       return null;
@@ -123,7 +124,7 @@ export const MainContextProvider = props => {
   const onGetProductScreen = async screenID => {
     try {
       const res = await getProductScreen(screenID);
-      return res.data[0];
+      return res.data;
     } catch (error) {
       console.log('On get product screen error', error);
       return null;
@@ -143,7 +144,7 @@ export const MainContextProvider = props => {
   const onGetProductStorage = async storageID => {
     try {
       const res = await getProductStorage(storageID);
-      return res.data[0];
+      return res.data;
     } catch (error) {
       console.log('On get product processor error', error);
       return null;
@@ -173,7 +174,7 @@ export const MainContextProvider = props => {
   const onGetProductOS = async operatingSystemID => {
     try {
       const res = await getProductOperatingSystem(operatingSystemID);
-      return res.data[0];
+      return res.data;
     } catch (error) {
       console.log('On get product OS error', error);
       return null;
@@ -250,6 +251,7 @@ export const MainContextProvider = props => {
     userID,
     couponID,
     cardID,
+    cartID,
   ) => {
     try {
       const res = await insertUserOrder(
@@ -262,6 +264,7 @@ export const MainContextProvider = props => {
         userID,
         couponID,
         cardID,
+        cartID,
       );
       return res.data;
     } catch (error) {
@@ -274,12 +277,14 @@ export const MainContextProvider = props => {
     productQuantity,
     userOrderID,
     productID,
+    cartID,
   ) => {
     try {
       const res = await insertOrderDetail(
         productQuantity,
         userOrderID,
         productID,
+        cartID,
       );
       return res.data;
     } catch (error) {

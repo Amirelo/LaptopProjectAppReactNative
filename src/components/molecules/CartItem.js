@@ -17,8 +17,8 @@ const CartItem = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
 
   const getData = async () => {
     const result = await onGetProductByID(item.productID);
-    console.log(result[0]);
-    setCurProduct(result[0]);
+    console.log(result.data[0]);
+    setCurProduct(result.data[0]);
   };
 
   const onAddQuantityPressed = async () => {

@@ -20,28 +20,20 @@ const HomeScreen = ({navigation}) => {
 
   const initData = async () => {
     const prosRes = await onGetAllProduct();
-    setListProducts(prosRes);
+    setListProducts(prosRes.data);
 
-    let myList = [...prosRes];
+    let myList = [...prosRes.data];
     myList = myList
       .sort((a, b) => b.totalRating - a.totalRating)
       .slice(0, maxItem);
     setListPopProducts(myList);
     console.log(myList);
 
-    let bestBuy = [...prosRes];
+    let bestBuy = [...prosRes.data];
     bestBuy = bestBuy
       .sort((a, b) => b.onSale.localeCompare(a.onSale))
       .slice(0, maxItem);
     setListBestBuy(bestBuy);
-  };
-
-  const onToFavoritePress = () => {
-    navigation.navigate('Favorite');
-  };
-
-  const onToNotificationPress = () => {
-    navigation.navigate('Notification');
   };
 
   useEffect(() => {

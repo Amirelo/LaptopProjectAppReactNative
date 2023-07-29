@@ -12,6 +12,8 @@ import CustomHeader from '../../components/molecules/CustomHeader';
 import ExploreFilterScreen from './screens/ExploreFilterScreen';
 import CartScreen from './screens/CartScreen';
 import CartRecipientScreen from './screens/CartRecipientScreen';
+import CheckOutScreen from './screens/CheckOutScreen';
+import AccountScreen from './screens/AccountScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -75,6 +77,24 @@ const TabNavigation = () => {
           },
         }}
       />
+
+      <Tab.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          tabBarActiveTintColor: '#02A9F7',
+
+          tabBarIcon: ({focused}) => {
+            return (
+              <CustomImage
+                tintColor={focused ? colors.primaryColor : colors.textColor}
+                type={'inputIcon'}
+                source={images.ic_person}
+              />
+            );
+          },
+        }}
+      />
     </Tab.Navigator>
   );
 };
@@ -93,6 +113,7 @@ const MainNavigation = () => {
       <Stack.Screen name="Notification" component={NotificationScreen} />
       <Stack.Screen name="Filter" component={ExploreFilterScreen} />
       <Stack.Screen name="Recipient Info" component={CartRecipientScreen} />
+      <Stack.Screen name="Checkout" component={CheckOutScreen} />
     </Stack.Navigator>
   );
 };

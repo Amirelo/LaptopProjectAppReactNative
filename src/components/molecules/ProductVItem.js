@@ -24,16 +24,16 @@ const ProductVItem = ({onPress, data}) => {
   const getInitData = async () => {
     const processor = await onGetProductProcessor(data.processorID);
     console.log(processor);
-    setItemProcessor(processor);
+    setItemProcessor(processor.data[0]);
 
     const memory = await onGetProductMemory(data.memoryID);
-    setItemMemory(memory);
+    setItemMemory(memory.data[0]);
 
     const screen = await onGetProductScreen(data.screenID);
-    setitemScreen(screen);
+    setitemScreen(screen.data[0]);
 
     const storage = await onGetProductStorage(data.storageID);
-    setitemStorage(storage);
+    setitemStorage(storage.data[0]);
   };
 
   const fadeAnim = useRef(new Animated.Value(1)).current;

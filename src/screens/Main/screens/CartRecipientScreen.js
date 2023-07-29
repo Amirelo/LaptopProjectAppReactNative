@@ -6,7 +6,6 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import LocationOptions from '../../../components/molecules/LocationOptions';
-import CustomText from '../../../components/atoms/CustomText';
 
 const CartRecipientScreen = ({navigation, route}) => {
   const [location, setLocation] = useState();
@@ -84,18 +83,21 @@ const CartRecipientScreen = ({navigation, route}) => {
         value={fullName}
         onChangeText={setFullName}
         marginTop={8}
+        source={images.ic_calendar}
       />
       <CustomInput
         placeholder={'Phone number'}
         value={phoneNumber}
         onChangeText={setPhoneNumber}
         marginTop={8}
+        source={images.ic_calendar}
       />
       <CustomInput
         placeholder={'Note'}
         value={note}
         onChangeText={setNote}
         marginTop={8}
+        source={images.ic_calendar}
       />
       <CustomButton
         type={'primary'}

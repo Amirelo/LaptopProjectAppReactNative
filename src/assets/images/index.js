@@ -39,3 +39,5 @@ export const ic_cart = require('./shopping_cart.png');
 
 export const banner = require('./banner.png');
 export const header = require('./header.png');
+
+export const cash = require('./cash.png');

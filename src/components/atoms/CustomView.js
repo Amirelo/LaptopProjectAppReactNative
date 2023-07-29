@@ -138,6 +138,11 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     paddingHorizontal: 8,
   },
+  container_accountTab: {
+    width: deviceWidth * 0.9,
+    paddingVertical: 10,
+    paddingHorizontal: 8,
+  },
   container_absolute: {
     width: deviceWidth,
     position: 'absolute',

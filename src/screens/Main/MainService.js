@@ -2,7 +2,7 @@ import {axiosInstance} from '../../utils/axios';
 // Product
 export const getAllProduct = async () => {
   const res = await axiosInstance.get('/product/get-all-product.php');
-  return res.data;
+  return res;
 };
 
 export const getProductByID = async productID => {
@@ -10,14 +10,14 @@ export const getProductByID = async productID => {
     productID: productID,
   };
   const res = await axiosInstance.post('/product/get-product-by-id.php', data);
-  return res.data;
+  return res;
 };
 
 export const getAllProductImages = async () => {
   const res = await axiosInstance.get(
     '/productImage/get-all-product-images.php',
   );
-  return res.data;
+  return res;
 };
 
 export const getProductImagesByProductID = async productID => {
@@ -28,19 +28,19 @@ export const getProductImagesByProductID = async productID => {
     '/productImage/get-product-images-by-product-id.php',
     data,
   );
-  return res.data;
+  return res;
 };
 
 // Product Specs
 
 export const getAllBrands = async () => {
   const res = await axiosInstance.get('/brand/get-all-brands.php');
-  return res.data;
+  return res;
 };
 
 export const getAllScreens = async () => {
   const res = await axiosInstance.get('/screen/get-all-screens.php');
-  return res.data;
+  return res;
 };
 
 export const getProductScreen = async screenID => {
@@ -48,14 +48,14 @@ export const getProductScreen = async screenID => {
     screenID: screenID,
   };
   const res = await axiosInstance.post('/screen/get-screen-by-id.php', data);
-  return res.data;
+  return res;
 };
 
 export const getAllOperatingSystems = async () => {
   const res = await axiosInstance.get(
     '/operatingSystem/get-all-operating-systems.php',
   );
-  return res.data;
+  return res;
 };
 
 export const getProductOperatingSystem = async operatingSystemID => {
@@ -66,12 +66,12 @@ export const getProductOperatingSystem = async operatingSystemID => {
     '/operatingSystem/get-operating-system-by-id.php',
     data,
   );
-  return res.data;
+  return res;
 };
 
 export const getAllProcessors = async () => {
   const res = await axiosInstance.get('/processor/get-all-processors.php');
-  return res.data;
+  return res;
 };
 
 export const getProductProcessor = async processorID => {
@@ -82,12 +82,12 @@ export const getProductProcessor = async processorID => {
     '/processor/get-processor-by-id.php',
     data,
   );
-  return res.data;
+  return res;
 };
 
 export const getAllMemories = async () => {
   const res = await axiosInstance.get('/memory/get-all-memories.php');
-  return res.data;
+  return res;
 };
 
 export const getProductMemory = async memoryID => {
@@ -95,12 +95,12 @@ export const getProductMemory = async memoryID => {
     memoryID: memoryID,
   };
   const res = await axiosInstance.post('/memory/get-memory-by-id.php', data);
-  return res.data;
+  return res;
 };
 
 export const getAllStorages = async () => {
   const res = await axiosInstance.get('/storage/get-all-storages.php');
-  return res.data;
+  return res;
 };
 
 export const getProductStorage = async storageID => {
@@ -108,7 +108,7 @@ export const getProductStorage = async storageID => {
     storageID: storageID,
   };
   const res = await axiosInstance.post('storage/get-storage-by-id.php', data);
-  return res.data;
+  return res;
 };
 
 export const getUserCart = async username => {
@@ -116,7 +116,7 @@ export const getUserCart = async username => {
     username: username,
   };
   const res = await axiosInstance.post('/cart/get-carts-by-username.php', data);
-  return res.data;
+  return res;
 };
 
 export const insertCart = async (itemQuantity, userID, productID) => {
@@ -126,7 +126,7 @@ export const insertCart = async (itemQuantity, userID, productID) => {
     productID: productID,
   };
   const res = await axiosInstance.post('/cart/insert-cart-info.php', data);
-  return res.data;
+  return res;
 };
 
 export const getCartByEmail = async email => {
@@ -134,7 +134,7 @@ export const getCartByEmail = async email => {
     email: email,
   };
   const res = await axiosInstance.post('/cart/get-carts-by-email.php', data);
-  return res.data;
+  return res;
 };
 
 export const updateCartQuantity = async (cartID, quantity) => {
@@ -151,7 +151,7 @@ export const deleteCart = async cartID => {
     cartID: cartID,
   };
   const res = await axiosInstance.post('/cart/delete-cart-by-id.php', data);
-  return res.data;
+  return res;
 };
 
 export const getUserFavorite = async userID => {
@@ -159,7 +159,7 @@ export const getUserFavorite = async userID => {
     userID: userID,
   };
   const res = await axiosInstance.post('/favorite/get-user-favorite.php', data);
-  return res.data;
+  return res;
 };
 
 export const checkUserFavorite = async (userID, productID) => {
@@ -171,7 +171,7 @@ export const checkUserFavorite = async (userID, productID) => {
     '/favorite/check-user-favorite.php',
     data,
   );
-  return res.data;
+  return res;
 };
 
 export const insertUserOrder = async (
@@ -200,22 +200,23 @@ export const insertUserOrder = async (
     '/userOrder/insert-user-order.php',
     data,
   );
-  return res.data;
+  return res;
 };
-
 export const insertOrderDetail = async (
   productQuantity,
   userOrderID,
   productID,
+  cartID,
 ) => {
   const data = {
     productQuantity: productQuantity,
     userOrderID: userOrderID,
     productID: productID,
+    cartID: cartID,
   };
   const res = await axiosInstance.post(
     '/orderDetail/insert-order-detail.php',
     data,
   );
-  return res.data;
+  return res;
 };

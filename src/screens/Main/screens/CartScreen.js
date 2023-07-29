@@ -19,13 +19,13 @@ const CartScreen = ({navigation}) => {
   const onCheckOutPressed = () => {
     navigation.navigate('Recipient Info', {
       totalPrice: totalPrice,
-      CartScreen: data,
+      cart: data,
     });
   };
 
   const onDeleteFromListPressed = async () => {
     const result = await onDeleteCart(selectedItem.cartID);
-    console.log(result);
+    //console.log(result);
     setTotalPrice(
       prev => prev - selectedItem.productPrice * selectedItem.itemQuantity,
     );
@@ -36,18 +36,18 @@ const CartScreen = ({navigation}) => {
   const onActionOptionPressed = item => {
     setOnItemOptionPressed(true);
     setSelectedItem(item);
-    console.log(item);
+    //console.log(item);
   };
 
   const getData = async () => {
     let email = await AsyncStorage.getItem('email');
     const cartData = await onGetCartByEmail(email);
-    console.log(cartData);
-    setData(cartData);
+    //console.log(cartData);
+    setData(cartData.data);
     setTotalPrice(0);
     let myPrice = 0;
-    if (cartData != null) {
-      cartData.map(item => {
+    if (cartData.data != null) {
+      cartData.data.map(item => {
         myPrice += item.productPrice * item.itemQuantity;
       });
       setTotalPrice(myPrice);
