@@ -24,9 +24,7 @@ const CustomInput = ({
     placeholder.toLowerCase().includes('password') ? true : false,
   );
   const [isSelected, setIsSelected] = useState(false);
-  let borderColor = isSelected
-    ? {borderColor: colors.primaryColor}
-    : {borderColor: colors.borderColor};
+  let borderColor = isSelected ? 'primary' : 'border';
   let borderStyle = borderTheme.textInput;
   const onPressVisibility = () => {
     setSecure(!secure);

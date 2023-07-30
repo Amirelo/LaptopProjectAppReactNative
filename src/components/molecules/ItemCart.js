@@ -1,16 +1,21 @@
-import {Pressable, StyleSheet, Text, View, Dimensions} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import * as images from '../../assets/images';
 import {MainContext} from '../../screens/Main/MainContext';
 import CustomImage from '../atoms/CustomImage';
 import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
-import {deviceWidth, priceFormat} from '../../utils/helper';
+import {priceFormat} from '../../utils/helper';
 import CustomView from '../atoms/CustomView';
 import {borderTheme} from '../../themes/borderTheme';
-import useThemeColors from '../../themes/colorTheme';
 
-const CartItem = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
+/**
+ *@param {{
+ *  marginTop: 'something' | 'soft' | 'uoi'
+ *}}
+ *@returns String
+ */
+
+const ItemCart = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
   const {onUpdateCartQuantity, onGetProductByID} = useContext(MainContext);
   const [curProduct, setCurProduct] = useState();
 
@@ -55,7 +60,7 @@ const CartItem = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
   return (
     <CustomView
       type={'tab'}
-      borderColor={'backgroundInput'}
+      borderColor={'border'}
       borderStyle={borderTheme.textInput}
       backgroundColor={'backgroundInput'}>
       <CustomView backgroundColor={'transparent'} type={'rowJustify'}>
@@ -98,4 +103,4 @@ const CartItem = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
   );
 };
 
-export default CartItem;
+export default ItemCart;

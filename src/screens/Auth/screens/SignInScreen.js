@@ -8,7 +8,6 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import {textTheme} from '../../../themes/textTheme';
-import Snackbar from '../../../components/molecules/Snackbar';
 
 const SignInScreen = ({navigation, route}) => {
   const [username, setUsername] = useState('');

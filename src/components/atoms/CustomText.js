@@ -3,6 +3,10 @@ import React from 'react';
 import useThemeColors from '../../themes/colorTheme';
 import {textTheme} from '../../themes/textTheme';
 
+/**
+ * @constructor
+ * @param {'num1'} textColor - the color
+ */
 const CustomText = ({
   children,
   textColor,
@@ -26,7 +30,7 @@ const CustomText = ({
         marginTop != null ? {marginTop: marginTop} : {marginTop: 8},
         hasBox ? styles.box : {},
         hasFlex ? {flex: 1} : {},
-        alignSelf ? {alignSelf: alignSelf, paddingStart:'5%'} : {},
+        alignSelf ? {alignSelf: alignSelf, paddingStart: '5%'} : {},
         customStyles,
       ]}>
       {children}

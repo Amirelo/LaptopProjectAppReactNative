@@ -47,10 +47,10 @@ const CustomView = ({
       style={[
         {
           backgroundColor: backgroundColor,
+          borderColor: borderColor,
         },
         containerStyle,
         borderStyle,
-        borderColor,
         alignSelf ? {alignSelf: alignSelf} : {},
         marginTop
           ? {marginTop: marginTop}
@@ -66,10 +66,10 @@ const CustomView = ({
       style={[
         {
           backgroundColor: backgroundColor,
+          borderColor: borderColor,
         },
         containerStyle,
         borderStyle,
-        borderColor,
         alignSelf ? {alignSelf: alignSelf} : {},
         marginTop
           ? {marginTop: marginTop}
@@ -164,4 +164,5 @@ const styles = StyleSheet.create({
     position: 'absolute', //Here is the trick
     bottom: 0,
   },
+  container_none: {},
 });

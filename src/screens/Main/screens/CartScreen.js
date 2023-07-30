@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 import {MainContext} from '../MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CartItem from '../../../components/molecules/CartItem';
+import ItemCart from '../../../components/molecules/ItemCart';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomText from '../../../components/atoms/CustomText';
 import {priceFormat} from '../../../utils/helper';
@@ -25,7 +25,7 @@ const CartScreen = ({navigation}) => {
 
   const onDeleteFromListPressed = async () => {
     const result = await onDeleteCart(selectedItem.cartID);
-    //console.log(result);
+    console.log(result);
     setTotalPrice(
       prev => prev - selectedItem.productPrice * selectedItem.itemQuantity,
     );
@@ -85,7 +85,7 @@ const CartScreen = ({navigation}) => {
         keyExtractor={item => item.productID}
         renderItem={({item}) => {
           return (
-            <CartItem
+            <ItemCart
               setTotalPrice={setTotalPrice}
               onActionOptionPressed={onActionOptionPressed}
               item={item}
