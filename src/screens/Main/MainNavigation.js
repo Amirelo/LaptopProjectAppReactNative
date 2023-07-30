@@ -18,6 +18,10 @@ import ProfileScreen from './screens/ProfileScreen';
 import UpdateInfoScreen from './screens/UpdateInfoScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import InsertAddressScreen from './screens/InsertAddressScreen';
+import OrderScreen from './screens/OrderScreen';
+import OrderDetailScreen from './screens/OrderDetailScreen';
+import PromoCodeScreen from './screens/PromoCodeScreen';
+import CardScreen from './screens/CardScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -120,6 +124,10 @@ const MainNavigation = () => {
       <Stack.Screen name="Checkout" component={CheckOutScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="New Address" component={InsertAddressScreen} />
+      <Stack.Screen name="User Order" component={OrderScreen} />
+      <Stack.Screen name="Order Details" component={OrderDetailScreen} />
+      <Stack.Screen name="Promocodes" component={PromoCodeScreen} />
+      <Stack.Screen name="Card" component={CardScreen} />
       <Stack.Screen
         name="Update User Information"
         component={UpdateInfoScreen}

@@ -64,7 +64,7 @@ const AccountScreen = ({route, navigation}) => {
   };
 
   const onMyOrderPressed = () => {
-    navigation.navigate('Order', {userInfo: userData, userOrders: userOrders});
+    navigation.navigate('User Order', {userInfo: userData, userOrders: userOrders});
   };
 
   const onChangePasswordPressed = () => {
@@ -82,7 +82,7 @@ const AccountScreen = ({route, navigation}) => {
   };
 
   const onCardScreenPressed = () => {
-    navigation.navigate('User Cards', {userCards: userCards});
+    navigation.navigate('Card', {userCards: userCards});
   };
 
   const onSignOutPressed = () => {
