@@ -22,6 +22,7 @@ import OrderScreen from './screens/OrderScreen';
 import OrderDetailScreen from './screens/OrderDetailScreen';
 import PromoCodeScreen from './screens/PromoCodeScreen';
 import CardScreen from './screens/CardScreen';
+import ProductDetailScreen from './screens/ProductDetailScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -128,6 +129,7 @@ const MainNavigation = () => {
       <Stack.Screen name="Order Details" component={OrderDetailScreen} />
       <Stack.Screen name="Promocodes" component={PromoCodeScreen} />
       <Stack.Screen name="Card" component={CardScreen} />
+      <Stack.Screen name="Product Detail" component={ProductDetailScreen} />
       <Stack.Screen
         name="Update User Information"
         component={UpdateInfoScreen}

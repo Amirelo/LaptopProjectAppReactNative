@@ -11,6 +11,8 @@ const CustomText = ({
   marginTop,
   hasBox,
   maxLines,
+  hasFlex,
+  alignSelf,
 }) => {
   const colors = useThemeColors();
   return (
@@ -23,6 +25,8 @@ const CustomText = ({
         textStyle != null ? textTheme[`text_${textStyle}`] : {},
         marginTop != null ? {marginTop: marginTop} : {marginTop: 8},
         hasBox ? styles.box : {},
+        hasFlex ? {flex: 1} : {},
+        alignSelf ? {alignSelf: alignSelf, paddingStart:'5%'} : {},
         customStyles,
       ]}>
       {children}

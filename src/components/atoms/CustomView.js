@@ -21,7 +21,8 @@ const CustomView = ({
     backgroundColor != null
       ? colors[`${backgroundColor}Color`]
       : colors.backgroundColor;
-
+  borderColor =
+    borderColor != null ? colors[`${borderColor}Color`] : colors.borderColor;
   return scrollable ? (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -29,10 +30,10 @@ const CustomView = ({
       style={[
         {
           backgroundColor: backgroundColor,
+          borderColor: borderColor,
         },
 
         borderStyle,
-        borderColor,
         marginTop
           ? {marginTop: marginTop}
           : type == null
@@ -114,6 +115,11 @@ const styles = StyleSheet.create({
   container_left: {
     alignSelf: 'flex-start',
     paddingStart: 8,
+    flex: 1,
+  },
+  container_right: {
+    alignSelf: 'flex-end',
+    paddingEnd: 8,
     flex: 1,
   },
   container_scrollView: {

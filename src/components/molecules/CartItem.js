@@ -8,6 +8,7 @@ import CustomButton from './CustomButton';
 import {deviceWidth, priceFormat} from '../../utils/helper';
 import CustomView from '../atoms/CustomView';
 import {borderTheme} from '../../themes/borderTheme';
+import useThemeColors from '../../themes/colorTheme';
 
 const CartItem = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
   const {onUpdateCartQuantity, onGetProductByID} = useContext(MainContext);
@@ -54,6 +55,7 @@ const CartItem = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
   return (
     <CustomView
       type={'tab'}
+      borderColor={'backgroundInput'}
       borderStyle={borderTheme.textInput}
       backgroundColor={'backgroundInput'}>
       <CustomView backgroundColor={'transparent'} type={'rowJustify'}>

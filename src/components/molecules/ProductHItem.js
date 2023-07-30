@@ -12,8 +12,10 @@ import {
 import {MainContext} from '../../screens/Main/MainContext';
 import useThemeColors from '../../themes/colorTheme';
 import {borderTheme} from '../../themes/borderTheme';
+import {useNavigation} from '@react-navigation/native';
 
-const ProductHItem = ({onPress, data}) => {
+const ProductHItem = ({data}) => {
+  const navigation = useNavigation();
   const {
     onGetProductProcessor,
     onGetProductMemory,
@@ -25,6 +27,16 @@ const ProductHItem = ({onPress, data}) => {
   const [itemScreen, setitemScreen] = useState({});
   const [itemStorage, setitemStorage] = useState({});
   const colors = useThemeColors();
+
+  const onProductPressed = () => {
+    navigation.navigate('Product Detail', {
+      item: data,
+      itemProcessor: itemProcessor,
+      itemMemory: itemMemory,
+      itemScreen: itemScreen,
+      itemStorage: itemStorage,
+    });
+  };
 
   const getInitData = async () => {
     const processor = await onGetProductProcessor(data.processorID);
@@ -71,7 +83,7 @@ const ProductHItem = ({onPress, data}) => {
         },
         borderTheme.textInput,
       ]}
-      onPress={onPress}
+      onPress={onProductPressed}
       onPressIn={fadePress}>
       <Animated.View
         style={{
