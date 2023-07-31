@@ -52,7 +52,7 @@ const CustomView = ({
         containerStyle,
         borderStyle,
         alignSelf ? {alignSelf: alignSelf} : {},
-        marginTop
+        marginTop != null
           ? {marginTop: marginTop}
           : type == null
           ? {marginTop: 0}
@@ -109,12 +109,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    flexGrow: 0,
     width: '90%',
+  },
+  container_rowJustify90Screen: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: deviceWidth * 0.9,
   },
   container_left: {
     alignSelf: 'flex-start',
-    paddingStart: 8,
+    paddingHorizontal: 8,
     flex: 1,
   },
   container_right: {

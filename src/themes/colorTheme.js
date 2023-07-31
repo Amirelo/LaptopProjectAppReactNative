@@ -6,6 +6,7 @@ const Colors = {
     textVariantColor: '#015278',
     textConstrastColor: '#fff',
     backgroundColor: '#fff',
+    noneColor: '#00000000',
     backgroundInputColor: '#F5F5F5',
     borderColor: '#E1E1E1',
     primaryColor: '#02A9F7',

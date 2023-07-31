@@ -1,16 +1,17 @@
 import React, {useContext, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {FlatList} from 'react-native';
+import {FlatList, Pressable} from 'react-native';
 import CustomView from '../../../components/atoms/CustomView';
 import ProductHItem from '../../../components/molecules/ProductHItem';
 import {AuthContext} from '../../Auth/AuthContext';
 import {MainContext} from '../MainContext';
+import ProductVItem from '../../../components/molecules/ProductVItem';
 
 const FavoriteScreen = ({navigation}) => {
   const {onGetUserByEmail} = useContext(AuthContext);
   const {onGetUserFavorite, onGetProductByID} = useContext(MainContext);
 
-  const [listFavorites, setListFavorites] = useState();
+  const [listFavorites, setListFavorites] = useState([]);
 
   const onItemPressed = item => {
     navigation.navigate('Product Details', {item: item});
@@ -24,6 +25,7 @@ const FavoriteScreen = ({navigation}) => {
       favoriteRes.data.map(async item => {
         if (item.isFavorite != false) {
           const addRes = await onGetProductByID(item.productID);
+
           if (addRes.response_code == 1) {
             let prodItem = addRes.data[0];
             console.log(prodItem);
@@ -54,7 +56,7 @@ const FavoriteScreen = ({navigation}) => {
         keyExtractor={item => item.productID}
         renderItem={({item}) => {
           return (
-            <ProductHItem data={item} onPress={() => onItemPressed(item)} />
+            <ProductVItem data={item} onPress={() => onItemPressed(item)} />
           );
         }}
       />

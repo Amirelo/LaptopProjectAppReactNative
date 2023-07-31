@@ -8,14 +8,7 @@ import {priceFormat} from '../../utils/helper';
 import CustomView from '../atoms/CustomView';
 import {borderTheme} from '../../themes/borderTheme';
 
-/**
- *@param {{
- *  marginTop: 'something' | 'soft' | 'uoi'
- *}}
- *@returns String
- */
-
-const ItemCart = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
+const ItemCart = ({item, setTotalPrice, onActionOptionPressed}) => {
   const {onUpdateCartQuantity, onGetProductByID} = useContext(MainContext);
   const [curProduct, setCurProduct] = useState();
 
@@ -70,9 +63,17 @@ const ItemCart = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
           type={'cartItem'}
         />
         <CustomView type={'left'} backgroundColor={'transparent'}>
-          <CustomText textStyle={'normalBold'} maxLines={2}>
-            {item.productName}
-          </CustomText>
+          <CustomView backgroundColor={'none'} type={'rowJustify90'}>
+            <CustomText textStyle={'normalBold'} maxLines={2}>
+              {item.productName}
+            </CustomText>
+            <CustomButton
+              source={images.ic_more_vert}
+              onPress={() => onActionOptionPressed(item)}
+              type={'image'}
+              marginTop={8}
+            />
+          </CustomView>
           <CustomText textStyle={'normalBold'} maxLines={2} textColor={'err'}>
             {priceFormat(item.productPrice * quantity)}
           </CustomText>
@@ -92,12 +93,6 @@ const ItemCart = ({marginTop, item, setTotalPrice, onActionOptionPressed}) => {
             </CustomView>
           </CustomView>
         </CustomView>
-        <CustomButton
-          source={images.ic_more_vert}
-          onPress={() => onActionOptionPressed(item)}
-          type={'image'}
-          marginTop={8}
-        />
       </CustomView>
     </CustomView>
   );

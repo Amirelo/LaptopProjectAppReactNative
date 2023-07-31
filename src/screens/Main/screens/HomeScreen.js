@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Pressable} from 'react-native';
 import CustomView from '../../../components/atoms/CustomView';
 import {MainContext} from '../MainContext';
 import ProductHItem from '../../../components/molecules/ProductHItem';
@@ -98,10 +98,10 @@ const HomeScreen = ({navigation}) => {
         </CustomView>
 
         <FlatList
-          width={deviceWidth * 0.9}
+          width={deviceWidth}
           marginTop={12}
           scrollEnabled={false}
-          contentContainerStyle={{gap: 16, flexGrow: 0}}
+          contentContainerStyle={{gap: 16, alignItems: 'center'}}
           showsHorizontalScrollIndicator={false}
           data={listProducts.slice(0, maxItem)}
           initialNumToRender={3}
