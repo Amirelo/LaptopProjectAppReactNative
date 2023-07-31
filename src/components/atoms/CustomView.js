@@ -71,11 +71,7 @@ const CustomView = ({
         containerStyle,
         borderStyle,
         alignSelf ? {alignSelf: alignSelf} : {},
-        marginTop
-          ? {marginTop: marginTop}
-          : type == null
-          ? {marginTop: 0}
-          : {marginTop: 8},
+        marginTop != null ? {marginTop: marginTop} : {marginTop: 0},
       ]}>
       {children}
     </View>
@@ -124,7 +120,7 @@ const styles = StyleSheet.create({
   },
   container_right: {
     alignSelf: 'flex-end',
-    paddingEnd: 8,
+    paddingEnd: '5%',
     flex: 1,
   },
   container_scrollView: {
@@ -150,7 +146,7 @@ const styles = StyleSheet.create({
   },
   container_accountTab: {
     width: deviceWidth * 0.9,
-    paddingVertical: 10,
+    paddingVertical: 16,
     paddingHorizontal: 8,
   },
   container_absolute: {

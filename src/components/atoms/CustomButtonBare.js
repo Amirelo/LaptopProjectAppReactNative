@@ -1,8 +1,8 @@
-import {Animated, Pressable, StyleSheet} from 'react-native';
+import {Animated, Pressable} from 'react-native';
 import React, {useRef} from 'react';
-import {deviceWidth} from '../../utils/helper';
 import useThemeColors from '../../themes/colorTheme';
 import CustomView from './CustomView';
+import {borderTheme} from '../../themes/borderTheme';
 
 const CustomButtonBare = ({
   children,
@@ -38,7 +38,9 @@ const CustomButtonBare = ({
       style={[
         alignSelf != null ? {alignSelf: alignSelf} : {},
         marginTop ? {marginTop: marginTop} : {},
-        borderStyle,
+        borderStyle != null
+          ? [borderTheme.textInput, {borderColor: colors.borderColor}]
+          : {},
         {backgroundColor: backgroundColor},
       ]}
       onPress={onPress}

@@ -62,16 +62,16 @@ const CustomHeader = ({
             width={'90%'}
           />
           <View style={styles.sortContainer}>
-            <CustomButtonBare onPress={onFilterPressed}>
-              <CustomView type={'rowJustify'}>
+            <CustomButtonBare type={'rowJustify'} onPress={onFilterPressed}>
+              <CustomView type={'row'}>
                 <CustomImage source={images.ic_filter} type={'searchBarIcon'} />
                 <CustomText textStyle={'normal'} marginTop={0}>
                   Filters
                 </CustomText>
               </CustomView>
             </CustomButtonBare>
-            <CustomButtonBare onPress={onSortPressed}>
-              <CustomView type={'rowJustify'}>
+            <CustomButtonBare type={'none'} onPress={onSortPressed}>
+              <CustomView type={'row'}>
                 <CustomImage source={images.ic_sort} type={'searchBarIcon'} />
                 <CustomText textStyle={'normal'} marginTop={0}>
                   {sortType}

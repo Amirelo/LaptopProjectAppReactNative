@@ -36,7 +36,7 @@ const ProductDetailScreen = ({route}) => {
     setProdImages(prodImagesResult.data);
 
     const oss = await onGetProductOS(item.operatingSystemID);
-    setitemOS(oss.data);
+    setitemOS(oss.data[0]);
 
     let email = await AsyncStorage.getItem('email');
     const userInfo = await onGetUserByEmail(email);
@@ -121,7 +121,7 @@ const ProductDetailScreen = ({route}) => {
           }}
         />
         <CustomView type={'rowJustify90'}>
-          <CustomText>{item.productName}</CustomText>
+          <CustomText textStyle={'titleBold'}>{item.productName}</CustomText>
           {itemFavorite ? (
             <CustomButton
               onPress={onFavoritePressed}
@@ -137,222 +137,292 @@ const ProductDetailScreen = ({route}) => {
           )}
         </CustomView>
         <CustomView type={'right'}>
-          <CustomText>{priceFormat(item.currentPrice)}</CustomText>
-          <CustomText>{priceFormat(item.productPrice)}</CustomText>
+          <CustomText textColor={'err'} textStyle={'subtitleBold'}>
+            {priceFormat(item.currentPrice)}
+          </CustomText>
+          {item.productPrice != item.currentPrice ? (
+            <CustomText>{priceFormat(item.productPrice)}</CustomText>
+          ) : (
+            <></>
+          )}
         </CustomView>
         {/* General info */}
-        <CustomText alignSelf={'flex-start'} marginTop={20}>General Info</CustomText>
+        <CustomText
+          textStyle={'subtitleBold'}
+          alignSelf={'flex-start'}
+          marginTop={20}>
+          General Info
+        </CustomText>
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Brand</CustomText>
-          <CustomText hasFlex={true}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Brand
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.productName.split(' ')[0]}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>P/N</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            P/N
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.modelCode}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Manufacturer</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Manufacturer
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.manufacturer}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Warranty</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Warranty
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.warranty + ' months'}
           </CustomText>
         </CustomView>
 
         {/* Dimensions and weight */}
-        <CustomText hasFlex={true} marginTop={20}>
+        <CustomText
+          textStyle={'subtitleBold'}
+          alignSelf={'flex-start'}
+          marginTop={20}>
           Dimensions and weight
         </CustomText>
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Size</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Size
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.length + ' x ' + item.width + ' x ' + item.height + ' mm'}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Weight</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Weight
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.weight}
           </CustomText>
         </CustomView>
 
         {/* Processor */}
-        <CustomText hasFlex={true} marginTop={20}>
+        <CustomText
+          textStyle={'subtitleBold'}
+          alignSelf={'flex-start'}
+          marginTop={20}>
           Processor
         </CustomText>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Name</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Name
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.name}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>CPU speed</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            CPU speed
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.CPU_Speed}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Cores</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Cores
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.cores}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Logical processors</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Logical processors
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.logicalProcessor}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Cache memory</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Cache memory
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.cacheMemory}
           </CustomText>
         </CustomView>
 
         {/* Memory */}
-        <CustomText hasFlex={true} marginTop={20}>
+        <CustomText
+          textStyle={'subtitleBold'}
+          alignSelf={'flex-start'}
+          marginTop={20}>
           Memory/RAM
         </CustomText>
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>RAM</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            RAM
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.currentRAM}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Type</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Type
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.type}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Speed</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Speed
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.speed}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Available slots</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Available slots
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.availableSlots}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Max Memory</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Max Memory
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.maxRam}
           </CustomText>
         </CustomView>
 
         {/* Screen */}
-        <CustomText hasFlex={true} marginTop={20}>
+        <CustomText
+          textStyle={'subtitleBold'}
+          alignSelf={'flex-start'}
+          marginTop={20}>
           Screen
         </CustomText>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Size</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Size
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemScreen.screenSize}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Resolution</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Resolution
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemScreen.resolution}
           </CustomText>
         </CustomView>
 
         {/* Storage */}
-        <CustomText hasFlex={true} marginTop={20}>
+        <CustomText
+          textStyle={'subtitleBold'}
+          alignSelf={'flex-start'}
+          marginTop={20}>
           Storage
         </CustomText>
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Type</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Type
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemStorage.type}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Available slots</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Available slots
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemStorage.type}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Current storage</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Current storage
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemStorage.currentStorage}
           </CustomText>
         </CustomView>
 
         {/* Operating System */}
-        <CustomText hasFlex={true} marginTop={20}>
+        <CustomText
+          textStyle={'subtitleBold'}
+          alignSelf={'flex-start'}
+          marginTop={20}>
           Operating System
         </CustomText>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>OS</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            OS
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemOS.OS}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Version</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Version
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemOS.version}
           </CustomText>
         </CustomView>
 
         <CustomView type={'rowJustify90'}>
-          <CustomText hasFlex={true}>Type</CustomText>
-          <CustomText hasFlex={true} textColor={'textVariant'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Type
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemOS.type}
           </CustomText>
         </CustomView>
 
-        <CustomButton marginTop={32}>Add To Cart</CustomButton>
+        <CustomButton
+          onPress={onAddToCartPressed}
+          type={'primary'}
+          marginTop={32}>
+          Add To Cart
+        </CustomButton>
       </CustomView>
     </CustomView>
   );
 };
 
 export default ProductDetailScreen;
-
-const styles = StyleSheet.create({
-  rowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 16,
-    alignItems: 'center',
-  },
-  priceRight: {
-    alignSelf: 'flex-end',
-  },
-});

@@ -1,8 +1,7 @@
-import {Pressable, StyleSheet, Animated} from 'react-native';
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import {ActivityIndicator} from 'react-native';
 import useThemeColors from '../../themes/colorTheme';
-import {borderTheme} from '../../themes/borderTheme';
-import {deviceWidth, priceFormat} from '../../utils/helper';
+import {priceFormat} from '../../utils/helper';
 import CustomView from '../atoms/CustomView';
 import CustomImage from '../atoms/CustomImage';
 import CustomText from '../atoms/CustomText';
@@ -85,7 +84,6 @@ const ProductVItem = ({onPress, data}) => {
         <CustomText textStyle={'small'} marginTop={2}>
           {itemScreen.resolution + ' ' + itemScreen.screenSize}
         </CustomText>
-
         <CustomView backgroundColor={'none'} type={'rowJustify'}>
           <CustomText textColor={'err'} textStyle={'normalBold'} marginTop={0}>
             {priceFormat(data.currentPrice)}

@@ -9,7 +9,7 @@ import {borderTheme} from '../../themes/borderTheme';
 
 const AccountTab = ({title, subtitle, onPress, type, source}) => {
   return (
-    <CustomButtonBare onPress={onPress}>
+    <CustomButtonBare marginTop={12} onPress={onPress}>
       <CustomView
         type={'accountTab'}
         backgroundColor={'backgroundInput'}
@@ -22,7 +22,9 @@ const AccountTab = ({title, subtitle, onPress, type, source}) => {
           )}
           {type == 'profile' ? (
             <>
-              <CustomText marginTop={0}>{title}</CustomText>
+              <CustomText marginTop={0} textStyle={'subtitleBold'}>
+                {title}
+              </CustomText>
               <CustomView marginTop={0} backgroundColor={'none'} type={'row'}>
                 <CustomText marginTop={0}>{subtitle}</CustomText>
                 <CustomImage
@@ -34,8 +36,10 @@ const AccountTab = ({title, subtitle, onPress, type, source}) => {
           ) : (
             <>
               <CustomView backgroundColor={'none'} type={'left'}>
-                <CustomText marginTop={0}>{title}</CustomText>
-                <CustomText marginTop={0}>{subtitle}</CustomText>
+                <CustomText textStyle={'subtitleBold'} marginTop={2}>
+                  {title}
+                </CustomText>
+                <CustomText marginTop={2}>{subtitle}</CustomText>
               </CustomView>
               <CustomImage
                 type={'searchBarIcon'}
