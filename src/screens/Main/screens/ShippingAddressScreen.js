@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
+import {FlatList} from 'react-native';
 import React from 'react';
 import AddressItem from '../../../components/molecules/AddressItem';
 import CustomView from '../../../components/atoms/CustomView';
@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const ShippingAddressScreen = ({route}) => {
   const navigation = useNavigation();
-  const {userAddresses, userInfo} = route.params;
+  const {userAddresses} = route.params;
 
   const onAddNewAddressPressed = () => {
     navigation.navigate('New Address');

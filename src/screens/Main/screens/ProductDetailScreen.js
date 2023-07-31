@@ -1,4 +1,4 @@
-import {StyleSheet, View, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import * as images from '../../../assets/images';
 import AsyncStorage from '@react-native-async-storage/async-storage';

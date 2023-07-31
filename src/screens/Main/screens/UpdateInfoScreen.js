@@ -1,4 +1,3 @@
-import {StyleSheet, SafeAreaView} from 'react-native';
 import React, {useContext, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../../Auth/AuthContext';
@@ -76,5 +75,3 @@ const UpdateInfoScreen = ({route, navigation}) => {
 };
 
 export default UpdateInfoScreen;
-
-const styles = StyleSheet.create({});

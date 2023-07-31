@@ -1,12 +1,8 @@
-import {ActivityIndicator, StyleSheet, Text} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import React from 'react';
 import useThemeColors from '../../themes/colorTheme';
 import {textTheme} from '../../themes/textTheme';
 
-/**
- * @constructor
- * @param {'num1'} textColor - the color
- */
 const CustomText = ({
   children,
   textColor,

@@ -1,30 +1,42 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {StyleSheet} from 'react-native';
+import React, {useContext, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import CustomView from '../atoms/CustomView';
 import CustomText from '../atoms/CustomText';
-import { priceFormat } from '../../utils/helper';
+import {priceFormat} from '../../utils/helper';
 import CustomButton from './CustomButton';
+import {AuthContext} from '../../screens/Auth/AuthContext';
+import {borderTheme} from '../../themes/borderTheme';
 
-const OrderItem = ({marginTop, item}) => {
+const OrderItem = ({item}) => {
+  const [totalItems, setTotalItems] = useState(0);
   const navigation = useNavigation();
+  const {onGetUserOrderDetail} = useContext(AuthContext);
+  const itemDate = item.arrivedDate
+    ? item.arrivedDate
+    : item.deliveryDate
+    ? item.deliveryDate
+    : item.prepareDate
+    ? item.prepareDate
+    : item.pendingDate;
+  const orderStatusArr = [
+    {status: 'Delivered', color: 'success'},
+    {status: 'On the way', color: 'warn'},
+    {status: 'Packing', color: 'text'},
+    {status: 'Processing', color: 'process'},
+    {status: 'Cancel', color: 'err'},
+  ];
+
+  const initData = async () => {
+    setTotalItems(0);
+    const orderDetailResult = await onGetUserOrderDetail(item.userOrderID);
+    orderDetailResult.data.map(curItem => {
+      setTotalItems(prev => prev + curItem.productQuantity);
+    });
+  };
 
   const getOrderStatus = () => {
-    if (item.status == 4) {
-      return 'Delivered';
-    }
-    if (item.status == 3) {
-      return 'On the way';
-    }
-    if (item.status == 2) {
-      return 'Packing';
-    }
-    if (item.status == 1) {
-      return 'Processing';
-    }
-    if (item.status == 0) {
-      return 'Cancel';
-    }
+    return orderStatusArr[item.status].status;
   };
   const status = getOrderStatus();
 
@@ -32,41 +44,39 @@ const OrderItem = ({marginTop, item}) => {
     navigation.navigate('Order Details', {item: item});
   };
 
+  useEffect(() => {
+    initData();
+  }, []);
+
   return (
-    <CustomView type={'tab'}>
-      <CustomView type={'row'}>
-        <CustomText value={'Order No'} />
-        <CustomText>{item.userOrderID}</CustomText>
-        <CustomText>{item.arrivedDate}</CustomText>
+    <CustomView
+      backgroundColor={'backgroundInput'}
+      borderStyle={borderTheme.textInput}
+      type={'tab'}>
+      <CustomView backgroundColor={'none'} type={'rowJustify90'}>
+        <CustomText hasFlex={true}>Order No</CustomText>
+        <CustomText hasFlex={true}>{item.userOrderID}</CustomText>
+        <CustomText>{itemDate}</CustomText>
       </CustomView>
 
-      <CustomView type={'row'}>
-        <CustomText value={'Quantity'} />
-        <CustomText value={2} />
+      <CustomView backgroundColor={'none'} type={'rowJustify90'}>
+        <CustomText hasFlex={true}>Quantity</CustomText>
+        <CustomText hasFlex={true}>{totalItems}</CustomText>
       </CustomView>
 
-      <CustomView type={'row'}>
-        <CustomText>'Total'</CustomText>
-        <CustomText>{priceFormat(item.totalPrice)}</CustomText>
+      <CustomView backgroundColor={'none'} type={'rowJustify90'}>
+        <CustomText hasFlex={true}>'Total'</CustomText>
+        <CustomText hasFlex={true}>{priceFormat(item.totalPrice)}</CustomText>
       </CustomView>
 
-      <CustomView>
+      <CustomView type={'rowJustify90'} backgroundColor={'none'}>
         <CustomButton
           type={'tertiary'}
           onPress={onDetailButtonPressed}
           customStyles={styles.itemMargin}>
           Details
         </CustomButton>
-        <CustomText
-          textColor={
-            item.status == 3
-              ? 'success'
-              : status == 2
-              ? 'review'
-              : status == 1
-              ? 'processing'
-              : 'cancel'
-          }>
+        <CustomText textColor={orderStatusArr[item.status].color}>
           {status}
         </CustomText>
       </CustomView>

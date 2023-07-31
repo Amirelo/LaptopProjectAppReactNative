@@ -1,11 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList} from 'react-native';
 import {MainContext} from '../MainContext';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomHeader from '../../../components/molecules/CustomHeader';
 import ProductVItem from '../../../components/molecules/ProductVItem';
 import ProductHItem from '../../../components/molecules/ProductHItem';
-import CustomButton from '../../../components/molecules/CustomButton';
 import CustomText from '../../../components/atoms/CustomText';
 import SortOption from '../../../components/molecules/SortOption';
 import {deviceHeight} from '../../../utils/helper';
@@ -203,14 +202,3 @@ const ExploreScreen = ({navigation}) => {
 };
 
 export default ExploreScreen;
-
-const styles = StyleSheet.create({
-  unselectable: {
-    backgroundColor: '#00000020',
-    position: 'absolute',
-    flex: 1,
-    width: '100%',
-    height: deviceHeight,
-    alignItems: 'center',
-  },
-});

@@ -13,6 +13,8 @@ const Colors = {
     primaryLightColor: '#EBF0FF',
     errColor: '#F71B38',
     warnColor: '#ABA40A',
+    successColor: '#03B700',
+    processColor: '#0F01B5',
     secondaryColor: '#F78802',
   },
   dark: {

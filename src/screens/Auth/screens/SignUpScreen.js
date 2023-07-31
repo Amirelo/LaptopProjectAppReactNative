@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import * as images from '../../../assets/images';
 import {AuthContext} from '../AuthContext';
 import CustomView from '../../../components/atoms/CustomView';
@@ -14,10 +14,8 @@ const SignUpScreen = ({navigation, route}) => {
   const [confirmPassword, setConfirmPassword] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
   const [birthday, setBirthday] = useState();
-  const [gender, setGender] = useState();
   const [error, setError] = useState(false);
 
-  const [isDisabled, setIsDisabled] = useState(false);
 
   const {onSignUp, onUpdateUserInfo} = useContext(AuthContext);
 
@@ -54,7 +52,6 @@ const SignUpScreen = ({navigation, route}) => {
       confirmPassword == null ||
       phoneNumber == null ||
       birthday == null ||
-      gender == null ||
       password != confirmPassword
     ) {
       setError(true);

@@ -1,4 +1,4 @@
-import {Pressable, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import * as images from '../../assets/images/';
 import CustomInput from './CustomInput';

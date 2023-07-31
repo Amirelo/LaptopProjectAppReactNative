@@ -23,7 +23,6 @@ import {
   getProductScreen,
   getProductStorage,
   getProductOperatingSystem,
-  demoPaymentVNPay,
 } from './MainService';
 
 export const MainContext = createContext();

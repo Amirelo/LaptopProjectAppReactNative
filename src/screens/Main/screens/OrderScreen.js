@@ -1,10 +1,10 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
-import React, {useContext} from 'react';
+import {FlatList} from 'react-native';
+import React from 'react';
 import OrderItem from '../../../components/molecules/OrderItem';
 import CustomView from '../../../components/atoms/CustomView';
 
 const OrderScreen = ({route}) => {
-  const {userInfo, userOrders} = route.params;
+  const {userOrders} = route.params;
   console.log(userOrders);
 
   return (
@@ -13,7 +13,11 @@ const OrderScreen = ({route}) => {
         width={'100%'}
         height={'100%'}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{gap: 8, marginBottom: 16}}
+        contentContainerStyle={{
+          gap: 8,
+          paddingVertical: 16,
+          alignItems: 'center',
+        }}
         data={userOrders}
         keyExtractor={item => item.userOrderID}
         renderItem={({item}) => {
@@ -25,4 +29,3 @@ const OrderScreen = ({route}) => {
 };
 
 export default OrderScreen;
-

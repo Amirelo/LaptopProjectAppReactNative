@@ -1,4 +1,4 @@
-import {Pressable, StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import React from 'react';
 import CustomText from '../atoms/CustomText';
 import CustomView from '../atoms/CustomView';

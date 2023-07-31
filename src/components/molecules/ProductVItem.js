@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {ActivityIndicator} from 'react-native';
 import useThemeColors from '../../themes/colorTheme';
 import {priceFormat} from '../../utils/helper';
 import CustomView from '../atoms/CustomView';
@@ -21,7 +20,6 @@ const ProductVItem = ({onPress, data}) => {
   const [itemMemory, setItemMemory] = useState({});
   const [itemScreen, setitemScreen] = useState({});
   const [itemStorage, setitemStorage] = useState({});
-  const colors = useThemeColors();
 
   const onProductPressed = () => {
     navigation.navigate('Product Detail', {

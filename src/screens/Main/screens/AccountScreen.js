@@ -1,4 +1,3 @@
-import {ScrollView, StyleSheet} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../../Auth/AuthContext';
@@ -64,7 +63,10 @@ const AccountScreen = ({route, navigation}) => {
   };
 
   const onMyOrderPressed = () => {
-    navigation.navigate('User Order', {userInfo: userData, userOrders: userOrders});
+    navigation.navigate('User Order', {
+      userInfo: userData,
+      userOrders: userOrders,
+    });
   };
 
   const onChangePasswordPressed = () => {

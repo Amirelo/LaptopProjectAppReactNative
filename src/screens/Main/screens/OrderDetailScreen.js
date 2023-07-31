@@ -8,14 +8,12 @@ import CustomView from '../../../components/atoms/CustomView';
 
 const OrderDetailScreen = ({route}) => {
   const {item} = route.params;
-  const [orderDetail, setOrderDetail] = useState([]);
   const [productList, setProductList] = useState([]);
   const {onGetUserOrderDetail} = useContext(AuthContext);
   const {onGetProductByID} = useContext(MainContext);
 
   const getData = async () => {
     const orderDetailResult = await onGetUserOrderDetail(item.userOrderID);
-    setOrderDetail(orderDetailResult.data);
     try {
       setProductList([]);
       for (let index = 0; index < orderDetailResult.data.length; index++) {

@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import React from 'react';
 import CustomView from '../../../components/atoms/CustomView';
 import PromoItem from '../../../components/molecules/PromoItem';

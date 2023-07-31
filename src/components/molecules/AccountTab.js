@@ -1,4 +1,3 @@
-import {Pressable, StyleSheet, View} from 'react-native';
 import React from 'react';
 import * as images from '../../assets/images';
 import CustomImage from '../atoms/CustomImage';

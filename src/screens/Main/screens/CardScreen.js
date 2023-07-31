@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import FlatList from 'react-native';
 import React from 'react';
 import CustomView from '../../../components/atoms/CustomView';
 import ItemCard from '../../../components/molecules/ItemCard';
@@ -24,5 +24,3 @@ const CardScreen = ({route}) => {
 };
 
 export default CardScreen;
-
-const styles = StyleSheet.create({});

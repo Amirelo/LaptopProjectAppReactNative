@@ -1,8 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {FlatList, Pressable} from 'react-native';
+import {FlatList} from 'react-native';
 import CustomView from '../../../components/atoms/CustomView';
-import ProductHItem from '../../../components/molecules/ProductHItem';
 import {AuthContext} from '../../Auth/AuthContext';
 import {MainContext} from '../MainContext';
 import ProductVItem from '../../../components/molecules/ProductVItem';

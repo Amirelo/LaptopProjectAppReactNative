@@ -1,6 +1,3 @@
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable space-infix-ops */
-/* eslint-disable prettier/prettier */
 import {axiosInstance} from '../../utils/axios';
 
 // User

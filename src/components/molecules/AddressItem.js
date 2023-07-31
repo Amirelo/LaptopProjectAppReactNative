@@ -4,7 +4,7 @@ import CustomView from '../atoms/CustomView';
 import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import {borderTheme} from '../../themes/borderTheme';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const AddressItem = ({data, onlyInfo}) => {
   const navigation = useNavigation();
@@ -12,7 +12,7 @@ const AddressItem = ({data, onlyInfo}) => {
 
   const onEditPressed = () => {
     navigation.navigate('New Address');
-  }
+  };
   return (
     <CustomView
       type={'tab'}
@@ -47,7 +47,9 @@ const AddressItem = ({data, onlyInfo}) => {
             )}
             <CustomText>Use as default address</CustomText>
           </CustomView>
-          <CustomButton onPress={onEditPressed} type={'tertiary'}>Edit</CustomButton>
+          <CustomButton onPress={onEditPressed} type={'tertiary'}>
+            Edit
+          </CustomButton>
         </CustomView>
       )}
     </CustomView>

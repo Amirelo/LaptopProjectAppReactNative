@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {FlatList, Pressable} from 'react-native';
+import {FlatList} from 'react-native';
 import CustomView from '../../../components/atoms/CustomView';
 import {MainContext} from '../MainContext';
 import ProductHItem from '../../../components/molecules/ProductHItem';

@@ -1,4 +1,4 @@
-import {Animated, StyleSheet, TextInput, View} from 'react-native';
+import {Animated, StyleSheet, TextInput} from 'react-native';
 import React, {useRef, useState} from 'react';
 import CustomImage from '../atoms/CustomImage';
 import * as images from '../../assets/images';

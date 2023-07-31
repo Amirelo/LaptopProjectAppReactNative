@@ -3,6 +3,7 @@ import * as images from '../../../assets/images';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomImage from '../../../components/atoms/CustomImage';
 import CustomText from '../../../components/atoms/CustomText';
+import {deviceHeight} from '../../../utils/helper';
 
 const SplashScreen = ({navigation}) => {
   setTimeout(() => {
@@ -15,10 +16,13 @@ const SplashScreen = ({navigation}) => {
     <CustomView backgroundColor={'primary'}>
       <CustomImage
         source={images.app_logo_splash}
-        marginTop={'50%'}
+        marginTop={deviceHeight * 0.4}
         type={'header'}
       />
-      <CustomText type={'titleBold'} textColor={'textConstrast'} marginTop={20}>
+      <CustomText
+        textStyle={'titleBold'}
+        textColor={'textConstrast'}
+        marginTop={20}>
         Simplify your life
       </CustomText>
     </CustomView>
