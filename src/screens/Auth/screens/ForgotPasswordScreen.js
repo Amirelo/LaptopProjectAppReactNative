@@ -47,6 +47,7 @@ const ForgotPasswordScreen = ({navigation, route}) => {
         placeholder={'Confirm Password*'}
         onChangeText={setConfirmPass}
         disabled={!isDisabled}
+        marginTop={8}
       />
       {error != null ? (
         <CustomText textStyle={'normal'} textColor={'err'}>

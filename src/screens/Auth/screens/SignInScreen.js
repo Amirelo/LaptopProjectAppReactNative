@@ -8,6 +8,10 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import {textTheme} from '../../../themes/textTheme';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
 const SignInScreen = ({navigation, route}) => {
   const [username, setUsername] = useState('');
@@ -18,6 +22,7 @@ const SignInScreen = ({navigation, route}) => {
 
   const {onSignIn, checkSaveUser, onGoogleSignIn, checkEmail} =
     useContext(AuthContext);
+
   const getUserInfo = async () => {
     try {
       setIsDisabled(true);
@@ -79,9 +84,37 @@ const SignInScreen = ({navigation, route}) => {
   const onSocialButtonPress = () => {
     console.log('Social button');
   };
+
+  const onGoogleSignInPressed = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log(userInfo);
+    } catch (error) {
+      console.log(error);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '731408095021-7d46s8vh33cq91s9alb6v5j77vk9k3ug.apps.googleusercontent.com',
+      offlineAccess: true,
+    });
+  }, []);
+
   useEffect(() => {
     checkSaveUser();
-  });
+  }, []);
 
   return (
     <CustomView>
@@ -107,6 +140,7 @@ const SignInScreen = ({navigation, route}) => {
         placeholder={'password'}
         source={images.ic_password}
         disabled={!isDisabled}
+        marginTop={8}
       />
       <CustomText textColor={'err'} textStyle={'small'} marginTop={0}>
         {error}
@@ -127,6 +161,7 @@ const SignInScreen = ({navigation, route}) => {
       </CustomButton>
       <CustomText marginTop={18}>OR Sign In with</CustomText>
       <CustomButton
+        onPress={onGoogleSignInPressed}
         type={'social'}
         source={images.ic_google}
         disabled={isDisabled}>

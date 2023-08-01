@@ -92,7 +92,7 @@ const AccountScreen = ({route, navigation}) => {
   };
 
   const onCardScreenPressed = () => {
-    navigation.navigate('Card', {userCards: userCards});
+    navigation.navigate('Card', {cards: userCards});
   };
 
   const onSignOutPressed = () => {

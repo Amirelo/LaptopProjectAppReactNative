@@ -1,24 +1,35 @@
-import FlatList from 'react-native';
+import {FlatList} from 'react-native';
 import React from 'react';
-import CustomView from '../../../components/atoms/CustomView';
+import {CustomText, CustomView} from '../../../components/atoms';
 import ItemCard from '../../../components/molecules/ItemCard';
+import {deviceWidth} from '../../../utils/helper';
 
 const CardScreen = ({route}) => {
-  const {userCards} = route.params;
+  const {cards} = route.params;
+  console.log('Card screen', cards);
+
   return (
     <CustomView>
-      <FlatList
-        width={'100%'}
-        height={'100%'}
-        scrollEnabled={false}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{gap: 8, marginBottom: 16, alignItems: 'center'}}
-        data={userCards}
-        keyExtractor={item => item.cardID}
-        renderItem={({item}) => {
-          return <ItemCard data={item} marginTop={8} />;
-        }}
-      />
+      {cards != null ? (
+        <FlatList
+          width={deviceWidth * 0.9}
+          marginTop={12}
+          contentContainerStyle={{
+            gap: 16,
+            flexGrow: 0,
+            paddingHorizontal: 16,
+          }}
+          showsHorizontalScrollIndicator={false}
+          data={cards}
+          initialNumToRender={3}
+          keyExtractor={item => item.cardID}
+          renderItem={({item}) => {
+            return <ItemCard data={item} />;
+          }}
+        />
+      ) : (
+        <CustomText>No card to show</CustomText>
+      )}
     </CustomView>
   );
 };

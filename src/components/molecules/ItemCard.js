@@ -1,27 +1,40 @@
 import React from 'react';
-import * as images from '../../assets/images';
 import CustomText from '../atoms/CustomText';
 import CustomView from '../atoms/CustomView';
 import CustomButton from './CustomButton';
+import {borderTheme} from '../../themes/borderTheme';
+import {useNavigation} from '@react-navigation/native';
 
-const CardItem = ({data}) => {
+const ItemCard = ({data}) => {
+  const navigation = useNavigation();
+  const cardNumber = () => {
+    let cardNumber = data.cardNumber;
+    let hiddenNum = '**** **** **** ' + cardNumber.slice(-3);
+    return hiddenNum;
+  };
+
+  const onEditPressed = () => {
+    navigation.navigate('New Card', {data: data});
+  };
+
   return (
-    <CustomView>
-      <CustomText>{data.cardNumber}</CustomText>
-      <CustomText>Card holder</CustomText>
-      <CustomText>{data.cardHolder}</CustomText>
-      <CustomText>Expiry date</CustomText>
-      <CustomText>{data.expiryMonth + '/' + data.expiryYear}</CustomText>
-      <CustomView type={'row'}>
-        {data.status == 1 ? (
-          <CustomButton source={images.ic_radio_square_selected} />
-        ) : (
-          <CustomButton source={images.ic_radio_square} />
-        )}
-        <CustomText>Use as default address</CustomText>
+    <CustomView
+      type={'tab'}
+      borderColor={'border'}
+      borderStyle={borderTheme.textInput}
+      backgroundColor={'backgroundInput'}>
+      <CustomText>{cardNumber()}</CustomText>
+      <CustomView backgroundColor={'none'} type={'rowJustify90'}>
+        <CustomText>Card holder</CustomText>
+        <CustomText>Expiry date</CustomText>
       </CustomView>
+      <CustomView backgroundColor={'none'} type={'rowJustify90'}>
+        <CustomText>{data.cardHolder}</CustomText>
+        <CustomText>{data.expiryMonth + '/' + data.expiryYear}</CustomText>
+      </CustomView>
+      <CustomButton onPress={onEditPressed}>Edit</CustomButton>
     </CustomView>
   );
 };
 
-export default CardItem;
+export default ItemCard;
