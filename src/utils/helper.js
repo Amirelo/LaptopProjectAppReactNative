@@ -30,3 +30,7 @@ export const promoDetail = (percentOff, maxEffect) => {
     priceFormat(maxEffect);
   return result;
 };
+
+export const addressFormat = (addressName, ward, district, city) => {
+  return addressName + ', P.' + ward + ', Q.' + district + ', ' + city;
+};

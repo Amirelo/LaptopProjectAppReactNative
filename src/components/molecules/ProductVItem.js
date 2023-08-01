@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from 'react';
-import useThemeColors from '../../themes/colorTheme';
 import {priceFormat} from '../../utils/helper';
 import CustomView from '../atoms/CustomView';
 import CustomImage from '../atoms/CustomImage';
@@ -8,7 +7,7 @@ import {MainContext} from '../../screens/Main/MainContext';
 import {useNavigation} from '@react-navigation/native';
 import {CustomButtonBare} from '../atoms';
 
-const ProductVItem = ({onPress, data}) => {
+const ProductVItem = ({data}) => {
   const navigation = useNavigation();
   const {
     onGetProductProcessor,

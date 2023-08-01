@@ -30,8 +30,9 @@ const AccountScreen = ({route, navigation}) => {
     const userOrder = await onGetUserOrder(userInfo.data.userId);
     setUserOrders(userOrder.data);
 
+    setOrderInProgress(0);
     userOrder.data.map(item => {
-      if (item.status == 0) {
+      if (item.status > 0 && item.status < 4) {
         setOrderInProgress(prev => prev + 1);
       }
     });
@@ -66,6 +67,7 @@ const AccountScreen = ({route, navigation}) => {
     navigation.navigate('User Order', {
       userInfo: userData,
       userOrders: userOrders,
+      userAddresses: userAddresses,
     });
   };
 

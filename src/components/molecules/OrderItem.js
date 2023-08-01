@@ -7,8 +7,9 @@ import {priceFormat} from '../../utils/helper';
 import CustomButton from './CustomButton';
 import {AuthContext} from '../../screens/Auth/AuthContext';
 import {borderTheme} from '../../themes/borderTheme';
+import {orderStatusArr} from '../../utils/array';
 
-const OrderItem = ({item}) => {
+const OrderItem = ({item, address}) => {
   const [totalItems, setTotalItems] = useState(0);
   const navigation = useNavigation();
   const {onGetUserOrderDetail} = useContext(AuthContext);
@@ -19,13 +20,13 @@ const OrderItem = ({item}) => {
     : item.prepareDate
     ? item.prepareDate
     : item.pendingDate;
-  const orderStatusArr = [
-    {status: 'Delivered', color: 'success'},
-    {status: 'On the way', color: 'warn'},
-    {status: 'Packing', color: 'text'},
-    {status: 'Processing', color: 'process'},
-    {status: 'Cancel', color: 'err'},
-  ];
+
+  const orderAddress = addressID => {
+    return address.filter(addressItem => {
+      console.log('Address item', addressItem);
+      return addressItem.addressID == addressID;
+    })[0];
+  };
 
   const initData = async () => {
     setTotalItems(0);
@@ -41,7 +42,10 @@ const OrderItem = ({item}) => {
   const status = getOrderStatus();
 
   const onDetailButtonPressed = () => {
-    navigation.navigate('Order Details', {item: item});
+    navigation.navigate('Order Details', {
+      item: item,
+      address: orderAddress(item.addressID),
+    });
   };
 
   useEffect(() => {

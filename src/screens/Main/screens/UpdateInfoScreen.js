@@ -58,7 +58,7 @@ const UpdateInfoScreen = ({route, navigation}) => {
       />
       {type == 'PASSWORD' ? (
         <CustomInput
-          onChangeText={confirmData}
+          onChangeText={setConfirmData}
           placeholder={'Reconfirm ' + type.toLowerCase()}
           marginTop={8}
           keyboardType={inputType}

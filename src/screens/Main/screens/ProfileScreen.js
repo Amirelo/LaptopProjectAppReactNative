@@ -9,7 +9,7 @@ const ProfileScreen = ({route, navigation}) => {
   console.log(userInfo);
 
   const onGoBack = (data, type) => {
-    console.log('goback')
+    console.log('goback');
     switch (type) {
       case 'USERNAME':
         userInfo.username = data;

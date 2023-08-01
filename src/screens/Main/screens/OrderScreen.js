@@ -4,8 +4,7 @@ import OrderItem from '../../../components/molecules/OrderItem';
 import CustomView from '../../../components/atoms/CustomView';
 
 const OrderScreen = ({route}) => {
-  const {userOrders} = route.params;
-  console.log(userOrders);
+  const {userOrders, userAddresses} = route.params;
 
   return (
     <CustomView>
@@ -21,7 +20,7 @@ const OrderScreen = ({route}) => {
         data={userOrders}
         keyExtractor={item => item.userOrderID}
         renderItem={({item}) => {
-          return <OrderItem item={item} />;
+          return <OrderItem item={item} address={userAddresses} />;
         }}
       />
     </CustomView>
