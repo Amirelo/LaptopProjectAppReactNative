@@ -92,6 +92,7 @@ const SignInScreen = ({navigation, route}) => {
       <CustomText textColor={'textVariant'} textStyle={'small'} marginTop={0}>
         Sign In to continue
       </CustomText>
+
       <CustomInput
         value={username}
         onChangeText={setUsername}
@@ -107,7 +108,9 @@ const SignInScreen = ({navigation, route}) => {
         source={images.ic_password}
         disabled={!isDisabled}
       />
-
+      <CustomText textColor={'err'} textStyle={'small'} marginTop={0}>
+        {error}
+      </CustomText>
       <CustomButton
         onPress={onToForgotPasswordPress}
         alignSelf={'flex-end'}

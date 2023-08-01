@@ -17,12 +17,11 @@ const CustomButton = ({
   noAnim,
 }) => {
   const colors = useThemeColors();
-  const buttonBackgroundColor =
-    type == 'primary'
-      ? colors.primaryColor
-      : type == 'social'
-      ? colors.backgroundInputColor
-      : 'transparent';
+  const buttonBackgroundColor = type.includes('primary')
+    ? colors.primaryColor
+    : type == 'social'
+    ? colors.backgroundInputColor
+    : 'transparent';
   const borderColor = type == 'social' ? colors.borderColor : '';
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const textColor =
@@ -106,6 +105,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
+  },
+  button_primarySmall: {
+    borderRadius: 4,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
   },
   button_social: {
     flexDirection: 'row',

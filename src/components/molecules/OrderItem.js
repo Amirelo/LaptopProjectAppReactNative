@@ -54,31 +54,46 @@ const OrderItem = ({item}) => {
       borderStyle={borderTheme.textInput}
       type={'tab'}>
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
-        <CustomText hasFlex={true}>Order No</CustomText>
+        <CustomText textStyle={'normalBold'} hasFlex={true}>
+          Order No
+        </CustomText>
         <CustomText hasFlex={true}>{item.userOrderID}</CustomText>
         <CustomText>{itemDate}</CustomText>
       </CustomView>
 
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
-        <CustomText hasFlex={true}>Quantity</CustomText>
+        <CustomText textStyle={'normalBold'} hasFlex={true}>
+          Quantity
+        </CustomText>
         <CustomText hasFlex={true}>{totalItems}</CustomText>
       </CustomView>
 
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
-        <CustomText hasFlex={true}>'Total'</CustomText>
+        <CustomText textStyle={'normalBold'} hasFlex={true}>
+          Total
+        </CustomText>
         <CustomText hasFlex={true}>{priceFormat(item.totalPrice)}</CustomText>
+      </CustomView>
+
+      <CustomView backgroundColor={'none'} type={'rowJustify90'}>
+        <CustomText textStyle={'normalBold'} hasFlex={true}>
+          Status
+        </CustomText>
+        <CustomText
+          hasFlex={true}
+          textStyle={'normalBold'}
+          textColor={orderStatusArr[item.status].color}>
+          {status}
+        </CustomText>
       </CustomView>
 
       <CustomView type={'rowJustify90'} backgroundColor={'none'}>
         <CustomButton
-          type={'tertiary'}
+          type={'primarySmall'}
           onPress={onDetailButtonPressed}
           customStyles={styles.itemMargin}>
           Details
         </CustomButton>
-        <CustomText textColor={orderStatusArr[item.status].color}>
-          {status}
-        </CustomText>
       </CustomView>
     </CustomView>
   );
