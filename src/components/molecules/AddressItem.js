@@ -47,7 +47,7 @@ const AddressItem = ({data, onlyInfo}) => {
             )}
             <CustomText>Use as default address</CustomText>
           </CustomView>
-          <CustomButton onPress={onEditPressed} type={'tertiary'}>
+          <CustomButton onPress={onEditPressed} type={'primarySmall'}>
             Edit
           </CustomButton>
         </CustomView>
