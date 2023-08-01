@@ -24,7 +24,11 @@ const ShippingAddressScreen = ({route}) => {
         styles={{marginTop: 32}}
         scrollEnabled={false}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{gap: 8, marginBottom: 16, alignItems: 'center'}}
+        contentContainerStyle={{
+          gap: 8,
+          marginVertical: 16,
+          alignItems: 'center',
+        }}
         data={userAddresses}
         keyExtractor={item => item.addressID}
         renderItem={({item}) => {
