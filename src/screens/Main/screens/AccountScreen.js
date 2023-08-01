@@ -49,7 +49,10 @@ const AccountScreen = ({route, navigation}) => {
   };
 
   useEffect(() => {
-    getUserInfo();
+    const load = navigation.addListener('focus', () => {
+      getUserInfo();
+    });
+    return load;
   }, []);
 
   const onPressUserTab = () => {

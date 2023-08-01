@@ -11,7 +11,7 @@ const AddressItem = ({data, onlyInfo}) => {
   console.log(data);
 
   const onEditPressed = () => {
-    navigation.navigate('New Address');
+    navigation.navigate('New Address', {data: data});
   };
   return (
     <CustomView
@@ -38,14 +38,10 @@ const AddressItem = ({data, onlyInfo}) => {
         <CustomView backgroundColor={'transparent'} type={'rowJustify90'}>
           <CustomView backgroundColor={'transparent'} type={'row'}>
             {data.status == 1 ? (
-              <CustomButton
-                type={'image'}
-                source={images.ic_radio_square_selected}
-              />
+              <CustomText textStyle={'normalBold'}>Default</CustomText>
             ) : (
-              <CustomButton type={'image'} source={images.ic_radio_square} />
+              <></>
             )}
-            <CustomText>Use as default address</CustomText>
           </CustomView>
           <CustomButton onPress={onEditPressed} type={'primarySmall'}>
             Edit

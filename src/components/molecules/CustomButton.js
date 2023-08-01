@@ -17,11 +17,12 @@ const CustomButton = ({
   noAnim,
 }) => {
   const colors = useThemeColors();
-  const buttonBackgroundColor = type.includes('primary')
-    ? colors.primaryColor
-    : type == 'social'
-    ? colors.backgroundInputColor
-    : 'transparent';
+  const buttonBackgroundColor =
+    type && type.includes('primary')
+      ? colors.primaryColor
+      : type == 'social'
+      ? colors.backgroundInputColor
+      : 'transparent';
   const borderColor = type == 'social' ? colors.borderColor : '';
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const textColor =
