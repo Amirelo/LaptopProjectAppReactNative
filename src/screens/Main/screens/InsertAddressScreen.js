@@ -10,25 +10,38 @@ import {useNavigation} from '@react-navigation/native';
 
 const InsertAddressScreen = ({route}) => {
   const {userInfo} = route.params;
-  const {insertUserAddress} = useContext(AuthContext);
-  const [addressName, setAddressName] = useState('');
-  const [ward, setWard] = useState('');
-  const [district, setDistrict] = useState('');
-  const [city, setCity] = useState('');
-  const [status, setStatus] = useState(2);
+  let data = null;
+  if (route.params.data) {
+    console.log('found');
+    data = route.params.data;
+  }
+  const {insertUserAddress, updateUserAddress} = useContext(AuthContext);
+  const [addressName, setAddressName] = useState(data ? data.addressName : '');
+  const [ward, setWard] = useState(data ? data.ward : '');
+  const [district, setDistrict] = useState(data ? data.district : '');
+  const [city, setCity] = useState(data ? data.city : '');
+  const [status, setStatus] = useState(data ? data.status : 2);
   const [isDisabled, setIsDisabled] = useState(false);
   const [showStatusOption, setShowStatusOption] = useState(false);
   const navigation = useNavigation();
 
   const insertAddress = async () => {
-    let res = await insertUserAddress(
-      addressName,
-      ward,
-      district,
-      city,
-      status,
-      userInfo.userId,
-    );
+    let res = null;
+    data
+      ? (res = await updateUserAddress(
+          status,
+          'STATUS',
+          data.addressID,
+          userInfo.userId,
+        ))
+      : (res = await insertUserAddress(
+          addressName,
+          ward,
+          district,
+          city,
+          status,
+          userInfo.userId,
+        ));
     if (res.response_code == 1) {
       navigation.navigate('Account');
     }
@@ -79,7 +92,7 @@ const InsertAddressScreen = ({route}) => {
         disabled={isDisabled}
         onPress={insertAddress}
         type={'primary'}>
-        Insert
+        {data ? 'Edit' : 'Insert'}
       </CustomButton>
 
       {showStatusOption ? (

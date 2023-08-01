@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
 import CustomImage from '../../../components/atoms/CustomImage';
@@ -6,10 +6,12 @@ import AccountTab from '../../../components/molecules/AccountTab';
 
 const ProfileScreen = ({route, navigation}) => {
   const {userInfo} = route.params;
+  const [user, setUser] = useState(userInfo);
   console.log(userInfo);
 
   const onGoBack = (data, type) => {
-    console.log('goback');
+    setUser({});
+    console.warn('goback');
     switch (type) {
       case 'USERNAME':
         userInfo.username = data;
@@ -35,19 +37,15 @@ const ProfileScreen = ({route, navigation}) => {
       default:
         break;
     }
+    setUser(userInfo);
     route.params.onGoBackAccount(userInfo);
   };
-
-  useEffect(() => {
-    console.warn('resfresh');
-    onGoBack();
-  }, []);
 
   const onAccountTabPressed = type => {
     navigation.navigate('Update User Information', {
       type: type,
       email: userInfo.email,
-      onGoBack,
+      onGoBack: onGoBack,
     });
   };
 
@@ -55,7 +53,7 @@ const ProfileScreen = ({route, navigation}) => {
     <CustomView scrollable={true}>
       <CustomButtonBare>
         <CustomImage
-          source={userInfo.imageLink}
+          source={user.imageLink}
           linkType={'uri'}
           type={'logo'}
           marginTop={50}
@@ -66,19 +64,19 @@ const ProfileScreen = ({route, navigation}) => {
         type={'profile'}
         onPress={() => onAccountTabPressed('USERNAME')}
         title={'Username'}
-        subtitle={userInfo.username}
+        subtitle={user.username}
       />
       <AccountTab
         type={'profile'}
         onPress={() => onAccountTabPressed('PHONENUMBER')}
         title={'Phone number'}
-        subtitle={userInfo.phonenumber}
+        subtitle={user.phonenumber}
       />
       <AccountTab
         type={'profile'}
         onPress={() => onAccountTabPressed('BIRTHDAY')}
         title={'Birthday'}
-        subtitle={userInfo.birthday}
+        subtitle={user.birthday}
       />
     </CustomView>
   );

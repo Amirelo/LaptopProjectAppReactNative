@@ -20,16 +20,16 @@ const UpdateInfoScreen = ({route, navigation}) => {
 
   const onChangeButtonPresses = async () => {
     if (type == 'PASSWORD') {
-      if (dat > 6 || data == confirmData) {
+      if (data > 6 || data == confirmData) {
         const res = await onUpdateUserInfo(data, email, type);
         if (res.response_code == 1) {
           console.warn('Success');
           await AsyncStorage.setItem(type.toLowerCase(), data);
           route.params.onGoBack(data, type);
-          navigation.goBack(null);
+          navigation.goBack();
         } else {
           console.warn('Fail');
-          navigation.goBack(null);
+          navigation.goBack();
         }
       } else {
         console.warn('Check your password info');

@@ -1,18 +1,12 @@
 import React from 'react';
-import * as images from '../../assets/images';
 import CustomView from '../atoms/CustomView';
 import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import {borderTheme} from '../../themes/borderTheme';
-import {useNavigation} from '@react-navigation/native';
 
-const AddressItem = ({data, onlyInfo}) => {
-  const navigation = useNavigation();
+const AddressItem = ({data, onEditPressed, onlyInfo}) => {
   console.log(data);
 
-  const onEditPressed = () => {
-    navigation.navigate('New Address', {data: data});
-  };
   return (
     <CustomView
       type={'tab'}

@@ -1,5 +1,5 @@
 import {FlatList} from 'react-native';
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import AddressItem from '../../../components/molecules/AddressItem';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
@@ -14,6 +14,10 @@ const ShippingAddressScreen = ({route}) => {
     navigation.navigate('New Address', {
       userInfo: userInfo,
     });
+  };
+
+  const onEditAddressPressed = item => {
+    navigation.navigate('New Address', {data: item, userInfo: userInfo});
   };
 
   return (
@@ -35,7 +39,12 @@ const ShippingAddressScreen = ({route}) => {
         data={addresses}
         keyExtractor={item => item.addressID}
         renderItem={({item}) => {
-          return <AddressItem data={item} />;
+          return (
+            <AddressItem
+              onEditPressed={() => onEditAddressPressed(item)}
+              data={item}
+            />
+          );
         }}
       />
     </CustomView>

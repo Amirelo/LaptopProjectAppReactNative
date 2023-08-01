@@ -17,6 +17,7 @@ import {
   updateNotificationStatus,
   insertNotification,
   insertAddress,
+  updateAddressInfo,
 } from './AuthService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -188,7 +189,7 @@ export const AuthContextProvider = ({children}) => {
 
   const updateUserAddress = async (data, type, addressID, userID) => {
     try {
-      const res = await updateUserAddress(data, type, addressID, userID);
+      const res = await updateAddressInfo(data, type, addressID, userID);
       console.log('On Update User Address success', res.data);
       return res.data;
     } catch (error) {

@@ -56,7 +56,10 @@ const AccountScreen = ({route, navigation}) => {
   }, []);
 
   const onPressUserTab = () => {
-    navigation.navigate('Profile', {userInfo: userData, onGoBackAccount});
+    navigation.navigate('Profile', {
+      userInfo: userData,
+      onGoBackAccount: onGoBackAccount,
+    });
   };
 
   const onShippingAddressPress = () => {
