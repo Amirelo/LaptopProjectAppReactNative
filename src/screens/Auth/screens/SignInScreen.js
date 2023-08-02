@@ -102,8 +102,8 @@ const SignInScreen = ({navigation, route}) => {
       const checkUser = await onCheckEmail(userInfo.user.email, 'SIGNUP');
       if (checkUser.response_code == 1) {
         const signUp = await onSignUp(
-          null,
-          null,
+          userInfo.user.name,
+          userInfo.user.id,
           userInfo.user.email,
           null,
           userInfo.user.name,

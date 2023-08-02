@@ -42,6 +42,7 @@ const InsertAddressScreen = ({route}) => {
           status,
           userInfo.userId,
         ));
+    console.log(res);
     if (res.response_code == 1) {
       navigation.navigate('Account');
     }

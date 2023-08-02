@@ -1,17 +1,15 @@
 import React, {useContext, useState, useEffect} from 'react';
-import * as images from '../../../assets/images';
 import {MainContext} from '../MainContext';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomText from '../../../components/atoms/CustomText';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {priceFormat} from '../../../utils/helper';
 import AddressItem from '../../../components/molecules/AddressItem';
-import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
-import CustomImage from '../../../components/atoms/CustomImage';
 
 const CheckOutScreen = ({navigation, route}) => {
   const {location, fullName, phoneNumber, totalPrice, note, cart, userID} =
     route.params;
+  
 
   const [shippingPrice, setShippingPrice] = useState(200000);
   const [finalPrice, setFinalPrice] = useState(totalPrice + shippingPrice);
@@ -48,14 +46,12 @@ const CheckOutScreen = ({navigation, route}) => {
 
   useEffect(() => {
     console.log('cart', cart);
+    console.log('checkout', location);
   }, []);
 
   return (
     <CustomView>
-      <CustomView type="rowJustify90">
-        <CustomText>Shipping address</CustomText>
-        <CustomButton type={'tertiary'}>Change</CustomButton>
-      </CustomView>
+      <CustomText />
       <AddressItem
         onlyInfo={true}
         data={{
@@ -88,13 +84,9 @@ const CheckOutScreen = ({navigation, route}) => {
         <CustomText>{priceFormat(finalPrice)}</CustomText>
       </CustomView>
 
-      <CustomText>Payment</CustomText>
-
-      <CustomView type={'rowJustify90'} marginTop={8}>
-        <CustomButtonBare onPress={onSubmitOrderPressed}>
-          <CustomImage source={images.cash} type={'header'} />
-        </CustomButtonBare>
-      </CustomView>
+      <CustomButton onPress={onSubmitOrderPressed} type={'primary'}>
+        Place Order
+      </CustomButton>
     </CustomView>
   );
 };

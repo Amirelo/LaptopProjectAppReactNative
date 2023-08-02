@@ -6,7 +6,7 @@ import CustomButtonBare from '../atoms/CustomButtonBare';
 import CustomView from '../atoms/CustomView';
 import {borderTheme} from '../../themes/borderTheme';
 
-const AccountTab = ({title, subtitle, onPress, type, source}) => {
+const AccountTab = ({title, titleColor, subtitle, onPress, type, source}) => {
   return (
     <CustomButtonBare marginTop={12} onPress={onPress}>
       <CustomView
@@ -21,11 +21,18 @@ const AccountTab = ({title, subtitle, onPress, type, source}) => {
           )}
           {type == 'profile' ? (
             <>
-              <CustomText marginTop={0} textStyle={'subtitleBold'}>
+              <CustomText
+                textColor={titleColor ? titleColor : ''}
+                marginTop={0}
+                textStyle={'subtitleBold'}>
                 {title}
               </CustomText>
               <CustomView marginTop={0} backgroundColor={'none'} type={'row'}>
-                <CustomText marginTop={0}>{subtitle}</CustomText>
+                <CustomText
+                  textColor={titleColor ? titleColor : ''}
+                  marginTop={0}>
+                  {subtitle}
+                </CustomText>
                 <CustomImage
                   type={'searchBarIcon'}
                   source={images.ic_arrow_right}
@@ -35,7 +42,10 @@ const AccountTab = ({title, subtitle, onPress, type, source}) => {
           ) : (
             <>
               <CustomView backgroundColor={'none'} type={'left'}>
-                <CustomText textStyle={'subtitleBold'} marginTop={2}>
+                <CustomText
+                  textColor={titleColor ? titleColor : 'text'}
+                  textStyle={'subtitleBold'}
+                  marginTop={2}>
                   {title}
                 </CustomText>
                 <CustomText marginTop={2}>{subtitle}</CustomText>

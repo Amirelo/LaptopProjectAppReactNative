@@ -131,12 +131,14 @@ const AccountScreen = ({route, navigation}) => {
         />
         <AccountTab
           title={'Change password'}
+          titleColor={'err'}
           subtitle={'Change your password'}
           onPress={onChangePasswordPressed}
           isHighlight={true}
         />
         <AccountTab
           title={'Logout'}
+          titleColor={'err'}
           subtitle={'Logout of your account'}
           onPress={onSignOutPressed}
           isHighlight={true}
