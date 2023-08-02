@@ -23,6 +23,8 @@ import {
   getProductScreen,
   getProductStorage,
   getProductOperatingSystem,
+  getProductRatingsBy,
+  getProductRatingsByID,
 } from './MainService';
 
 export const MainContext = createContext();
@@ -292,6 +294,16 @@ export const MainContextProvider = props => {
     }
   };
 
+  const onGetProductRatingsByID = async productID => {
+    try {
+      const res = await getProductRatingsByID(productID);
+      return res.data;
+    } catch (error) {
+      console.log('On delete cart error', error);
+      return null;
+    }
+  };
+
   return (
     <MainContext.Provider
       value={{
@@ -318,6 +330,7 @@ export const MainContextProvider = props => {
         onDeleteCart,
         onInsertUserOrder,
         onInsertOrderDetail,
+        onGetProductRatingsByID,
       }}>
       {children}
     </MainContext.Provider>

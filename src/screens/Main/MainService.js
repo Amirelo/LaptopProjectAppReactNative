@@ -220,3 +220,11 @@ export const insertOrderDetail = async (
   );
   return res;
 };
+
+export const getProductRatingsByID = async productID => {
+  const data = {
+    productID: productID,
+  };
+  const res = await axiosInstance.post('/rating/get-product-ratings.php', data);
+  return res;
+};

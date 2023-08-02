@@ -161,13 +161,7 @@ export const updateUserFavoriteStatus = async (
 };
 
 // Rating
-export const getProductRatingsBy = async productID => {
-  const data = {
-    productID: productID,
-  };
-  const res = await axiosInstance.post('/rating/get-product-ratings.php', data);
-  return res;
-};
+
 
 export const getUserAllRatings = async userID => {
   const data = {

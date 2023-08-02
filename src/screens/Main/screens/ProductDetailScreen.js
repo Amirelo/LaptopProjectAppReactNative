@@ -10,6 +10,7 @@ import CustomImage from '../../../components/atoms/CustomImage';
 import CustomText from '../../../components/atoms/CustomText';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {priceFormat} from '../../../utils/helper';
+import {CustomButtonBare} from '../../../components/atoms';
 
 const ProductDetailScreen = ({route}) => {
   const navigation = useNavigation();
@@ -88,6 +89,10 @@ const ProductDetailScreen = ({route}) => {
     }
   };
 
+  const onUserReviewButtonPressed = () => {
+    navigation.navigate('Product Comments', {productID: item.productID});
+  };
+
   useEffect(() => {
     getInitData();
   }, []);
@@ -159,6 +164,15 @@ const ProductDetailScreen = ({route}) => {
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.productName.split(' ')[0]}
+          </CustomText>
+        </CustomView>
+
+        <CustomView type={'rowJustify90'}>
+          <CustomText marginTop={4} hasFlex={true}>
+            Rating
+          </CustomText>
+          <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
+            {item.totalRating}/5
           </CustomText>
         </CustomView>
 
@@ -419,6 +433,14 @@ const ProductDetailScreen = ({route}) => {
           type={'primary'}
           marginTop={32}>
           Add To Cart
+        </CustomButton>
+
+        <CustomButton
+          onPress={onUserReviewButtonPressed}
+          type={'primary'}
+          backgroundColor={'warn'}
+          marginTop={8}>
+          User Review
         </CustomButton>
       </CustomView>
     </CustomView>

@@ -25,8 +25,7 @@ const UpdateInfoScreen = ({route, navigation}) => {
         if (res.response_code == 1) {
           console.warn('Success');
           await AsyncStorage.setItem(type.toLowerCase(), data);
-          route.params.onGoBack(data, type);
-          navigation.goBack();
+          navigation.navigate('Account');
         } else {
           console.warn('Fail');
           navigation.goBack();
