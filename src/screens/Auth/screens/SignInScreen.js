@@ -12,6 +12,7 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import {updateUserInfo} from '../AuthService';
 
 const SignInScreen = ({navigation, route}) => {
   const [username, setUsername] = useState('');
@@ -20,8 +21,14 @@ const SignInScreen = ({navigation, route}) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [message, setMessage] = useState('');
 
-  const {onSignIn, checkSaveUser, onGoogleSignIn, checkEmail} =
-    useContext(AuthContext);
+  const {
+    onSignIn,
+    onSignUp,
+    checkSaveUser,
+    onGoogleSignIn,
+    onCheckEmail,
+    onSocialSignIn,
+  } = useContext(AuthContext);
 
   const getUserInfo = async () => {
     try {
@@ -32,7 +39,7 @@ const SignInScreen = ({navigation, route}) => {
         },
       });
       const user = await respone.json();
-      let checkEmailResult = await checkEmail(user.email, 'SIGNUP');
+      let checkEmailResult = await onCheckEmail(user.email, 'SIGNUP');
       if (checkEmailResult.data.response_code === 0) {
         await AsyncStorage.setItem('email', user.email);
         onGoogleSignIn();
@@ -65,6 +72,11 @@ const SignInScreen = ({navigation, route}) => {
     setIsDisabled(false);
   };
 
+  const onSocialSignInPress = async email => {
+    await AsyncStorage.setItem('email', email);
+    onSocialSignIn();
+  };
+
   const signInCheck = () => {
     if (username.length === 0) {
       setError('Username cannot be empty');
@@ -81,15 +93,33 @@ const SignInScreen = ({navigation, route}) => {
     navigation.navigate('Verification', {paramKey: 'SIGNUP'});
   };
 
-  const onSocialButtonPress = () => {
-    console.log('Social button');
-  };
-
   const onGoogleSignInPressed = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
+      await GoogleSignin.signOut();
+      console.log(userInfo.user);
+      const checkUser = await onCheckEmail(userInfo.user.email, 'SIGNUP');
+      if (checkUser.response_code == 1) {
+        const signUp = await onSignUp(
+          null,
+          null,
+          userInfo.user.email,
+          null,
+          userInfo.user.name,
+          null,
+        );
+        if (signUp.response_code == 1) {
+          const updateImage = await updateUserInfo(
+            userInfo.user.photo,
+            userInfo.user.email,
+            'IMAGELINK',
+          );
+          onSocialSignInPress(userInfo.user.email);
+        }
+      } else {
+        onSocialSignInPress(userInfo.user.email);
+      }
     } catch (error) {
       console.log(error);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {

@@ -56,6 +56,10 @@ export const AuthContextProvider = ({children}) => {
     }
   };
 
+  const onSocialSignIn = () => {
+    setIsLoggedIn(true);
+  };
+
   const onSignUp = async (
     username,
     password,
@@ -308,6 +312,7 @@ export const AuthContextProvider = ({children}) => {
         onGoogleSignIn,
         onGetUserByEmail,
         onGetAddressesByEmail,
+        onSocialSignIn,
       }}>
       {children}
     </AuthContext.Provider>

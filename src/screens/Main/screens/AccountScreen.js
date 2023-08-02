@@ -103,7 +103,7 @@ const AccountScreen = ({route, navigation}) => {
     <CustomView>
       <CustomView scrollable={true}>
         <AccountTab
-          title={userData.username}
+          title={userData.username ? userData.username : ''}
           subtitle={userData.email}
           type={'usertab'}
           source={userData.imageLink}

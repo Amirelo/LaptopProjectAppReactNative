@@ -13,6 +13,7 @@ const CustomButtonBare = ({
   backgroundColor,
   borderStyle,
   type,
+  paddingVertical,
 }) => {
   const colors = useThemeColors();
   backgroundColor =
@@ -42,6 +43,7 @@ const CustomButtonBare = ({
           ? [borderTheme.textInput, {borderColor: colors.borderColor}]
           : {},
         {backgroundColor: backgroundColor},
+        paddingVertical ? {paddingVertical: paddingVertical} : {},
       ]}
       onPress={onPress}
       onPressIn={fadeIn}

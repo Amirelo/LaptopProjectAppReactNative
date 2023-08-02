@@ -54,7 +54,8 @@ const ProductVItem = ({data}) => {
       onPress={onProductPressed}
       backgroundColor={'backgroundInput'}
       borderStyle={'textInput'}
-      type={'rowJustify90Screen'}>
+      type={'rowJustify90Screen'}
+      paddingVertical={8}>
       <CustomImage
         marginTop={0}
         source={data.productImageLink}
