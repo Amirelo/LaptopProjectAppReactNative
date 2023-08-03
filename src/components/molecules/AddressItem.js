@@ -12,7 +12,15 @@ const AddressItem = ({data, onEditPressed, onlyInfo}) => {
       type={'tab'}
       borderStyle={borderTheme.textInput}
       backgroundColor={'backgroundInput'}>
-      <CustomText>{data.address}</CustomText>
+      <CustomText>
+        {data.addressName +
+          ', P.' +
+          data.ward +
+          ', Q.' +
+          data.district +
+          ', ' +
+          data.city}
+      </CustomText>
 
       {onlyInfo ? (
         <CustomView backgroundColor={'none'}>
