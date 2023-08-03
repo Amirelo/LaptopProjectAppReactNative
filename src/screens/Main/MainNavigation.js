@@ -42,6 +42,11 @@ const TabNavigation = () => {
           headerTitle: () => {
             return null;
           },
+          headerStyle: {
+            backgroundColor: colors.borderColor,
+            elevation: 10,
+            shadowColor: colors.primaryColor,
+          },
           headerRight: () => <CustomHeader type={'home'} />,
           tabBarIcon: ({focused}) => {
             return (

@@ -35,9 +35,9 @@ const CustomHeader = ({
   return (
     <>
       {type == 'home' ? (
-        <CustomView type={'header'}>
+        <CustomView backgroundColor={'none'} type={'header'}>
           <CustomImage type={'headerImage'} source={images.header} />
-          <CustomView type={'row'}>
+          <CustomView backgroundColor={'none'} type={'row'}>
             <CustomButton
               type={'image'}
               source={images.ic_favorite}
@@ -53,7 +53,7 @@ const CustomHeader = ({
           </CustomView>
         </CustomView>
       ) : (
-        <View>
+        <CustomView marginTop={32} type={'none'}>
           <CustomInput
             source={images.ic_search}
             type={'tertiary'}
@@ -61,7 +61,7 @@ const CustomHeader = ({
             placeholder={'Search'}
             width={'90%'}
           />
-          <View style={styles.sortContainer}>
+          <CustomView marginTop={12} type={'rowJustify90Screen'}>
             <CustomButtonBare type={'rowJustify'} onPress={onFilterPressed}>
               <CustomView type={'row'}>
                 <CustomImage source={images.ic_filter} type={'searchBarIcon'} />
@@ -91,8 +91,8 @@ const CustomHeader = ({
                 />
               )}
             </CustomButtonBare>
-          </View>
-        </View>
+          </CustomView>
+        </CustomView>
       )}
     </>
   );

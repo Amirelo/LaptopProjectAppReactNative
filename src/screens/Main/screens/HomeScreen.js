@@ -10,6 +10,7 @@ import ProductVItem from '../../../components/molecules/ProductVItem';
 import * as images from '../../../assets/images';
 import CustomBanner from '../../../components/molecules/CustomBanner';
 import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
+import { borderTheme } from '../../../themes/borderTheme';
 
 const HomeScreen = ({navigation}) => {
   const [listProducts, setListProducts] = useState([]);
@@ -43,7 +44,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <CustomView>
       <CustomView scrollable={true}>
-        <CustomButtonBare marginTop={24}>
+        <CustomButtonBare borderStyle={borderTheme.textInput} marginTop={24}>
           <CustomBanner source={images.banner} header={'Super Flash Sale'} />
         </CustomButtonBare>
 
