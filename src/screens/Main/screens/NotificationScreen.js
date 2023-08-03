@@ -27,11 +27,6 @@ const NotificationScreen = () => {
 
   return (
     <CustomView>
-      <CustomButtonBare marginTop={32}>
-        <CustomText textColor={'primary'} textStyle={'normalBold'}>
-          Mark all as read
-        </CustomText>
-      </CustomButtonBare>
       <FlatList
         width={deviceWidth * 0.9}
         marginTop={12}

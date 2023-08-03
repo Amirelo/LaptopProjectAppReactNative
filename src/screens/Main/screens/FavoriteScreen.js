@@ -44,6 +44,7 @@ const FavoriteScreen = ({navigation}) => {
       <FlatList
         width={'100%'}
         height={'100%'}
+        style={{marginTop: 32}}
         scrollEnabled={false}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{

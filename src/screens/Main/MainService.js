@@ -228,3 +228,14 @@ export const getProductRatingsByID = async productID => {
   const res = await axiosInstance.post('/rating/get-product-ratings.php', data);
   return res;
 };
+
+export const insertUserRating = async (rating, comment, userID, productID) => {
+  const data = {
+    rating: rating,
+    comment: comment,
+    userID: userID,
+    productID: productID,
+  };
+  const res = await axiosInstance.post('/rating/insert-rating.php', data);
+  return res;
+};

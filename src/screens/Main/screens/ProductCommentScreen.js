@@ -4,8 +4,9 @@ import {CustomText, CustomView} from '../../../components/atoms';
 import {MainContext} from '../MainContext';
 import {deviceWidth} from '../../../utils/helper';
 import CommentItem from '../../../components/molecules/CommentItem';
+import CustomButton from '../../../components/molecules/CustomButton';
 
-const ProductCommentScreen = ({route}) => {
+const ProductCommentScreen = ({navigation, route}) => {
   const {onGetProductRatingsByID} = useContext(MainContext);
   const {productID} = route.params;
   const [comments, setComments] = useState({});
@@ -13,6 +14,10 @@ const ProductCommentScreen = ({route}) => {
   const initData = async () => {
     const res = await onGetProductRatingsByID(productID);
     setComments(res.data);
+  };
+
+  const onAddCommentPressed = () => {
+    navigation.navigate('New Comment', {productID: productID});
   };
 
   useEffect(() => {
@@ -33,6 +38,15 @@ const ProductCommentScreen = ({route}) => {
           return <CommentItem data={item} />;
         }}
       />
+
+      <CustomButton
+        onPress={onAddCommentPressed}
+        backgroundColor={'warn'}
+        type={'primary'}
+        marginTop={32}>
+        Add comment
+      </CustomButton>
+      <CustomText />
     </CustomView>
   );
 };

@@ -20,12 +20,12 @@ const NotificationItem = ({data}) => {
         alignSelf={'flex-end'}
         backgroundColor={'transparent'}
         type={'row'}>
-        <CustomButton type={'tertiary'}>
+        {/* <CustomButton type={'tertiary'}>
           Mark as read
         </CustomButton>
         <CustomButton customStyles={{marginHorizontal: 8}} type={'tertiary'}>
           Delete
-        </CustomButton>
+        </CustomButton> */}
       </CustomView>
     </CustomView>
   );

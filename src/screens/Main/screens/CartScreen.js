@@ -17,10 +17,14 @@ const CartScreen = ({navigation}) => {
   const [selectedItem, setSelectedItem] = useState();
 
   const onCheckOutPressed = () => {
-    navigation.navigate('Recipient Info', {
-      totalPrice: totalPrice,
-      cart: data,
-    });
+    if (data.length != 0) {
+      navigation.navigate('Recipient Info', {
+        totalPrice: totalPrice,
+        cart: data,
+      });
+    } else {
+      console.warn('No Item In Cart');
+    }
   };
 
   const onDeleteFromListPressed = async () => {

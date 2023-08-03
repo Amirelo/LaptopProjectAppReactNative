@@ -25,6 +25,7 @@ import CardScreen from './screens/CardScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
 import InsertCardScreen from './screens/InsertCardScreen';
 import ProductCommentScreen from './screens/ProductCommentScreen';
+import InsertCommentScreen from './screens/InsertCommentScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -134,6 +135,7 @@ const MainNavigation = () => {
       <Stack.Screen name="Card" component={CardScreen} />
       <Stack.Screen name="Product Detail" component={ProductDetailScreen} />
       <Stack.Screen name="Product Comments" component={ProductCommentScreen} />
+      <Stack.Screen name="New Comment" component={InsertCommentScreen} />
       <Stack.Screen
         name="Update User Information"
         component={UpdateInfoScreen}

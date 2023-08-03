@@ -207,16 +207,7 @@ export const updateUserRatingStatus = async (ratingID, userID, status) => {
   return res;
 };
 
-export const insertUserRating = async (rating, comment, userID, productID) => {
-  const data = {
-    rating: rating,
-    comment: comment,
-    userID: userID,
-    productID: productID,
-  };
-  const res = await axiosInstance.post('/rating/insert-rating.php', data);
-  return res;
-};
+
 
 export const getRatingImage = async () => {
   const res = await axiosInstance.get('/ratingImage/get-all-rating-images.php');
