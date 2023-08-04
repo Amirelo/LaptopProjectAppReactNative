@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react';
-import {StyleSheet} from 'react-native';
 import * as images from '../../../assets/images';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {AuthContext} from '../AuthContext';
@@ -8,6 +7,7 @@ import CustomText from '../../../components/atoms/CustomText';
 import {textTheme} from '../../../themes/textTheme';
 import CustomImage from '../../../components/atoms/CustomImage';
 import CustomView from '../../../components/atoms/CustomView';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const VerificationScreen = ({navigation, route}) => {
   const [email, setEmail] = useState();
@@ -16,6 +16,8 @@ const VerificationScreen = ({navigation, route}) => {
   const [error, setError] = useState('');
   const [timer, setTimer] = useState();
   const [isDisabled, setIsDisabled] = useState(false);
+
+  const language = useLanguage();
 
   const {onSendVerificationCode, onCheckEmail} = useContext(AuthContext);
   const {paramKey} = route.params;
@@ -66,10 +68,10 @@ const VerificationScreen = ({navigation, route}) => {
           navigation.navigate('Sign Up', {email: email});
           break;
         default:
-          setError('Invalid navigation');
+          setError(language.err_nav);
       }
     } else {
-      setError('Invalid verification code');
+      setError(language.err_verify_code);
     }
   };
 
@@ -83,7 +85,7 @@ const VerificationScreen = ({navigation, route}) => {
         <CustomView>
           <CustomInput
             source={images.ic_email}
-            placeholder={'Email'}
+            placeholder={language.placeholder_email}
             marginTop={103}
             keyboardType={'email-address'}
             value={email}
@@ -94,7 +96,7 @@ const VerificationScreen = ({navigation, route}) => {
             textColor={'textVariant'}
             textStyle={textTheme.text_normal}
             marginTop={8}>
-            We will send a verification code to your email
+            {language.verify_text_description}
           </CustomText>
           {error != null ? (
             <CustomText textColor={'err'} textStyle={'normal'}>
@@ -108,20 +110,22 @@ const VerificationScreen = ({navigation, route}) => {
             onPress={onSendPressed}
             disabled={isDisabled}
             marginTop={40}>
-            Send
+            {language.verify_button_send}
           </CustomButton>
           <CustomButton
             type={'tertiary'}
             onPress={onSignInHerePressed}
             disabled={isDisabled}>
             <CustomView type={'row'} marginTop={24}>
-              <CustomText marginTop={0}>Already have an account? </CustomText>
+              <CustomText marginTop={0}>
+                {language.verify_button_signin_1}{' '}
+              </CustomText>
               <CustomText
                 type={'highlight'}
                 textColor={'primary'}
                 textStyle={'normalBold'}
                 marginTop={0}>
-                Sign In here
+                {language.verify_button_signin_2}
               </CustomText>
             </CustomView>
           </CustomButton>
@@ -130,7 +134,7 @@ const VerificationScreen = ({navigation, route}) => {
         <CustomView>
           <CustomInput
             source={images.ic_verification}
-            placeholder={'Verification code'}
+            placeholder={language.placeholder_verify}
             keyboardType={'numeric'}
             marginTop={103}
             disabled={!isDisabled}
@@ -138,25 +142,25 @@ const VerificationScreen = ({navigation, route}) => {
           />
           <CustomImage source={images.ic_timer} type={'logo'} marginTop={32} />
           <CustomText textStyle={'subtitleBold'} marginTop={12}>
-            Please verify before the timer expire
+            {language.verify_text_code_description}
           </CustomText>
           <CustomText textStyle={'header'} marginTop={12}>
             {timer}
           </CustomText>
           <CustomButton
-            value={'Resend verification code'}
             type={'tertiary'}
             marginTop={52}
             alignSelf={'flex-end'}
             disabled={isDisabled}
-            onPress={onSendPressed}
-          />
+            onPress={onSendPressed}>
+            {language.verify_button_resend}
+          </CustomButton>
           <CustomButton
             onPress={onVerifyPress}
             type={'primary'}
             disabled={isDisabled}
             marginTop={16}>
-            Verify
+            {language.verify_button_verify}
           </CustomButton>
         </CustomView>
       )}
@@ -165,5 +169,3 @@ const VerificationScreen = ({navigation, route}) => {
 };
 
 export default VerificationScreen;
-
-const styles = StyleSheet.create({});
