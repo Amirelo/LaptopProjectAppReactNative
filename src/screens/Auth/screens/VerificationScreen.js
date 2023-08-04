@@ -118,7 +118,7 @@ const VerificationScreen = ({navigation, route}) => {
             disabled={isDisabled}>
             <CustomView type={'row'} marginTop={24}>
               <CustomText marginTop={0}>
-                {language.verify_button_signin_1}
+                {language.verify_button_signin_1} 
               </CustomText>
               <CustomText
                 type={'highlight'}

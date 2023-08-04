@@ -2,6 +2,7 @@ export const app_logo = require('./logo.png');
 export const app_logo_splash = require('./logo_splash.png');
 
 export const ic_person = require('./person.png');
+export const ic_contact = require('./contacts.png');
 export const ic_password = require('./password.png');
 export const ic_visibility = require('./visibility.png');
 export const ic_visibility_off = require('./visibility_off.png');

@@ -4,6 +4,7 @@ import {AuthContext} from '../AuthContext';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomInput from '../../../components/molecules/CustomInput';
 import CustomButton from '../../../components/molecules/CustomButton';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const SignUpScreen = ({navigation, route}) => {
   const {email, userData} = route.params;
@@ -16,13 +17,14 @@ const SignUpScreen = ({navigation, route}) => {
   const [birthday, setBirthday] = useState();
   const [error, setError] = useState(false);
 
-
   const {onSignUp, onUpdateUserInfo} = useContext(AuthContext);
+
+  const language = useLanguage();
 
   const onConfirmPressed = async () => {
     checkInput();
     console.warn(error);
-    if (!error) {
+    if (error.length == 0) {
       console.warn('Sign up');
       let result = await onSignUp(
         username,
@@ -55,8 +57,10 @@ const SignUpScreen = ({navigation, route}) => {
       password != confirmPassword
     ) {
       setError(true);
+      return true;
     } else {
       setError(false);
+      return false;
     }
   };
 
@@ -64,49 +68,47 @@ const SignUpScreen = ({navigation, route}) => {
     <CustomView>
       <CustomInput
         source={images.ic_person}
-        placeholder={'Username'}
+        placeholder={language.placeholder_username}
         onChangeText={setUsername}
         marginTop={103}
       />
       <CustomInput
-        source={images.ic_person}
-        placeholder={'Fullname'}
+        source={images.ic_contact}
+        placeholder={language.placeholder_fullname}
         value={fullName}
         onChangeText={setFullName}
         marginTop={8}
       />
       <CustomInput
         source={images.ic_password}
-        placeholder={'Password'}
+        placeholder={language.placeholder_password}
         marginTop={8}
-        type={'password'}
         onChangeText={setPassword}
         isSecure={true}
       />
       <CustomInput
         source={images.ic_password}
-        placeholder={'Confirm Password'}
+        placeholder={language.placeholder_password_confirm}
         marginTop={8}
-        type={'password'}
         onChangeText={setConfirmPassword}
         isSecure={true}
       />
       <CustomInput
         source={images.ic_phone}
-        placeholder={'Phone number'}
+        placeholder={language.placeholder_phoneNumber}
         keyboardType={'numeric'}
         onChangeText={setPhoneNumber}
         marginTop={8}
       />
       <CustomInput
         source={images.ic_calendar}
-        placeholder={'Birthday'}
+        placeholder={language.placeholder_birthday}
         onChangeText={setBirthday}
         marginTop={8}
       />
 
       <CustomButton type={'primary'} onPress={onConfirmPressed} marginTop={48}>
-        Confirm
+        {language.signUp_button_confirm}
       </CustomButton>
     </CustomView>
   );

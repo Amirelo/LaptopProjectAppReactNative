@@ -20,12 +20,17 @@ const languageTheme = {
     verify_button_verify: 'Verify',
 
     changePass_button_confirm: 'Confirm',
+
+    signUp_button_confirm: 'Confirm',
     
 
     placeholder_username: 'Username',
+    placeholder_fullname: 'Fullname',
     placeholder_password: 'Password',
     placeholder_password_confirm: 'Confirm Password',
     placeholder_email: 'Email',
+    placeholder_phoneNumber: 'Phone Number',
+    placeholder_birthday: 'Birthday',
     placeholder_verify: 'Verification code',
 
     err_empty: 'Fields cannot be empty',
