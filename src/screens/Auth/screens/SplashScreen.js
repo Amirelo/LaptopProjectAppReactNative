@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import * as images from '../../../assets/images';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomImage from '../../../components/atoms/CustomImage';
 import CustomText from '../../../components/atoms/CustomText';
 import {deviceHeight} from '../../../utils/helper';
-import { useLanguage } from '../../../themes/languageTheme';
+import {AuthContext} from '../AuthContext';
 
 const SplashScreen = ({navigation}) => {
-  const language = useLanguage();
+  const {language} = useContext(AuthContext);
   setTimeout(() => {
     navigation.reset({
       index: 0,

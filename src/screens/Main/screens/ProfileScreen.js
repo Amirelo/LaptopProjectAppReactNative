@@ -3,14 +3,13 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
 import CustomImage from '../../../components/atoms/CustomImage';
 import AccountTab from '../../../components/molecules/AccountTab';
-import { useLanguage } from '../../../themes/languageTheme';
+import {AuthContext} from '../../Auth/AuthContext';
 
 const ProfileScreen = ({route, navigation}) => {
   const {userInfo} = route.params;
   const [user, setUser] = useState(userInfo);
+  const {language} = React.useContext(AuthContext);
   console.log(userInfo);
-
-  const language = useLanguage();
 
   const onGoBack = (data, type) => {
     setUser({});

@@ -11,7 +11,7 @@ import * as images from '../../../assets/images';
 import CustomBanner from '../../../components/molecules/CustomBanner';
 import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
 import {borderTheme} from '../../../themes/borderTheme';
-import {useLanguage} from '../../../themes/languageTheme';
+import {AuthContext} from '../../Auth/AuthContext';
 
 const HomeScreen = ({navigation}) => {
   const [listProducts, setListProducts] = useState([]);
@@ -19,8 +19,7 @@ const HomeScreen = ({navigation}) => {
   const [listBestBuy, setListBestBuy] = useState([]);
   const [maxItem, setMaxItem] = useState(6);
   const {onGetAllProduct} = useContext(MainContext);
-
-  const language = useLanguage();
+  const {language} = useContext(AuthContext);
 
   const initData = async () => {
     const prosRes = await onGetAllProduct();

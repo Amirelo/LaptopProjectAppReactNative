@@ -7,15 +7,19 @@ import {priceFormat} from '../../utils/helper';
 import CustomButton from './CustomButton';
 import {AuthContext} from '../../screens/Auth/AuthContext';
 import {borderTheme} from '../../themes/borderTheme';
-import {orderStatusArr} from '../../utils/array';
-import { useLanguage } from '../../themes/languageTheme';
 
 const OrderItem = ({item, address}) => {
   const [totalItems, setTotalItems] = useState(0);
   const navigation = useNavigation();
-  const {onGetUserOrderDetail} = useContext(AuthContext);
+  const {onGetUserOrderDetail, language} = useContext(AuthContext);
 
-  const language = useLanguage();
+  const orderStatusArr = [
+    {status: language.arr_status_order_0, color: 'err'},
+    {status: language.arr_status_order_1, color: 'process'},
+    {status: language.arr_status_order_2, color: 'text'},
+    {status: language.arr_status_order_3, color: 'warn'},
+    {status: language.arr_status_order_4, color: 'success'},
+  ];
 
   const itemDate = item.arrivedDate
     ? item.arrivedDate

@@ -8,8 +8,7 @@ import CustomText from '../atoms/CustomText';
 import CustomView from '../atoms/CustomView';
 import {useNavigation} from '@react-navigation/native';
 import CustomButtonBare from '../atoms/CustomButtonBare';
-import { useLanguage } from '../../themes/languageTheme';
-import { exploreSortArr } from '../../utils/array';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const CustomHeader = ({
   type,
@@ -21,8 +20,15 @@ const CustomHeader = ({
 }) => {
   const [viewListPressed, setViewListPressed] = useState(true);
   const navigation = useNavigation();
+  const {language} = React.useContext(AuthContext);
 
-  const language = useLanguage();
+  const exploreSortArr = [
+    language.arr_explore_sort_0,
+    language.arr_explore_sort_1,
+    language.arr_explore_sort_2,
+    language.arr_explore_sort_3,
+    language.arr_explore_sort_4,
+  ];
 
   const onFavoritePress = () => {
     navigation.navigate('Favorite');
@@ -103,29 +109,3 @@ const CustomHeader = ({
 };
 
 export default CustomHeader;
-
-const styles = StyleSheet.create({
-  homeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '90%',
-    height: 100,
-    justifyContent: 'space-between',
-  },
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '90%',
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  sortContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: 14,
-    marginBottom: 8,
-  },
-});

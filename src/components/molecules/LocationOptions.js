@@ -5,11 +5,11 @@ import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import {deviceHeight} from '../../utils/helper';
 import {useNavigation} from '@react-navigation/native';
-import {useLanguage} from '../../themes/languageTheme';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const LocationOptions = ({data, onLocationSelected, onBackgroundPressed}) => {
   const navigation = useNavigation();
-  const language = useLanguage();
+  const {language} = React.useContext(AuthContext);
   const animatedValue = useRef(new Animated.Value(255)).current;
   const slideIn = () => {
     Animated.timing(animatedValue, {

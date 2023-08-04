@@ -5,27 +5,20 @@ import {AuthContext} from '../../Auth/AuthContext';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
-import {useLanguage} from '../../../themes/languageTheme';
 
 const UpdateInfoScreen = ({route, navigation}) => {
   const {email, type} = route.params;
   const [data, setData] = useState();
   const [confirmData, setConfirmData] = useState();
-  const language = useLanguage();
-  const {localeIdentifier} = NativeModules.I18nManager;
-  let locale = localeIdentifier.slice(0, 2);
+  const {language} = useContext(AuthContext);
 
   const languageText =
     type == 'PHONENUMBER' ? 'phoneNumber' : type.toLowerCase();
 
   const buttonText =
-    locale == 'en' || locale == 'vn' || locale == 'fr'
-      ? language.updateInfo_text_change +
-        ' ' +
-        language[`placeholder_${languageText}`]
-      : language[`placeholder_${languageText}`] +
-        ' ' +
-        language.updateInfo_text_change;
+    language.updateInfo_text_change +
+    ' ' +
+    language[`placeholder_${languageText}`];
 
   let inputType = 'default';
   switch (type) {

@@ -5,10 +5,10 @@ import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import CustomView from '../atoms/CustomView';
 import {deviceHeight} from '../../utils/helper';
-import {useLanguage} from '../../themes/languageTheme';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const SortOption = ({setSortOption, setSortPressed, onBackgroundPressed}) => {
-  const language = useLanguage();
+  const {language} = React.useContext(AuthContext);
   const changeOption = type => {
     setSortOption(type);
     setSortPressed(false);

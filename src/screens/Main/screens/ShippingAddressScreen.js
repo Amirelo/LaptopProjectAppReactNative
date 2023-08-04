@@ -4,14 +4,13 @@ import AddressItem from '../../../components/molecules/AddressItem';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {useNavigation} from '@react-navigation/native';
-import {useLanguage} from '../../../themes/languageTheme';
+import {AuthContext} from '../../Auth/AuthContext';
 
 const ShippingAddressScreen = ({route}) => {
   const navigation = useNavigation();
   let {userAddresses, userInfo} = route.params;
   const [addresses, setAddresses] = useState(userAddresses);
-
-  const language = useLanguage();
+  const {language} = React.useContext(AuthContext);
 
   const onAddNewAddressPressed = () => {
     navigation.navigate('New Address', {

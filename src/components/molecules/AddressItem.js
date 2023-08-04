@@ -3,11 +3,11 @@ import CustomView from '../atoms/CustomView';
 import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import {borderTheme} from '../../themes/borderTheme';
-import {useLanguage} from '../../themes/languageTheme';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const AddressItem = ({data, onEditPressed, onlyInfo}) => {
   console.log(data);
-  const language = useLanguage();
+  const {language} = React.useContext(AuthContext);
 
   return (
     <CustomView

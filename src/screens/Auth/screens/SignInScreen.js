@@ -9,7 +9,7 @@ import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {updateUserInfo} from '../AuthService';
-import {useLanguage} from '../../../themes/languageTheme';
+import {checkLanguage, useLanguage} from '../../../themes/languageTheme';
 
 const SignInScreen = ({navigation, route}) => {
   const [username, setUsername] = useState('');
@@ -18,8 +18,6 @@ const SignInScreen = ({navigation, route}) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [message, setMessage] = useState('');
 
-  const language = useLanguage();
-
   const {
     onSignIn,
     onSignUp,
@@ -27,6 +25,7 @@ const SignInScreen = ({navigation, route}) => {
     onGoogleSignIn,
     onCheckEmail,
     onSocialSignIn,
+    language,
   } = useContext(AuthContext);
 
   const onToForgotPasswordPress = () => {
@@ -138,6 +137,7 @@ const SignInScreen = ({navigation, route}) => {
         source={images.ic_password}
         disabled={!isDisabled}
         marginTop={12}
+        type={'password'}
       />
       {error ? (
         <CustomText marginTop={4} textColor={'err'} textStyle={'small'}>

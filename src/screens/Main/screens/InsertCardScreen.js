@@ -5,7 +5,6 @@ import CustomButton from '../../../components/molecules/CustomButton';
 import {AuthContext} from '../../Auth/AuthContext';
 import OptionsButton from '../../../components/molecules/OptionsButton';
 import {CustomText} from '../../../components/atoms';
-import {addressStatusArr} from '../../../utils/array';
 import {useNavigation} from '@react-navigation/native';
 
 const InsertCardScreen = ({route}) => {
@@ -15,7 +14,8 @@ const InsertCardScreen = ({route}) => {
     console.log('found');
     data = route.params.data;
   }
-  const {insertUserAddress, updateUserAddress} = useContext(AuthContext);
+  const {insertUserAddress, updateUserAddress, language} =
+    useContext(AuthContext);
   const [addressName, setAddressName] = useState(data ? data.addressName : '');
   const [ward, setWard] = useState(data ? data.ward : '');
   const [district, setDistrict] = useState(data ? data.district : '');
@@ -24,6 +24,12 @@ const InsertCardScreen = ({route}) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [showStatusOption, setShowStatusOption] = useState(false);
   const navigation = useNavigation();
+
+  const addressStatusArr = [
+    {status: language.arr_status_address_0, color: 'err'},
+    {status: language.arr_status_address_1, color: 'primary'},
+    {status: language.arr_status_address_2, color: 'text'},
+  ];
 
   const insertAddress = async () => {
     let res = null;

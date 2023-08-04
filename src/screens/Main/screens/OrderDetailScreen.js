@@ -5,17 +5,22 @@ import {MainContext} from '../MainContext';
 import ProductVItem from '../../../components/molecules/ProductVItem';
 import CustomText from '../../../components/atoms/CustomText';
 import CustomView from '../../../components/atoms/CustomView';
-import {orderStatusArr} from '../../../utils/array';
 import {addressFormat, deviceWidth, priceFormat} from '../../../utils/helper';
-import {useLanguage} from '../../../themes/languageTheme';
 
 const OrderDetailScreen = ({route}) => {
   const {item, address} = route.params;
   const [productList, setProductList] = useState([]);
-  const {onGetUserOrderDetail} = useContext(AuthContext);
+  const {onGetUserOrderDetail, language} = useContext(AuthContext);
   const {onGetProductByID} = useContext(MainContext);
 
-  const language = useLanguage();
+  const orderStatusArr = [
+    {status: language.arr_status_order_0, color: 'err'},
+    {status: language.arr_status_order_1, color: 'process'},
+    {status: language.arr_status_order_2, color: 'text'},
+    {status: language.arr_status_order_3, color: 'warn'},
+    {status: language.arr_status_order_4, color: 'success'},
+  ];
+
   console.log('Detail screen', address);
 
   const getData = async () => {

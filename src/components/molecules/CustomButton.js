@@ -76,7 +76,10 @@ const CustomButton = ({
         )}
         {type != 'image' ? (
           disabled == true && type == 'primary' ? (
-            <ActivityIndicator size={'large'} />
+            <ActivityIndicator
+              size={'large'}
+              color={colors.backgroundInputColor}
+            />
           ) : (
             <CustomText
               marginTop={0}

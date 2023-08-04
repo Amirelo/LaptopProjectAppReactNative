@@ -7,7 +7,6 @@ import CustomText from '../../../components/atoms/CustomText';
 import {textTheme} from '../../../themes/textTheme';
 import CustomImage from '../../../components/atoms/CustomImage';
 import CustomView from '../../../components/atoms/CustomView';
-import {useLanguage} from '../../../themes/languageTheme';
 
 const VerificationScreen = ({navigation, route}) => {
   const [email, setEmail] = useState();
@@ -17,9 +16,8 @@ const VerificationScreen = ({navigation, route}) => {
   const [timer, setTimer] = useState();
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const language = useLanguage();
-
-  const {onSendVerificationCode, onCheckEmail} = useContext(AuthContext);
+  const {onSendVerificationCode, onCheckEmail, language} =
+    useContext(AuthContext);
   const {paramKey} = route.params;
 
   const onSendPressed = async () => {
@@ -118,7 +116,7 @@ const VerificationScreen = ({navigation, route}) => {
             disabled={isDisabled}>
             <CustomView type={'row'} marginTop={24}>
               <CustomText marginTop={0}>
-                {language.verify_button_signin_1} 
+                {language.verify_button_signin_1}
               </CustomText>
               <CustomText
                 type={'highlight'}
@@ -152,7 +150,7 @@ const VerificationScreen = ({navigation, route}) => {
             marginTop={52}
             alignSelf={'flex-end'}
             disabled={isDisabled}
-            customStyles ={{marginEnd: '5%'}}
+            customStyles={{marginEnd: '5%'}}
             onPress={onSendPressed}>
             {language.verify_button_resend}
           </CustomButton>

@@ -15,14 +15,12 @@ const CustomInput = ({
   onChangeText,
   keyboardType,
   value,
-  customStyles,
   disabled,
+  type,
 }) => {
   const colors = useThemeColors();
   const [showPassImg, setShowPassImg] = useState(images.ic_visibility);
-  const [secure, setSecure] = useState(
-    placeholder.toLowerCase().includes('password') ? true : false,
-  );
+  const [secure, setSecure] = useState(type == 'password' ? true : false);
   const [isSelected, setIsSelected] = useState(false);
   let borderColor = isSelected ? 'primary' : 'border';
   let borderStyle = borderTheme.textInput;
@@ -69,7 +67,7 @@ const CustomInput = ({
         keyboardType={keyboardType ? keyboardType : 'default'}
         secureTextEntry={secure}
       />
-      {placeholder.toLowerCase().includes('password') ? (
+      {type == 'password' ? (
         <CustomButton
           source={showPassImg}
           type={'image'}

@@ -10,15 +10,13 @@ import CustomImage from '../../../components/atoms/CustomImage';
 import CustomText from '../../../components/atoms/CustomText';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {priceFormat} from '../../../utils/helper';
-import { useLanguage } from '../../../themes/languageTheme';
 
 const ProductDetailScreen = ({route}) => {
   const navigation = useNavigation();
   const {item, itemProcessor, itemMemory, itemScreen, itemStorage} =
     route.params;
-  const {onGetUserByEmail} = useContext(AuthContext);
+  const {onGetUserByEmail, language} = useContext(AuthContext);
 
-  const language = useLanguage();
 
   const {
     onInsertCart,

@@ -1,4 +1,4 @@
-import React, {useState, createContext} from 'react';
+import React, {useState, createContext, useEffect} from 'react';
 import {
   checkEmail,
   getUserByUsername,
@@ -20,11 +20,17 @@ import {
   updateAddressInfo,
 } from './AuthService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {checkLanguage, useLanguage} from '../../themes/languageTheme';
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [language, setLanguage] = useState(checkLanguage('en'));
+
+  const changeLanguage = lang => {
+    setLanguage(checkLanguage(lang));
+  };
 
   const checkSaveUser = async () => {
     try {
@@ -287,6 +293,17 @@ export const AuthContextProvider = ({children}) => {
     }
   };
 
+  const getCurLanguage = async () => {
+    await AsyncStorage.setItem('language','ja');
+    const langKey = await AsyncStorage.getItem('language');
+    console.log('key', langKey);
+    setLanguage(checkLanguage(langKey));
+  };
+
+  useEffect(() => {
+    getCurLanguage();
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -313,6 +330,8 @@ export const AuthContextProvider = ({children}) => {
         onGetUserByEmail,
         onGetAddressesByEmail,
         onSocialSignIn,
+        language,
+        changeLanguage,
       }}>
       {children}
     </AuthContext.Provider>

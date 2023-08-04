@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NativeModules} from 'react-native';
 
 const languageTheme = {
@@ -989,6 +990,13 @@ export const useLanguage = () => {
   if (languageTheme[locale] == null) {
     return languageTheme['en'];
   }
-  let language = languageTheme['ja'];
+  let language = languageTheme[locale];
   return language;
+};
+
+export const checkLanguage = lang => {
+  if (languageTheme[lang] == undefined) {
+    return () => useLanguage();
+  }
+  return languageTheme[lang];
 };

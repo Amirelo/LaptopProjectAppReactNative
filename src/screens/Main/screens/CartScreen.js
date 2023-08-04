@@ -8,7 +8,7 @@ import CustomText from '../../../components/atoms/CustomText';
 import {priceFormat} from '../../../utils/helper';
 import CustomView from '../../../components/atoms/CustomView';
 import CartOption from '../../../components/molecules/CartOption';
-import { useLanguage } from '../../../themes/languageTheme';
+import {AuthContext} from '../../Auth/AuthContext';
 
 const CartScreen = ({navigation}) => {
   const {onGetCartByEmail, onDeleteCart} = useContext(MainContext);
@@ -17,7 +17,7 @@ const CartScreen = ({navigation}) => {
   const [onItemOptionPressed, setOnItemOptionPressed] = useState(false);
   const [selectedItem, setSelectedItem] = useState();
 
-  const language = useLanguage();
+  const {language} = useContext(AuthContext);
 
   const onCheckOutPressed = () => {
     if (data.length != 0) {

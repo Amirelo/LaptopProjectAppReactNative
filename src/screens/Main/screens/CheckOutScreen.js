@@ -5,7 +5,7 @@ import CustomText from '../../../components/atoms/CustomText';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {priceFormat} from '../../../utils/helper';
 import AddressItem from '../../../components/molecules/AddressItem';
-import {useLanguage} from '../../../themes/languageTheme';
+import {AuthContext} from '../../Auth/AuthContext';
 
 const CheckOutScreen = ({navigation, route}) => {
   const {location, fullName, phoneNumber, totalPrice, note, cart, userID} =
@@ -17,7 +17,7 @@ const CheckOutScreen = ({navigation, route}) => {
   const {onInsertUserOrder, onInsertOrderDetail, onDemoPaymentVNPay} =
     useContext(MainContext);
 
-  const language = useLanguage();
+  const {language} = useContext(AuthContext);
 
   const onSubmitOrderPressed = async () => {
     const insertOrderResult = await onInsertUserOrder(

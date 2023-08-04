@@ -8,10 +8,11 @@ import ProductHItem from '../../../components/molecules/ProductHItem';
 import CustomText from '../../../components/atoms/CustomText';
 import SortOption from '../../../components/molecules/SortOption';
 import {deviceHeight} from '../../../utils/helper';
-import { useLanguage } from '../../../themes/languageTheme';
+import { AuthContext } from '../../Auth/AuthContext';
 
 const ExploreScreen = ({navigation}) => {
   const {onGetAllProduct} = useContext(MainContext);
+  const {language} = useContext(AuthContext);
 
   const [listProducts, setListProducts] = useState([]);
   const [filterProduct, setFilterProduct] = useState([]);
@@ -24,8 +25,6 @@ const ExploreScreen = ({navigation}) => {
   const [sortOption, setSortOption] = useState(0);
   const [sortPressed, setSortPressed] = useState(false);
   const [sortType, setSortType] = useState(0);
-
-  const language = useLanguage();
 
   const searchList = () => {
     setFilterProduct(

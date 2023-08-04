@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../../Auth/AuthContext';
 import CustomView from '../../../components/atoms/CustomView';
 import AccountTab from '../../../components/molecules/AccountTab';
-import {useLanguage} from '../../../themes/languageTheme';
 
 const AccountScreen = ({route, navigation}) => {
   const {
@@ -13,6 +12,7 @@ const AccountScreen = ({route, navigation}) => {
     onGetUserCards,
     onGetUserByEmail,
     onGetAddressesByEmail,
+    language,
   } = useContext(AuthContext);
   const [userData, setUserData] = useState({});
   const [userAddresses, setUserAddresses] = useState({});
@@ -20,8 +20,6 @@ const AccountScreen = ({route, navigation}) => {
   const [orderInProgress, setOrderInProgress] = useState(0);
   const [userPromoCodes, setUserPromoCodes] = useState({});
   const [userCards, setUserCards] = useState({});
-
-  const language = useLanguage();
 
   const getUserInfo = async () => {
     let email = await AsyncStorage.getItem('email');

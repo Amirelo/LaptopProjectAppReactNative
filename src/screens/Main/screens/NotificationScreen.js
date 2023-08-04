@@ -1,8 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import NotificationItem from '../../../components/molecules/NotificationItem';
 import CustomView from '../../../components/atoms/CustomView';
-import CustomText from '../../../components/atoms/CustomText';
-import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
 import {FlatList} from 'react-native';
 import {deviceWidth} from '../../../utils/helper';
 import {AuthContext} from '../../Auth/AuthContext';

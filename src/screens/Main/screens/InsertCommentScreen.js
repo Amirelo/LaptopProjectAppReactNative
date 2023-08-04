@@ -6,7 +6,6 @@ import {CustomView} from '../../../components/atoms';
 import {MainContext} from '../MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../../Auth/AuthContext';
-import { useLanguage } from '../../../themes/languageTheme';
 
 const InsertCommentScreen = ({route, navigation}) => {
   const [rating, setRating] = useState();
@@ -14,9 +13,8 @@ const InsertCommentScreen = ({route, navigation}) => {
   const {productID} = route.params;
 
   const {onInsertUserRating} = useContext(MainContext);
-  const {onGetUserByEmail} = useContext(AuthContext);
+  const {onGetUserByEmail, language} = useContext(AuthContext);
 
-  const language = useLanguage();
 
   const onAddCommentPressed = async () => {
     if (checkError() == false) {

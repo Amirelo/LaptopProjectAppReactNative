@@ -4,7 +4,6 @@ import {AuthContext} from '../AuthContext';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomInput from '../../../components/molecules/CustomInput';
 import CustomButton from '../../../components/molecules/CustomButton';
-import {useLanguage} from '../../../themes/languageTheme';
 
 const SignUpScreen = ({navigation, route}) => {
   const {email, userData} = route.params;
@@ -17,14 +16,12 @@ const SignUpScreen = ({navigation, route}) => {
   const [birthday, setBirthday] = useState();
   const [error, setError] = useState(false);
 
-  const {onSignUp, onUpdateUserInfo} = useContext(AuthContext);
-
-  const language = useLanguage();
+  const {onSignUp, onUpdateUserInfo, language} = useContext(AuthContext);
 
   const onConfirmPressed = async () => {
     checkInput();
     console.warn(error);
-    if (error.length == 0) {
+    if (!error) {
       console.warn('Sign up');
       let result = await onSignUp(
         username,
@@ -84,14 +81,14 @@ const SignUpScreen = ({navigation, route}) => {
         placeholder={language.placeholder_password}
         marginTop={8}
         onChangeText={setPassword}
-        isSecure={true}
+        type={'password'}
       />
       <CustomInput
         source={images.ic_password}
         placeholder={language.placeholder_password_confirm}
         marginTop={8}
         onChangeText={setConfirmPassword}
-        isSecure={true}
+        type={'password'}
       />
       <CustomInput
         source={images.ic_phone}

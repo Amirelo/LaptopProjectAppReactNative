@@ -6,7 +6,6 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import LocationOptions from '../../../components/molecules/LocationOptions';
-import {useLanguage} from '../../../themes/languageTheme';
 
 const CartRecipientScreen = ({navigation, route}) => {
   const [location, setLocation] = useState();
@@ -17,10 +16,9 @@ const CartRecipientScreen = ({navigation, route}) => {
   const [note, setNote] = useState('');
   const [userID, setUserID] = useState();
 
-  const {onGetAddressesByEmail, onGetUserByEmail} = useContext(AuthContext);
+  const {onGetAddressesByEmail, onGetUserByEmail, language} =
+    useContext(AuthContext);
   const {totalPrice, cart} = route.params;
-
-  const language = useLanguage();
 
   const initData = async () => {
     let email = await AsyncStorage.getItem('email');
