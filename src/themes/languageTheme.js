@@ -16,10 +16,15 @@ const languageTheme = {
     verify_button_send: 'Send',
     verify_button_signin_1: 'Already have an account?',
     verify_button_signin_2: 'Sign In here',
+    verify_button_resend: 'Resend verification code',
+    verify_button_verify: 'Verify',
+
+    changePass_button_confirm: 'Confirm',
     
 
     placeholder_username: 'Username',
     placeholder_password: 'Password',
+    placeholder_password_confirm: 'Confirm Password',
     placeholder_email: 'Email',
     placeholder_verify: 'Verification code',
 

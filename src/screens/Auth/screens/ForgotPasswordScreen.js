@@ -5,6 +5,7 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomInput from '../../../components/molecules/CustomInput';
 import CustomText from '../../../components/atoms/CustomText';
 import CustomButton from '../../../components/molecules/CustomButton';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const ForgotPasswordScreen = ({navigation, route}) => {
   const [pass, setPass] = useState();
@@ -14,6 +15,7 @@ const ForgotPasswordScreen = ({navigation, route}) => {
   const {email, type} = route.params;
 
   const {onUpdateUserInfo} = useContext(AuthContext);
+  const language = useLanguage();
 
   const onConfirmPress = async () => {
     setIsDisabled(true);
@@ -37,14 +39,14 @@ const ForgotPasswordScreen = ({navigation, route}) => {
     <CustomView>
       <CustomInput
         source={images.ic_password}
-        placeholder={'Password'}
+        placeholder={language.placeholder_password}
         marginTop={103}
         onChangeText={setPass}
         disabled={!isDisabled}
       />
       <CustomInput
         source={images.ic_password}
-        placeholder={'Confirm Password*'}
+        placeholder={language.placeholder_password_confirm}
         onChangeText={setConfirmPass}
         disabled={!isDisabled}
         marginTop={8}
@@ -61,7 +63,7 @@ const ForgotPasswordScreen = ({navigation, route}) => {
         type={'primary'}
         disabled={isDisabled}
         marginTop={24}>
-        Confirm
+        {language.changePass_button_confirm}
       </CustomButton>
     </CustomView>
   );
