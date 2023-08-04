@@ -8,6 +8,7 @@ import CustomText from '../atoms/CustomText';
 import CustomView from '../atoms/CustomView';
 import {useNavigation} from '@react-navigation/native';
 import CustomButtonBare from '../atoms/CustomButtonBare';
+import { useLanguage } from '../../themes/languageTheme';
 
 const CustomHeader = ({
   type,
@@ -19,6 +20,9 @@ const CustomHeader = ({
 }) => {
   const [viewListPressed, setViewListPressed] = useState(true);
   const navigation = useNavigation();
+
+  const language = useLanguage();
+
   const onFavoritePress = () => {
     navigation.navigate('Favorite');
   };
@@ -65,7 +69,7 @@ const CustomHeader = ({
               <CustomView type={'row'}>
                 <CustomImage source={images.ic_filter} type={'searchBarIcon'} />
                 <CustomText textStyle={'normal'} marginTop={0}>
-                  Filters
+                  {language.explore_text_filter}
                 </CustomText>
               </CustomView>
             </CustomButtonBare>

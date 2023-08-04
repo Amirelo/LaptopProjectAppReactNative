@@ -11,6 +11,7 @@ import * as images from '../../../assets/images';
 import CustomBanner from '../../../components/molecules/CustomBanner';
 import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
 import {borderTheme} from '../../../themes/borderTheme';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const HomeScreen = ({navigation}) => {
   const [listProducts, setListProducts] = useState([]);
@@ -18,6 +19,8 @@ const HomeScreen = ({navigation}) => {
   const [listBestBuy, setListBestBuy] = useState([]);
   const [maxItem, setMaxItem] = useState(6);
   const {onGetAllProduct} = useContext(MainContext);
+
+  const language = useLanguage();
 
   const initData = async () => {
     const prosRes = await onGetAllProduct();
@@ -45,12 +48,19 @@ const HomeScreen = ({navigation}) => {
     <CustomView>
       <CustomView scrollable={true}>
         <CustomButtonBare borderStyle={borderTheme.borderOnly} marginTop={24}>
-          <CustomBanner source={images.banner} header={'Super Flash Sale'} />
+          <CustomBanner
+            source={images.banner}
+            header={language.home_text_banner}
+          />
         </CustomButtonBare>
 
         <CustomView type={'rowJustify90'} marginTop={48}>
-          <CustomText textStyle={'normalBold'}>Popular</CustomText>
-          <CustomButton type={'tertiary'}>See more</CustomButton>
+          <CustomText textStyle={'normalBold'}>
+            {language.home_text_popular}
+          </CustomText>
+          <CustomButton type={'tertiary'}>
+            {language.home_text_see_more}
+          </CustomButton>
         </CustomView>
         <FlatList
           width={deviceWidth * 0.9}
@@ -71,8 +81,12 @@ const HomeScreen = ({navigation}) => {
         />
 
         <CustomView type={'rowJustify90'} marginTop={16}>
-          <CustomText textStyle={'normalBold'}>Best buy</CustomText>
-          <CustomButton type={'tertiary'}>See more</CustomButton>
+          <CustomText textStyle={'normalBold'}>
+            {language.home_text_best_buy}
+          </CustomText>
+          <CustomButton type={'tertiary'}>
+            {language.home_text_see_more}
+          </CustomButton>
         </CustomView>
 
         <FlatList
@@ -94,8 +108,12 @@ const HomeScreen = ({navigation}) => {
         />
 
         <CustomView type={'rowJustify90'} marginTop={16}>
-          <CustomText textStyle={'normalBold'}>You might like</CustomText>
-          <CustomButton type={'tertiary'}>See more</CustomButton>
+          <CustomText textStyle={'normalBold'}>
+            {language.home_text_likeable}
+          </CustomText>
+          <CustomButton type={'tertiary'}>
+            {language.home_text_see_more}
+          </CustomButton>
         </CustomView>
 
         <FlatList

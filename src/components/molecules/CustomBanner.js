@@ -9,14 +9,7 @@ const bannerData = {
   minute: 30,
 };
 
-const CustomBanner = ({source, data, marginTop}) => {
-  const timeLengthCheck = time => {
-    if (time.toString().length < 2) {
-      return '0' + time;
-    } else {
-      return time;
-    }
-  };
+const CustomBanner = ({source, header}) => {
   return (
     <CustomView type={'banner'}>
       <Image style={styles.banner_image} source={source} />
@@ -25,7 +18,7 @@ const CustomBanner = ({source, data, marginTop}) => {
         marginTop={32}
         textStyle={'titleBold'}
         textColor={'textConstrast'}>
-        Welcome to Computer Store
+        {header}
       </CustomText>
       {/* <View style={styles.timerContainer}>
         <CustomText hasBox={true} textStyle={'normalBold'}>

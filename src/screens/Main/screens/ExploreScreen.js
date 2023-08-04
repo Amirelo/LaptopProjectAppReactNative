@@ -8,6 +8,7 @@ import ProductHItem from '../../../components/molecules/ProductHItem';
 import CustomText from '../../../components/atoms/CustomText';
 import SortOption from '../../../components/molecules/SortOption';
 import {deviceHeight} from '../../../utils/helper';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const ExploreScreen = ({navigation}) => {
   const {onGetAllProduct} = useContext(MainContext);
@@ -23,6 +24,8 @@ const ExploreScreen = ({navigation}) => {
   const [sortOption, setSortOption] = useState(0);
   const [sortPressed, setSortPressed] = useState(false);
   const [sortType, setSortType] = useState('None');
+
+  const language = useLanguage();
 
   const searchList = () => {
     setFilterProduct(
@@ -137,7 +140,7 @@ const ExploreScreen = ({navigation}) => {
             type={'header'}
             customStyles={{alignSelf: 'flex-start', marginStart: '5%'}}
             marginTop={30}>
-            {filterProduct.length + ' result(s)'}
+            {filterProduct.length + ' ' + language.explore_text_result}
           </CustomText>
         ) : (
           <></>

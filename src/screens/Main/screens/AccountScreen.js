@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../../Auth/AuthContext';
 import CustomView from '../../../components/atoms/CustomView';
 import AccountTab from '../../../components/molecules/AccountTab';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const AccountScreen = ({route, navigation}) => {
   const {
@@ -19,6 +20,8 @@ const AccountScreen = ({route, navigation}) => {
   const [orderInProgress, setOrderInProgress] = useState(0);
   const [userPromoCodes, setUserPromoCodes] = useState({});
   const [userCards, setUserCards] = useState({});
+
+  const language = useLanguage();
 
   const getUserInfo = async () => {
     let email = await AsyncStorage.getItem('email');
@@ -110,36 +113,38 @@ const AccountScreen = ({route, navigation}) => {
           onPress={onPressUserTab}
         />
         <AccountTab
-          title={'My order'}
-          subtitle={orderInProgress + ' order(s) in progress'}
+          title={language.account_tabHeader_myOrder}
+          subtitle={orderInProgress + ' ' + language.account_tabSub_myOrder}
           onPress={onMyOrderPressed}
         />
         <AccountTab
-          title={'Shipping address'}
-          subtitle={userAddresses.length + ' address(es)'}
+          title={language.account_tabHeader_adderss}
+          subtitle={
+            userAddresses.length + ' ' + language.account_tabSub_adderss
+          }
           onPress={onShippingAddressPress}
         />
         <AccountTab
-          title={'Payment methods'}
+          title={language.account_tabHeader_payment}
           subtitle={'Cash'}
           onPress={onCardScreenPressed}
         />
         <AccountTab
-          title={'Promocodes'}
-          subtitle={userPromoCodes.length + ' promocode(s) available'}
+          title={language.account_tabHeader_promo}
+          subtitle={userPromoCodes.length + ' ' + language.account_tabSub_promo}
           onPress={onPromoCodesScreenPressed}
         />
         <AccountTab
-          title={'Change password'}
+          title={language.account_tabHeader_changePass}
           titleColor={'err'}
-          subtitle={'Change your password'}
+          subtitle={language.account_tabSub_changePass}
           onPress={onChangePasswordPressed}
           isHighlight={true}
         />
         <AccountTab
-          title={'Logout'}
+          title={language.account_tabHeader_logout}
           titleColor={'err'}
-          subtitle={'Logout of your account'}
+          subtitle={language.account_tabSub_logout}
           onPress={onSignOutPressed}
           isHighlight={true}
         />

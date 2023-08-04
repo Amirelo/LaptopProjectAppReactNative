@@ -45,6 +45,28 @@ const languageTheme = {
 
     signUp_button_confirm: 'Confirm',
 
+    home_text_banner: 'Welcome To Computer Store',
+    home_text_popular: 'Popular',
+    home_text_best_buy: 'Best Buy',
+    home_text_likeable: 'You Might Like',
+    home_text_see_more: 'See more',
+    
+    explore_text_result: 'Result(s)',
+    explore_text_filter: 'Filter',
+
+    account_tabHeader_myOrder: 'My Order',
+    account_tabSub_myOrder: 'Order(s) In Progress',
+    account_tabHeader_adderss: 'Shipping address',
+    account_tabSub_adderss: 'Address(s)',
+    account_tabHeader_payment: 'Payment Methods',
+    account_tabSub_payment: '',
+    account_tabHeader_promo: 'Promocodes',
+    account_tabSub_promo: 'Promocode(s) Available',
+    account_tabHeader_changePass: 'Change Password',
+    account_tabSub_changePass: 'Change Your Password',
+    account_tabHeader_logout: 'Logout',
+    account_tabSub_logout: 'Logout Of Your Account',
+
     placeholder_username: 'Username',
     placeholder_fullname: 'Fullname',
     placeholder_password: 'Password',
