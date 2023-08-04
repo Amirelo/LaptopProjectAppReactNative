@@ -7,7 +7,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ExploreScreen from './screens/ExploreScreen';
 import * as images from '../../assets/images';
 import CustomImage from '../../components/atoms/CustomImage';
-import useThemeColors from '../../themes/colorTheme';
 import CustomHeader from '../../components/molecules/CustomHeader';
 import ExploreFilterScreen from './screens/ExploreFilterScreen';
 import CartScreen from './screens/CartScreen';
@@ -33,8 +32,8 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
-  const colors = useThemeColors();
-  const {language} = useContext(AuthContext);
+  const {language, theme} = React.useContext(AuthContext);
+  const colors = theme;
   const customHeaderStyle = {
     backgroundColor: colors.borderColor,
     elevation: 10,
@@ -126,8 +125,8 @@ const TabNavigation = () => {
 };
 
 const MainNavigation = () => {
-  const colors = useThemeColors();
-  const {language} = useContext(AuthContext);
+  const {language, theme} = React.useContext(AuthContext);
+  const colors = theme;
   const customHeaderStyle = {
     backgroundColor: colors.borderColor,
     elevation: 10,

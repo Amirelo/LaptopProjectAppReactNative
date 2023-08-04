@@ -1,7 +1,8 @@
 import {Animated, ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
-import useThemeColors from '../../themes/colorTheme';
+import {useThemeColors} from '../../themes/colorTheme';
 import {deviceHeight, deviceWidth} from '../../utils/helper';
+import { AuthContext } from '../../screens/Auth/AuthContext';
 
 const CustomView = ({
   children,
@@ -15,7 +16,8 @@ const CustomView = ({
   animated,
   customStyles,
 }) => {
-  const colors = useThemeColors();
+  const {theme} = React.useContext(AuthContext);
+  const colors = theme;
   let containerStyle = type ? styles[`container_${type}`] : styles.container;
   backgroundColor =
     backgroundColor != null

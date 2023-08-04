@@ -1,6 +1,7 @@
 import {StyleSheet, Image} from 'react-native';
 import React from 'react';
-import useThemeColors from '../../themes/colorTheme';
+import {useThemeColors} from '../../themes/colorTheme';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const CustomImage = ({
   source,
@@ -10,7 +11,8 @@ const CustomImage = ({
   linkType,
   backgroundColor,
 }) => {
-  const colors = useThemeColors();
+  const {theme} = React.useContext(AuthContext);
+  const colors = theme;
   backgroundColor = backgroundColor ? colors[`${backgroundColor}Color`] : '';
   return (
     <Image

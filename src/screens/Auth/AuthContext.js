@@ -20,17 +20,24 @@ import {
   updateAddressInfo,
 } from './AuthService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {checkLanguage, useLanguage} from '../../themes/languageTheme';
+import {checkLanguage} from '../../themes/languageTheme';
+import {setThemeColors, useThemeColors} from '../../themes/colorTheme';
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [language, setLanguage] = useState(checkLanguage('en'));
+  const [theme, setTheme] = useState(useThemeColors());
 
   const changeLanguage = async lang => {
     setLanguage(checkLanguage(lang));
     await AsyncStorage.setItem('language', lang);
+  };
+
+  const changeTheme = async themeType => {
+    setTheme(setThemeColors(themeType));
+    await AsyncStorage.setItem('theme', themeType);
   };
 
   const checkSaveUser = async () => {
@@ -300,8 +307,16 @@ export const AuthContextProvider = ({children}) => {
     setLanguage(checkLanguage(langKey));
   };
 
+  const getCurTheme = async () => {
+    const themeType = await AsyncStorage.getItem('theme');
+    console.log('theme type', themeType);
+    setTheme(setThemeColors(themeType));
+    console.log('theme', theme);
+  };
+
   useEffect(() => {
     getCurLanguage();
+    
   }, []);
 
   return (
@@ -332,6 +347,8 @@ export const AuthContextProvider = ({children}) => {
         onSocialSignIn,
         language,
         changeLanguage,
+        theme,
+        changeTheme,
       }}>
       {children}
     </AuthContext.Provider>

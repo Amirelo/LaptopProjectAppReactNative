@@ -99,6 +99,7 @@ const languageTheme = {
     account_tabSub_settings: 'Change Language, Theme',
 
     settings_text_language: 'Language',
+    settings_text_theme: 'Theme',
 
     updateInfo_text_change: 'Change',
 
@@ -302,6 +303,7 @@ const languageTheme = {
     account_tabSub_settings: 'Sprache ändern, Thema',
 
     settings_text_language: 'Sprache',
+    settings_text_theme: 'Thema',
 
     updateInfo_text_change: 'Ändern',
 
@@ -503,6 +505,7 @@ const languageTheme = {
     account_tabSub_settings: 'Đổi ngôn ngữ, giao diện',
 
     settings_text_language: 'Ngôn ngữ',
+    settings_text_theme: 'Giao diện',
 
     updateInfo_text_change: 'Sửa',
 
@@ -706,6 +709,7 @@ const languageTheme = {
     account_tabSub_settings: 'Changer de langue, de thème',
 
     settings_text_language: 'Langue',
+    settings_text_theme: 'Thème',
 
     updateInfo_text_change: 'Modifier le',
 
@@ -907,6 +911,7 @@ const languageTheme = {
     account_tabSub_settings: '言語、テーマの変更',
 
     settings_text_language: '言語',
+    settings_text_theme: 'テーマ',
 
     updateInfo_text_change: '変更',
 

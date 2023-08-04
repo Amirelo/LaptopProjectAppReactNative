@@ -5,7 +5,7 @@ import * as images from '../../assets/images';
 import CustomButton from './CustomButton';
 import CustomView from '../atoms/CustomView';
 import {borderTheme} from '../../themes/borderTheme';
-import useThemeColors from '../../themes/colorTheme';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 //const internetImg = {uri:'https://cdn.pixabay.com/photo/2019/07/14/16/29/pen-4337524_1280.jpg'}
 const CustomInput = ({
@@ -18,7 +18,8 @@ const CustomInput = ({
   disabled,
   type,
 }) => {
-  const colors = useThemeColors();
+  const {theme} = React.useContext(AuthContext);
+  const colors = theme;
   const [showPassImg, setShowPassImg] = useState(images.ic_visibility);
   const [secure, setSecure] = useState(type == 'password' ? true : false);
   const [isSelected, setIsSelected] = useState(false);

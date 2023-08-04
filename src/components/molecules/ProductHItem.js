@@ -10,9 +10,9 @@ import {
   priceFormat,
 } from '../../utils/helper';
 import {MainContext} from '../../screens/Main/MainContext';
-import useThemeColors from '../../themes/colorTheme';
 import {borderTheme} from '../../themes/borderTheme';
 import {useNavigation} from '@react-navigation/native';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const ProductHItem = ({data}) => {
   const navigation = useNavigation();
@@ -26,7 +26,8 @@ const ProductHItem = ({data}) => {
   const [itemMemory, setItemMemory] = useState({});
   const [itemScreen, setitemScreen] = useState({});
   const [itemStorage, setitemStorage] = useState({});
-  const colors = useThemeColors();
+  const {theme} = React.useContext(AuthContext);
+  const colors = theme;
 
   const onProductPressed = () => {
     navigation.navigate('Product Detail', {

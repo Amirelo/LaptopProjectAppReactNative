@@ -2,8 +2,8 @@ import {Animated, Pressable, StyleSheet, ActivityIndicator} from 'react-native';
 import React, {useRef} from 'react';
 import CustomImage from '../atoms/CustomImage';
 import CustomText from '../atoms/CustomText';
-import useThemeColors from '../../themes/colorTheme';
 import {deviceWidth} from '../../utils/helper';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const CustomButton = ({
   children,
@@ -17,7 +17,8 @@ const CustomButton = ({
   noAnim,
   backgroundColor,
 }) => {
-  const colors = useThemeColors();
+  const {theme} = React.useContext(AuthContext);
+  const colors = theme;
   const buttonBackgroundColor = backgroundColor
     ? colors[`${backgroundColor}Color`]
     : type && type.includes('primary')

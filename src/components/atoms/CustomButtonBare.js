@@ -1,8 +1,7 @@
 import {Animated, Pressable} from 'react-native';
 import React, {useRef} from 'react';
-import useThemeColors from '../../themes/colorTheme';
 import CustomView from './CustomView';
-import {borderTheme} from '../../themes/borderTheme';
+import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const CustomButtonBare = ({
   children,
@@ -16,9 +15,9 @@ const CustomButtonBare = ({
   type,
   paddingVertical,
 }) => {
-  const colors = useThemeColors();
+  const {theme} = React.useContext(AuthContext);
   backgroundColor =
-    backgroundColor != null ? colors[`${backgroundColor}Color`] : '';
+    backgroundColor != null ? theme[`${backgroundColor}Color`] : '';
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const fadeIn = () => {
     Animated.sequence([
@@ -42,8 +41,8 @@ const CustomButtonBare = ({
         marginTop ? {marginTop: marginTop} : {},
         borderStyle != null ? borderStyle : {},
         borderColor != null
-          ? {borderColor: colors[`${borderColor}Color`]}
-          : {borderColor: colors.borderColor},
+          ? {borderColor: theme[`${borderColor}Color`]}
+          : {borderColor: theme.borderColor},
         {backgroundColor: backgroundColor},
         paddingVertical ? {paddingVertical: paddingVertical} : {},
       ]}
