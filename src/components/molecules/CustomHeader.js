@@ -36,7 +36,6 @@ const CustomHeader = ({
     <>
       {type == 'home' ? (
         <CustomView backgroundColor={'none'} type={'header'}>
-          <CustomImage type={'headerImage'} source={images.header} />
           <CustomView backgroundColor={'none'} type={'row'}>
             <CustomButton
               type={'image'}

@@ -26,12 +26,14 @@ import ProductDetailScreen from './screens/ProductDetailScreen';
 import InsertCardScreen from './screens/InsertCardScreen';
 import ProductCommentScreen from './screens/ProductCommentScreen';
 import InsertCommentScreen from './screens/InsertCommentScreen';
+import { useLanguage } from '../../themes/languageTheme';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   const colors = useThemeColors();
+  const language = useLanguage();
   const customHeaderStyle = {
     backgroundColor: colors.borderColor,
     elevation: 10,
@@ -47,10 +49,8 @@ const TabNavigation = () => {
         name="Home"
         component={HomeScreen}
         options={{
+          title: language.header_text_home,
           tabBarActiveTintColor: colors.primaryColor,
-          headerTitle: () => {
-            return null;
-          },
           headerStyle: customHeaderStyle,
           headerRight: () => <CustomHeader type={'home'} />,
           tabBarIcon: ({focused}) => {
@@ -68,6 +68,7 @@ const TabNavigation = () => {
         name="Explore"
         component={ExploreScreen}
         options={{
+          title: language.header_text_explore,
           tabBarActiveTintColor: colors.primaryColor,
           headerStyle: customHeaderStyle,
           tabBarIcon: ({focused}) => {
@@ -86,6 +87,7 @@ const TabNavigation = () => {
         name="Cart"
         component={CartScreen}
         options={{
+          title: language.header_text_cart,
           tabBarActiveTintColor: colors.primaryColor,
           headerStyle: customHeaderStyle,
           tabBarIcon: ({focused}) => {
@@ -104,6 +106,7 @@ const TabNavigation = () => {
         name="Account"
         component={AccountScreen}
         options={{
+          title: language.header_text_account,
           tabBarActiveTintColor: colors.primaryColor,
           headerStyle: customHeaderStyle,
           tabBarIcon: ({focused}) => {
@@ -123,6 +126,7 @@ const TabNavigation = () => {
 
 const MainNavigation = () => {
   const colors = useThemeColors();
+  const language = useLanguage();
   const customHeaderStyle = {
     backgroundColor: colors.borderColor,
     elevation: 10,
@@ -139,6 +143,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_favorite,
           headerStyle: customHeaderStyle,
         }}
         name="Favorite"
@@ -146,6 +151,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_notification,
           headerStyle: customHeaderStyle,
         }}
         name="Notification"
@@ -153,6 +159,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_filter,
           headerStyle: customHeaderStyle,
         }}
         name="Filter"
@@ -160,6 +167,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_recipient_info,
           headerStyle: customHeaderStyle,
         }}
         name="Recipient Info"
@@ -167,6 +175,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_checkout,
           headerStyle: customHeaderStyle,
         }}
         name="Checkout"
@@ -174,6 +183,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_profile,
           headerStyle: customHeaderStyle,
         }}
         name="Profile"
@@ -181,6 +191,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_insert_address,
           headerStyle: customHeaderStyle,
         }}
         name="New Address"
@@ -188,6 +199,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_insert_card,
           headerStyle: customHeaderStyle,
         }}
         name="New Card"
@@ -195,6 +207,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_order,
           headerStyle: customHeaderStyle,
         }}
         name="User Order"
@@ -202,6 +215,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_order_details,
           headerStyle: customHeaderStyle,
         }}
         name="Order Details"
@@ -209,6 +223,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_promocodes,
           headerStyle: customHeaderStyle,
         }}
         name="Promocodes"
@@ -216,6 +231,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_card,
           headerStyle: customHeaderStyle,
         }}
         name="Card"
@@ -223,6 +239,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_product_detail,
           headerStyle: customHeaderStyle,
         }}
         name="Product Detail"
@@ -230,6 +247,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_product_ratings,
           headerStyle: customHeaderStyle,
         }}
         name="Product Comments"
@@ -237,6 +255,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_product_insert_rating,
           headerStyle: customHeaderStyle,
         }}
         name="New Comment"
@@ -244,6 +263,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_update_user,
           headerStyle: customHeaderStyle,
         }}
         name="Update User Information"
@@ -251,6 +271,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_address,
           headerStyle: customHeaderStyle,
         }}
         name="Shipping Address"

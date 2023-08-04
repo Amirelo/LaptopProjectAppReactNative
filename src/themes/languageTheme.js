@@ -2,6 +2,28 @@ import {NativeModules} from 'react-native';
 
 const languageTheme = {
   en: {
+    header_text_home: 'Home',
+    header_text_explore: 'Explore',
+    header_text_cart: 'Cart',
+    header_text_account: 'Account',
+    header_text_favorite: 'Favorite',
+    header_text_notification: 'Notification',
+    header_text_filter: 'Filter',
+    header_text_recipient_info: 'Receipt Info',
+    header_text_checkout: 'Checkout',
+    header_text_profile: 'Profile',
+    header_text_address: 'Address',
+    header_text_insert_address: 'New Address',
+    header_text_card: 'User Card',
+    header_text_insert_card: 'New Card',
+    header_text_order: 'User Order',
+    header_text_order_details: 'Order Details',
+    header_text_promocodes: 'Promocodes',
+    header_text_product_detail: 'Product Details',
+    header_text_product_ratings: 'Ratings',
+    header_text_product_insert_rating: 'New Ratings',
+    header_text_update_user: 'Update User Info',
+    
     login_text_header: 'Welcome To Computer Store',
     login_text_sub_header: 'Sign In To Continue',
     login_text_other_signin_option: 'Or Sign In With',
@@ -22,7 +44,6 @@ const languageTheme = {
     changePass_button_confirm: 'Confirm',
 
     signUp_button_confirm: 'Confirm',
-    
 
     placeholder_username: 'Username',
     placeholder_fullname: 'Fullname',
@@ -42,7 +63,7 @@ const languageTheme = {
 
 export const useLanguage = () => {
   const {localeIdentifier} = NativeModules.I18nManager;
-  let locale = localeIdentifier.slice(0,2);
+  let locale = localeIdentifier.slice(0, 2);
   let language = languageTheme[locale];
   return language;
 };

@@ -4,7 +4,7 @@ import {AuthContext} from '../AuthContext';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomInput from '../../../components/molecules/CustomInput';
 import CustomButton from '../../../components/molecules/CustomButton';
-import { useLanguage } from '../../../themes/languageTheme';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const SignUpScreen = ({navigation, route}) => {
   const {email, userData} = route.params;

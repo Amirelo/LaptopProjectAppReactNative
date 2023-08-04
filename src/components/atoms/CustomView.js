@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: deviceWidth * 0.9,
     paddingVertical: 8,
   },
   container_banner: {

@@ -5,10 +5,17 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import SplashScreen from './screens/SplashScreen';
+import useThemeColors from '../../themes/colorTheme';
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigation = () => {
+  const colors = useThemeColors();
+  const customHeaderStyle = {
+    backgroundColor: colors.borderColor,
+    elevation: 10,
+    shadowColor: colors.primaryColor,
+  };
   return (
     <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
@@ -21,9 +28,27 @@ const AuthNavigation = () => {
         options={{headerShown: false}}
         component={SignInScreen}
       />
-      <Stack.Screen name="Verification" component={VerificationScreen} />
-      <Stack.Screen name="Forgot Password" component={ForgotPasswordScreen} />
-      <Stack.Screen name="Sign Up" component={SignUpScreen} />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Verification"
+        component={VerificationScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Forgot Password"
+        component={ForgotPasswordScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Sign Up"
+        component={SignUpScreen}
+      />
     </Stack.Navigator>
   );
 };
