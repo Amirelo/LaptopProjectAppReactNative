@@ -7,12 +7,15 @@ import CustomText from '../../../components/atoms/CustomText';
 import CustomView from '../../../components/atoms/CustomView';
 import {orderStatusArr} from '../../../utils/array';
 import {addressFormat, deviceWidth, priceFormat} from '../../../utils/helper';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const OrderDetailScreen = ({route}) => {
   const {item, address} = route.params;
   const [productList, setProductList] = useState([]);
   const {onGetUserOrderDetail} = useContext(AuthContext);
   const {onGetProductByID} = useContext(MainContext);
+
+  const language = useLanguage();
   console.log('Detail screen', address);
 
   const getData = async () => {
@@ -40,20 +43,26 @@ const OrderDetailScreen = ({route}) => {
         textStyle={'subtitleBold'}
         alignSelf={'flex-start'}
         marginTop={32}>
-        Order
+        {language.orderDetail_textHeader_order}
       </CustomText>
       <CustomView type={'rowJustify90'}>
-        <CustomText hasFlex={true}>No.</CustomText>
+        <CustomText hasFlex={true}>
+          {language.orderDetail_text_orderNumber}
+        </CustomText>
         <CustomText hasFlex={true}>{item.userOrderID}</CustomText>
       </CustomView>
 
       <CustomView type={'rowJustify90'}>
-        <CustomText hasFlex={true}>Order Date</CustomText>
+        <CustomText hasFlex={true}>
+          {language.orderDetail_text_orderDate}
+        </CustomText>
         <CustomText hasFlex={true}>{item.pendingDate}</CustomText>
       </CustomView>
 
       <CustomView type={'rowJustify90'}>
-        <CustomText hasFlex={true}>Status</CustomText>
+        <CustomText hasFlex={true}>
+          {language.orderDetail_text_orderStatus}
+        </CustomText>
         <CustomText
           textColor={orderStatusArr[item.status].color}
           textStyle={'normalBold'}
@@ -65,7 +74,7 @@ const OrderDetailScreen = ({route}) => {
         textStyle={'subtitleBold'}
         alignSelf={'flex-start'}
         marginTop={20}>
-        {'Product(s)'}
+        {language.orderDetail_textHeader_product}
       </CustomText>
 
       <FlatList
@@ -84,10 +93,12 @@ const OrderDetailScreen = ({route}) => {
         textStyle={'subtitleBold'}
         alignSelf={'flex-start'}
         marginTop={20}>
-        Order Information
+        {language.orderDetail_textHeader_info}
       </CustomText>
       <CustomView type={'rowJustify90'}>
-        <CustomText hasFlex={true}>Shipping Address</CustomText>
+        <CustomText hasFlex={true}>
+          {language.orderDetail_text_shippingAddress}
+        </CustomText>
         <CustomText hasFlex={true}>
           {addressFormat(
             address.addressName,
@@ -98,7 +109,9 @@ const OrderDetailScreen = ({route}) => {
         </CustomText>
       </CustomView>
       <CustomView type={'rowJustify90'}>
-        <CustomText hasFlex={true}>Payment Method</CustomText>
+        <CustomText hasFlex={true}>
+          {language.orderDetail_text_payment}
+        </CustomText>
         <CustomText hasFlex={true}>
           {item.cardID ? item.cardID : 'Cash'}
         </CustomText>
@@ -106,21 +119,29 @@ const OrderDetailScreen = ({route}) => {
       {item.discount ? (
         <>
           <CustomView type={'rowJustify90'}>
-            <CustomText hasFlex={true}>Discount</CustomText>
+            <CustomText hasFlex={true}>
+              {language.orderDetail_text_discount}
+            </CustomText>
             <CustomText hasFlex={true}>
               {item.discountID ? item.counponID : 'none'}
             </CustomText>
           </CustomView>
           <CustomView type={'rowJustify90'}>
-            <CustomText hasFlex={true}>Discount Code</CustomText>
-            <CustomText hasFlex={true}>None</CustomText>
+            <CustomText hasFlex={true}>
+              {language.orderDetail_text_discountCode}
+            </CustomText>
+            <CustomText hasFlex={true}>
+              {item.couponCode ? item.couponCode : 'none'}
+            </CustomText>
           </CustomView>
         </>
       ) : (
         <></>
       )}
       <CustomView type={'rowJustify90'}>
-        <CustomText hasFlex={true}>Total</CustomText>
+        <CustomText hasFlex={true}>
+          {language.orderDetail_text_payment}
+        </CustomText>
         <CustomText textStyle={'subtitleBold'} textColor={'err'} hasFlex={true}>
           {priceFormat(item.totalPrice)}
         </CustomText>

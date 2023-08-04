@@ -23,7 +23,7 @@ const languageTheme = {
     header_text_product_ratings: 'Ratings',
     header_text_product_insert_rating: 'New Ratings',
     header_text_update_user: 'Update User Info',
-    
+
     login_text_header: 'Welcome To Computer Store',
     login_text_sub_header: 'Sign In To Continue',
     login_text_other_signin_option: 'Or Sign In With',
@@ -50,9 +50,29 @@ const languageTheme = {
     home_text_best_buy: 'Best Buy',
     home_text_likeable: 'You Might Like',
     home_text_see_more: 'See more',
-    
+
     explore_text_result: 'Result(s)',
     explore_text_filter: 'Filter',
+    explore_option_header: 'Sort By',
+    explore_option_1: 'Popularity',
+    explore_option_2: 'New',
+    explore_option_3: 'Price Low To High',
+    explore_option_4: 'Price Hight To Low',
+
+    cart_text_total: 'Total',
+    cart_button_order: 'Place Order',
+
+    cartRecipient_button_continue: 'Continue To Checkout',
+
+    checkOut_text_product_price: 'Product(s) Price',
+    checkOut_text_shipping_price: 'Shipping Price',
+    checkOut_text_summary: 'Summary',
+    checkOut_button_place_order: 'Place Order',
+
+    address_button_insert: 'Add New Address',
+
+    insertAddress_button_insert: 'Add',
+    insertAddress_button_update: 'Edit',
 
     account_tabHeader_myOrder: 'My Order',
     account_tabSub_myOrder: 'Order(s) In Progress',
@@ -67,6 +87,24 @@ const languageTheme = {
     account_tabHeader_logout: 'Logout',
     account_tabSub_logout: 'Logout Of Your Account',
 
+    order_text_orderNumber: 'Order No.',
+    order_text_quantity: 'Quantity',
+    order_text_total: 'Total',
+    order_text_status: 'Status',
+    order_button_detail: 'Detail',
+
+    orderDetail_textHeader_order: 'Order',
+    orderDetail_textHeader_product: 'Product(s)',
+    orderDetail_textHeader_info: 'Order Information',
+    orderDetail_text_orderNumber: 'No.',
+    orderDetail_text_orderDate: 'Order Date',
+    orderDetail_text_orderStatus: 'Order Status',
+    orderDetail_text_shippingAddress: 'Shipping Address',
+    orderDetail_text_payment: 'Payment Method',
+    orderDetail_text_total: 'Total',
+    orderDetail_text_discount: 'Discount',
+    orderDetail_text_discountCode: 'Discount Code',
+
     placeholder_username: 'Username',
     placeholder_fullname: 'Fullname',
     placeholder_password: 'Password',
@@ -75,6 +113,27 @@ const languageTheme = {
     placeholder_phoneNumber: 'Phone Number',
     placeholder_birthday: 'Birthday',
     placeholder_verify: 'Verification code',
+    placeholder_recipient: 'Recipient',
+    placeholder_addressName: 'Address Name',
+    placeholder_ward: 'Ward',
+    placeholder_district: 'District',
+    placeholder_city: 'City',
+
+    arr_status_order_0: 'Cancel',
+    arr_status_order_1: 'Processing',
+    arr_status_order_2: 'Packing',
+    arr_status_order_3: 'On the way',
+    arr_status_order_4: 'Delivered',
+
+    arr_status_address_0: 'Deactive',
+    arr_status_address_1: 'Default',
+    arr_status_address_2: 'Optional',
+
+    arr_explore_sort_0: 'None',
+    arr_explore_sort_1: 'Popularity',
+    arr_explore_sort_2: 'New',
+    arr_explore_sort_3: 'Price Ascending',
+    arr_explore_sort_4: 'Price Descending',
 
     err_empty: 'Fields cannot be empty',
     err_signin_wrong: 'Wrong username or password',

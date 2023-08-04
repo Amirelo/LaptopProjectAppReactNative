@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
   },
   container_absoluteBottomItem: {
     width: '100%',
-    backgroundColor: '#fff',
     borderTopStartRadius: 60,
     borderTopEndRadius: 60,
     justifyContent: 'flex-end',

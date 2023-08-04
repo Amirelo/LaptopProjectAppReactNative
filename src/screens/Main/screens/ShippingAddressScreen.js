@@ -4,11 +4,14 @@ import AddressItem from '../../../components/molecules/AddressItem';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {useNavigation} from '@react-navigation/native';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const ShippingAddressScreen = ({route}) => {
   const navigation = useNavigation();
   let {userAddresses, userInfo} = route.params;
   const [addresses, setAddresses] = useState(userAddresses);
+
+  const language = useLanguage();
 
   const onAddNewAddressPressed = () => {
     navigation.navigate('New Address', {
@@ -23,7 +26,7 @@ const ShippingAddressScreen = ({route}) => {
   return (
     <CustomView scrollable={true}>
       <CustomButton onPress={onAddNewAddressPressed} type={'primary'}>
-        Add New Address
+        {language.address_button_insert}
       </CustomButton>
       <FlatList
         width={'100%'}

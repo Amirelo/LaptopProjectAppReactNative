@@ -3,9 +3,11 @@ import CustomView from '../atoms/CustomView';
 import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import {borderTheme} from '../../themes/borderTheme';
+import {useLanguage} from '../../themes/languageTheme';
 
 const AddressItem = ({data, onEditPressed, onlyInfo}) => {
   console.log(data);
+  const language = useLanguage();
 
   return (
     <CustomView
@@ -14,9 +16,9 @@ const AddressItem = ({data, onEditPressed, onlyInfo}) => {
       backgroundColor={'backgroundInput'}>
       <CustomText>
         {data.addressName +
-          ', P.' +
+          ', ' +
           data.ward +
-          ', Q.' +
+          ', ' +
           data.district +
           ', ' +
           data.city}
@@ -32,13 +34,15 @@ const AddressItem = ({data, onEditPressed, onlyInfo}) => {
         <CustomView backgroundColor={'transparent'} type={'rowJustify90'}>
           <CustomView backgroundColor={'transparent'} type={'row'}>
             {data.status == 1 ? (
-              <CustomText textStyle={'normalBold'}>Default</CustomText>
+              <CustomText textStyle={'normalBold'}>
+                {language.arr_status_address_1}
+              </CustomText>
             ) : (
               <></>
             )}
           </CustomView>
           <CustomButton onPress={onEditPressed} type={'primarySmall'}>
-            Edit
+            {language.insertAddress_button_update}
           </CustomButton>
         </CustomView>
       )}

@@ -32,5 +32,5 @@ export const promoDetail = (percentOff, maxEffect) => {
 };
 
 export const addressFormat = (addressName, ward, district, city) => {
-  return addressName + ', P.' + ward + ', Q.' + district + ', ' + city;
+  return addressName + ', ' + ward + ', ' + district + ', ' + city;
 };

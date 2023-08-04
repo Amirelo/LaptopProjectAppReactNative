@@ -23,7 +23,7 @@ const ExploreScreen = ({navigation}) => {
   const [itemViewVertical, setItemViewVertical] = useState(true);
   const [sortOption, setSortOption] = useState(0);
   const [sortPressed, setSortPressed] = useState(false);
-  const [sortType, setSortType] = useState('None');
+  const [sortType, setSortType] = useState(0);
 
   const language = useLanguage();
 
@@ -65,7 +65,7 @@ const ExploreScreen = ({navigation}) => {
       case 0:
         break;
       case 1:
-        setSortType('Popular');
+        setSortType(1);
         setFilterProduct(
           sortList.sort((a, b) => {
             return b.totalRating - a.totalRating;
@@ -73,7 +73,7 @@ const ExploreScreen = ({navigation}) => {
         );
         break;
       case 2:
-        setSortType('Newest');
+        setSortType(2);
         setFilterProduct(
           sortList.sort((a, b) => {
             return a.releasedDate.localeCompare(b.releasedDate);
@@ -81,7 +81,7 @@ const ExploreScreen = ({navigation}) => {
         );
         break;
       case 3:
-        setSortType('Price low to high');
+        setSortType(3);
         setFilterProduct(
           sortList.sort((a, b) => {
             return a.currentPrice - b.currentPrice;
@@ -89,7 +89,7 @@ const ExploreScreen = ({navigation}) => {
         );
         break;
       case 4:
-        setSortType('Price high to low');
+        setSortType(4);
         setFilterProduct(
           sortList.sort((a, b) => {
             return b.currentPrice - a.currentPrice;

@@ -7,6 +7,7 @@ import OptionsButton from '../../../components/molecules/OptionsButton';
 import {CustomText} from '../../../components/atoms';
 import {addressStatusArr} from '../../../utils/array';
 import {useNavigation} from '@react-navigation/native';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const InsertAddressScreen = ({route}) => {
   const {userInfo} = route.params;
@@ -24,6 +25,8 @@ const InsertAddressScreen = ({route}) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [showStatusOption, setShowStatusOption] = useState(false);
   const navigation = useNavigation();
+
+  const language = useLanguage();
 
   const insertAddress = async () => {
     let res = null;
@@ -60,28 +63,28 @@ const InsertAddressScreen = ({route}) => {
         value={addressName}
         onChangeText={setAddressName}
         marginTop={32}
-        placeholder={'Address name'}
+        placeholder={language.placeholder_addressName}
       />
       <CustomInput
         disabled={!isDisabled}
         value={ward}
         onChangeText={setWard}
         marginTop={8}
-        placeholder={'Ward'}
+        placeholder={language.placeholder_ward}
       />
       <CustomInput
         disabled={!isDisabled}
         value={district}
         onChangeText={setDistrict}
         marginTop={8}
-        placeholder={'District'}
+        placeholder={language.placeholder_district}
       />
       <CustomInput
         disabled={!isDisabled}
         value={city}
         onChangeText={setCity}
         marginTop={8}
-        placeholder={'City'}
+        placeholder={language.placeholder_city}
       />
       <CustomButton
         disabled={isDisabled}
@@ -93,7 +96,9 @@ const InsertAddressScreen = ({route}) => {
         disabled={isDisabled}
         onPress={insertAddress}
         type={'primary'}>
-        {data ? 'Edit' : 'Insert'}
+        {data
+          ? language.insertAddress_button_update
+          : language.insertAddress_button_insert}
       </CustomButton>
 
       {showStatusOption ? (

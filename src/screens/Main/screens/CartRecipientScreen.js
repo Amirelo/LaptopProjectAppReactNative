@@ -6,6 +6,7 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import LocationOptions from '../../../components/molecules/LocationOptions';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const CartRecipientScreen = ({navigation, route}) => {
   const [location, setLocation] = useState();
@@ -18,6 +19,8 @@ const CartRecipientScreen = ({navigation, route}) => {
 
   const {onGetAddressesByEmail, onGetUserByEmail} = useContext(AuthContext);
   const {totalPrice, cart} = route.params;
+
+  const language = useLanguage();
 
   const initData = async () => {
     let email = await AsyncStorage.getItem('email');
@@ -70,40 +73,40 @@ const CartRecipientScreen = ({navigation, route}) => {
         marginTop={103}>
         {location
           ? location.addressName +
-            ', P.' +
+            ', ' +
             location.ward +
-            ', Q.' +
+            ', ' +
             location.district +
             ', ' +
             location.city
           : 'Location'}
       </CustomButton>
       <CustomInput
-        placeholder={'Recipient'}
+        placeholder={language.placeholder_recipient}
         value={fullName}
         onChangeText={setFullName}
         marginTop={8}
-        source={images.ic_calendar}
+        source={images.ic_contact}
       />
       <CustomInput
-        placeholder={'Phone number'}
+        placeholder={language.placeholder_phoneNumber}
         value={phoneNumber}
         onChangeText={setPhoneNumber}
         marginTop={8}
-        source={images.ic_calendar}
+        source={images.ic_phone}
       />
       <CustomInput
-        placeholder={'Note'}
+        placeholder={language.placeholder_note}
         value={note}
         onChangeText={setNote}
         marginTop={8}
-        source={images.ic_calendar}
+        source={images.ic_description}
       />
       <CustomButton
         type={'primary'}
         onPress={onContinueToCheckoutPressed}
         marginTop={24}>
-        Continue to checkout
+        {language.cartRecipient_button_continue}
       </CustomButton>
       {showLocation ? (
         <LocationOptions

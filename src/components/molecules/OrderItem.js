@@ -8,11 +8,15 @@ import CustomButton from './CustomButton';
 import {AuthContext} from '../../screens/Auth/AuthContext';
 import {borderTheme} from '../../themes/borderTheme';
 import {orderStatusArr} from '../../utils/array';
+import { useLanguage } from '../../themes/languageTheme';
 
 const OrderItem = ({item, address}) => {
   const [totalItems, setTotalItems] = useState(0);
   const navigation = useNavigation();
   const {onGetUserOrderDetail} = useContext(AuthContext);
+
+  const language = useLanguage();
+
   const itemDate = item.arrivedDate
     ? item.arrivedDate
     : item.deliveryDate
@@ -59,7 +63,7 @@ const OrderItem = ({item, address}) => {
       type={'tab'}>
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
         <CustomText textStyle={'normalBold'} hasFlex={true}>
-          Order No
+          {language.order_text_orderNumber}
         </CustomText>
         <CustomText hasFlex={true}>{item.userOrderID}</CustomText>
         <CustomText>{itemDate}</CustomText>
@@ -67,21 +71,21 @@ const OrderItem = ({item, address}) => {
 
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
         <CustomText textStyle={'normalBold'} hasFlex={true}>
-          Quantity
+          {language.order_text_quantity}
         </CustomText>
         <CustomText hasFlex={true}>{totalItems}</CustomText>
       </CustomView>
 
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
         <CustomText textStyle={'normalBold'} hasFlex={true}>
-          Total
+          {language.order_text_total}
         </CustomText>
         <CustomText hasFlex={true}>{priceFormat(item.totalPrice)}</CustomText>
       </CustomView>
 
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
         <CustomText textStyle={'normalBold'} hasFlex={true}>
-          Status
+          {language.order_text_status}
         </CustomText>
         <CustomText
           hasFlex={true}
@@ -96,7 +100,7 @@ const OrderItem = ({item, address}) => {
           type={'primarySmall'}
           onPress={onDetailButtonPressed}
           customStyles={styles.itemMargin}>
-          Details
+          {language.order_button_detail}
         </CustomButton>
       </CustomView>
     </CustomView>

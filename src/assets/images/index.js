@@ -28,6 +28,7 @@ export const ic_sort = require('./swap_vert.png');
 export const ic_more_vert = require('./more_vert.png');
 export const ic_add = require('./add.png');
 export const ic_minus = require('./remove.png');
+export const ic_description = require('./description.png');
 export const ic_radio_square = require('./radio_square.png');
 export const ic_radio_square_selected = require('./radio_square_selected.png');
 

@@ -9,6 +9,7 @@ import CustomView from '../atoms/CustomView';
 import {useNavigation} from '@react-navigation/native';
 import CustomButtonBare from '../atoms/CustomButtonBare';
 import { useLanguage } from '../../themes/languageTheme';
+import { exploreSortArr } from '../../utils/array';
 
 const CustomHeader = ({
   type,
@@ -77,7 +78,7 @@ const CustomHeader = ({
               <CustomView type={'row'}>
                 <CustomImage source={images.ic_sort} type={'searchBarIcon'} />
                 <CustomText textStyle={'normal'} marginTop={0}>
-                  {sortType}
+                  {exploreSortArr[sortType]}
                 </CustomText>
               </CustomView>
             </CustomButtonBare>

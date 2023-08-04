@@ -8,6 +8,7 @@ import CustomText from '../../../components/atoms/CustomText';
 import {priceFormat} from '../../../utils/helper';
 import CustomView from '../../../components/atoms/CustomView';
 import CartOption from '../../../components/molecules/CartOption';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const CartScreen = ({navigation}) => {
   const {onGetCartByEmail, onDeleteCart} = useContext(MainContext);
@@ -15,6 +16,8 @@ const CartScreen = ({navigation}) => {
   const [data, setData] = useState();
   const [onItemOptionPressed, setOnItemOptionPressed] = useState(false);
   const [selectedItem, setSelectedItem] = useState();
+
+  const language = useLanguage();
 
   const onCheckOutPressed = () => {
     if (data.length != 0) {
@@ -98,13 +101,13 @@ const CartScreen = ({navigation}) => {
         }}
       />
       <CustomView type={'rowJustify90'}>
-        <CustomText fontWeight={'heavy'}>Total</CustomText>
+        <CustomText fontWeight={'heavy'}>{language.cart_text_total}</CustomText>
         <CustomText textColor={'err'} textStyle={'normalBold'}>
           {priceFormat(totalPrice)}
         </CustomText>
       </CustomView>
       <CustomButton type={'primary'} marginTop={32} onPress={onCheckOutPressed}>
-        Place Order
+        {language.cart_button_order}
       </CustomButton>
       <CustomText />
 

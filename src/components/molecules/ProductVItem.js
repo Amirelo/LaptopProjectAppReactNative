@@ -63,6 +63,7 @@ const ProductVItem = ({data}) => {
         source={data.productImageLink}
         type={'productItem'}
         linkType={'uri'}
+        backgroundColor={'imageBackground'}
       />
       <CustomView marginTop={0} backgroundColor={'none'} type={'left'}>
         <CustomText textStyle={'normalBold'} maxLines={2} marginTop={0}>

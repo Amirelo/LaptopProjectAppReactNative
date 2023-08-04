@@ -5,8 +5,10 @@ import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import CustomView from '../atoms/CustomView';
 import {deviceHeight} from '../../utils/helper';
+import {useLanguage} from '../../themes/languageTheme';
 
 const SortOption = ({setSortOption, setSortPressed, onBackgroundPressed}) => {
+  const language = useLanguage();
   const changeOption = type => {
     setSortOption(type);
     setSortPressed(false);
@@ -73,26 +75,23 @@ const SortOption = ({setSortOption, setSortPressed, onBackgroundPressed}) => {
         customStyles={{transform: [{translateY: animatedValue}]}}
         animated={true}
         type={'absoluteBottomItem'}>
-        <CustomText
-          customStyles={styles.spacing}
-          fontWeight={'heavy'}
-          fontSize={'title'}>
-          Sort By
+        <CustomText customStyles={styles.spacing} textStyle={'subtitleBold'}>
+          {language.explore_option_header}
         </CustomText>
         <CustomButton onPress={() => changeOption(1)} type={'tertiary'}>
-          Popularity
+          {language.explore_option_1}
         </CustomButton>
         <CustomButton onPress={() => changeOption(2)} type={'tertiary'}>
-          New
+          {language.explore_option_2}
         </CustomButton>
         <CustomButton onPress={() => changeOption(3)} type={'tertiary'}>
-          Price Ascending
+          {language.explore_option_3}
         </CustomButton>
         <CustomButton
           customStyles={{marginBottom: 32}}
           onPress={() => changeOption(4)}
           type={'tertiary'}>
-          Price Descending
+          {language.explore_option_4}
         </CustomButton>
       </CustomView>
     </CustomView>

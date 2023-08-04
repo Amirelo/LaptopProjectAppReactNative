@@ -5,17 +5,19 @@ import CustomText from '../../../components/atoms/CustomText';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {priceFormat} from '../../../utils/helper';
 import AddressItem from '../../../components/molecules/AddressItem';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const CheckOutScreen = ({navigation, route}) => {
   const {location, fullName, phoneNumber, totalPrice, note, cart, userID} =
     route.params;
-  
 
   const [shippingPrice, setShippingPrice] = useState(200000);
   const [finalPrice, setFinalPrice] = useState(totalPrice + shippingPrice);
 
   const {onInsertUserOrder, onInsertOrderDetail, onDemoPaymentVNPay} =
     useContext(MainContext);
+
+  const language = useLanguage();
 
   const onSubmitOrderPressed = async () => {
     const insertOrderResult = await onInsertUserOrder(
@@ -57,9 +59,9 @@ const CheckOutScreen = ({navigation, route}) => {
         data={{
           address:
             location.addressName +
-            ', P.' +
+            ', ' +
             location.ward +
-            ', Q.' +
+            ', ' +
             location.district +
             ', ' +
             location.city,
@@ -70,22 +72,22 @@ const CheckOutScreen = ({navigation, route}) => {
         fullname={fullName}
       />
       <CustomView type={'rowJustify90'} marginTop={8}>
-        <CustomText>Products price</CustomText>
+        <CustomText>{language.checkOut_text_product_price}</CustomText>
         <CustomText>{priceFormat(totalPrice)}</CustomText>
       </CustomView>
 
       <CustomView type={'rowJustify90'} marginTop={8}>
-        <CustomText>Shipping price</CustomText>
+        <CustomText>{language.checkOut_text_shipping_price}</CustomText>
         <CustomText>{priceFormat(shippingPrice)}</CustomText>
       </CustomView>
 
       <CustomView type={'rowJustify90'} marginTop={8}>
-        <CustomText>Summary</CustomText>
+        <CustomText>{language.checkOut_text_summary}</CustomText>
         <CustomText>{priceFormat(finalPrice)}</CustomText>
       </CustomView>
 
       <CustomButton onPress={onSubmitOrderPressed} type={'primary'}>
-        Place Order
+        {language.checkOut_button_place_order}
       </CustomButton>
     </CustomView>
   );
