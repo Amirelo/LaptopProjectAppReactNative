@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import FavoriteScreen from './screens/FavoriteScreen';
@@ -26,14 +26,14 @@ import ProductDetailScreen from './screens/ProductDetailScreen';
 import InsertCardScreen from './screens/InsertCardScreen';
 import ProductCommentScreen from './screens/ProductCommentScreen';
 import InsertCommentScreen from './screens/InsertCommentScreen';
-import { useLanguage } from '../../themes/languageTheme';
+import {AuthContext} from '../Auth/AuthContext';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   const colors = useThemeColors();
-  const language = useLanguage();
+  const {language} = useContext(AuthContext);
   const customHeaderStyle = {
     backgroundColor: colors.borderColor,
     elevation: 10,
@@ -126,7 +126,7 @@ const TabNavigation = () => {
 
 const MainNavigation = () => {
   const colors = useThemeColors();
-  const language = useLanguage();
+  const {language} = useContext(AuthContext);
   const customHeaderStyle = {
     backgroundColor: colors.borderColor,
     elevation: 10,
