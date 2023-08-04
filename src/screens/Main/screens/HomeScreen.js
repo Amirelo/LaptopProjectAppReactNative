@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, StatusBar} from 'react-native';
 import CustomView from '../../../components/atoms/CustomView';
 import {MainContext} from '../MainContext';
 import ProductHItem from '../../../components/molecules/ProductHItem';
@@ -10,7 +10,7 @@ import ProductVItem from '../../../components/molecules/ProductVItem';
 import * as images from '../../../assets/images';
 import CustomBanner from '../../../components/molecules/CustomBanner';
 import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
-import { borderTheme } from '../../../themes/borderTheme';
+import {borderTheme} from '../../../themes/borderTheme';
 
 const HomeScreen = ({navigation}) => {
   const [listProducts, setListProducts] = useState([]);
@@ -44,7 +44,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <CustomView>
       <CustomView scrollable={true}>
-        <CustomButtonBare borderStyle={borderTheme.textInput} marginTop={24}>
+        <CustomButtonBare borderStyle={borderTheme.borderOnly} marginTop={24}>
           <CustomBanner source={images.banner} header={'Super Flash Sale'} />
         </CustomButtonBare>
 

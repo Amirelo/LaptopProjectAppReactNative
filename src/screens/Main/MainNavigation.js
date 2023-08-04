@@ -32,21 +32,26 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   const colors = useThemeColors();
+  const customHeaderStyle = {
+    backgroundColor: colors.borderColor,
+    elevation: 10,
+    shadowColor: colors.primaryColor,
+  };
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {backgroundColor: colors.borderColor, paddingBottom: 4},
+      }}
+      initialRouteName="Home">
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarActiveTintColor: '#02A9F7',
+          tabBarActiveTintColor: colors.primaryColor,
           headerTitle: () => {
             return null;
           },
-          headerStyle: {
-            backgroundColor: colors.borderColor,
-            elevation: 10,
-            shadowColor: colors.primaryColor,
-          },
+          headerStyle: customHeaderStyle,
           headerRight: () => <CustomHeader type={'home'} />,
           tabBarIcon: ({focused}) => {
             return (
@@ -63,8 +68,8 @@ const TabNavigation = () => {
         name="Explore"
         component={ExploreScreen}
         options={{
-          tabBarActiveTintColor: '#02A9F7',
-
+          tabBarActiveTintColor: colors.primaryColor,
+          headerStyle: customHeaderStyle,
           tabBarIcon: ({focused}) => {
             return (
               <CustomImage
@@ -81,8 +86,8 @@ const TabNavigation = () => {
         name="Cart"
         component={CartScreen}
         options={{
-          tabBarActiveTintColor: '#02A9F7',
-
+          tabBarActiveTintColor: colors.primaryColor,
+          headerStyle: customHeaderStyle,
           tabBarIcon: ({focused}) => {
             return (
               <CustomImage
@@ -99,8 +104,8 @@ const TabNavigation = () => {
         name="Account"
         component={AccountScreen}
         options={{
-          tabBarActiveTintColor: '#02A9F7',
-
+          tabBarActiveTintColor: colors.primaryColor,
+          headerStyle: customHeaderStyle,
           tabBarIcon: ({focused}) => {
             return (
               <CustomImage
@@ -117,6 +122,12 @@ const TabNavigation = () => {
 };
 
 const MainNavigation = () => {
+  const colors = useThemeColors();
+  const customHeaderStyle = {
+    backgroundColor: colors.borderColor,
+    elevation: 10,
+    shadowColor: colors.primaryColor,
+  };
   return (
     <Stack.Navigator initialRouteName="HomeTab">
       <Stack.Screen
@@ -126,26 +137,125 @@ const MainNavigation = () => {
         }}
         component={TabNavigation}
       />
-      <Stack.Screen name="Favorite" component={FavoriteScreen} />
-      <Stack.Screen name="Notification" component={NotificationScreen} />
-      <Stack.Screen name="Filter" component={ExploreFilterScreen} />
-      <Stack.Screen name="Recipient Info" component={CartRecipientScreen} />
-      <Stack.Screen name="Checkout" component={CheckOutScreen} />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
-      <Stack.Screen name="New Address" component={InsertAddressScreen} />
-      <Stack.Screen name="New Card" component={InsertCardScreen} />
-      <Stack.Screen name="User Order" component={OrderScreen} />
-      <Stack.Screen name="Order Details" component={OrderDetailScreen} />
-      <Stack.Screen name="Promocodes" component={PromoCodeScreen} />
-      <Stack.Screen name="Card" component={CardScreen} />
-      <Stack.Screen name="Product Detail" component={ProductDetailScreen} />
-      <Stack.Screen name="Product Comments" component={ProductCommentScreen} />
-      <Stack.Screen name="New Comment" component={InsertCommentScreen} />
       <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Favorite"
+        component={FavoriteScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Notification"
+        component={NotificationScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Filter"
+        component={ExploreFilterScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Recipient Info"
+        component={CartRecipientScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Checkout"
+        component={CheckOutScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Profile"
+        component={ProfileScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="New Address"
+        component={InsertAddressScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="New Card"
+        component={InsertCardScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="User Order"
+        component={OrderScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Order Details"
+        component={OrderDetailScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Promocodes"
+        component={PromoCodeScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Card"
+        component={CardScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Product Detail"
+        component={ProductDetailScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Product Comments"
+        component={ProductCommentScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="New Comment"
+        component={InsertCommentScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
         name="Update User Information"
         component={UpdateInfoScreen}
       />
-      <Stack.Screen name="Shipping Address" component={ShippingAddressScreen} />
+      <Stack.Screen
+        options={{
+          headerStyle: customHeaderStyle,
+        }}
+        name="Shipping Address"
+        component={ShippingAddressScreen}
+      />
     </Stack.Navigator>
   );
 };

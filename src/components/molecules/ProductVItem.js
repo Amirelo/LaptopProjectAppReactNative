@@ -6,6 +6,7 @@ import CustomText from '../atoms/CustomText';
 import {MainContext} from '../../screens/Main/MainContext';
 import {useNavigation} from '@react-navigation/native';
 import {CustomButtonBare} from '../atoms';
+import { borderTheme } from '../../themes/borderTheme';
 
 const ProductVItem = ({data}) => {
   const navigation = useNavigation();
@@ -52,8 +53,9 @@ const ProductVItem = ({data}) => {
   return (
     <CustomButtonBare
       onPress={onProductPressed}
+      borderColor={'border'}
       backgroundColor={'backgroundInput'}
-      borderStyle={'textInput'}
+      borderStyle={borderTheme.textInput}
       type={'rowJustify90Screen'}
       paddingVertical={8}>
       <CustomImage

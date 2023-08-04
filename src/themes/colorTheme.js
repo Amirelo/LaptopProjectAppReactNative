@@ -8,6 +8,7 @@ const Colors = {
     backgroundColor: '#D0C2AE',
     noneColor: '#00000000',
     backgroundInputColor: '#E4DACB',
+    imageBackgroundColor: '#D0C2AE',
     borderColor: '#ECE2D3',
     primaryColor: '#967259',
     primaryLightColor: '#EBF0FF',
@@ -63,7 +64,7 @@ const Colors = {
 
 const useThemeColors = () => {
   const colorScheme = useColorScheme();
-  const colors = Colors.light;
+  const colors = Colors[colorScheme];
   return colors;
 };
 

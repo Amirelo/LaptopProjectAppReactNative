@@ -25,9 +25,9 @@ const CustomBanner = ({source, data, marginTop}) => {
         marginTop={32}
         textStyle={'titleBold'}
         textColor={'textConstrast'}>
-        Super Flash Sale
+        Welcome to Computer Store
       </CustomText>
-      <View style={styles.timerContainer}>
+      {/* <View style={styles.timerContainer}>
         <CustomText hasBox={true} textStyle={'normalBold'}>
           {timeLengthCheck(bannerData.day)}
         </CustomText>
@@ -43,7 +43,7 @@ const CustomBanner = ({source, data, marginTop}) => {
         <CustomText hasBox={true} textStyle={'normalBold'}>
           {timeLengthCheck(bannerData.minute)}
         </CustomText>
-      </View>
+      </View> */}
     </CustomView>
   );
 };
@@ -51,11 +51,6 @@ const CustomBanner = ({source, data, marginTop}) => {
 export default CustomBanner;
 
 const styles = StyleSheet.create({
-  container: {
-    width: '90%',
-    height: 206,
-    borderRadius: 16,
-  },
   banner_image: {
     resizeMode: 'cover',
     width: '100%',

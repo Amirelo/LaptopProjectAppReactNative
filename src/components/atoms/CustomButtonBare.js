@@ -12,6 +12,7 @@ const CustomButtonBare = ({
   marginTop,
   backgroundColor,
   borderStyle,
+  borderColor,
   type,
   paddingVertical,
 }) => {
@@ -39,9 +40,10 @@ const CustomButtonBare = ({
       style={[
         alignSelf != null ? {alignSelf: alignSelf} : {},
         marginTop ? {marginTop: marginTop} : {},
-        borderStyle != null
-          ? [borderTheme.textInput, {borderColor: colors.borderColor}]
-          : {},
+        borderStyle != null ? borderStyle : {},
+        borderColor != null
+          ? {borderColor: colors[`${borderColor}Color`]}
+          : {borderColor: colors.borderColor},
         {backgroundColor: backgroundColor},
         paddingVertical ? {paddingVertical: paddingVertical} : {},
       ]}

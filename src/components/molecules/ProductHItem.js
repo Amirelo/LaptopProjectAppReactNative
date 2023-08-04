@@ -94,6 +94,7 @@ const ProductHItem = ({data}) => {
           source={data.productImageLink}
           linkType={'uri'}
           type={'productItem'}
+          backgroundColor={'imageBackground'}
         />
         <CustomText maxLines={2} textStyle={'normalBold'}>
           {data.productName}

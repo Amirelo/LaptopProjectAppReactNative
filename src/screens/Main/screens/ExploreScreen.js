@@ -169,6 +169,7 @@ const ExploreScreen = ({navigation}) => {
             width={'100%'}
             marginTop={24}
             scrollEnabled={true}
+            showsVerticalScrollIndicator={false}
             columnWrapperStyle={{gap: 16}}
             contentContainerStyle={{
               gap: 16,

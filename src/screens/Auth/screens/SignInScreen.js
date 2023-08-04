@@ -7,12 +7,9 @@ import * as images from '../../../assets/images';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
-import {textTheme} from '../../../themes/textTheme';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {updateUserInfo} from '../AuthService';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const SignInScreen = ({navigation, route}) => {
   const [username, setUsername] = useState('');
@@ -20,6 +17,8 @@ const SignInScreen = ({navigation, route}) => {
   const [error, setError] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
   const [message, setMessage] = useState('');
+
+  const language = useLanguage();
 
   const {
     onSignIn,
@@ -29,29 +28,6 @@ const SignInScreen = ({navigation, route}) => {
     onCheckEmail,
     onSocialSignIn,
   } = useContext(AuthContext);
-
-  const getUserInfo = async () => {
-    try {
-      setIsDisabled(true);
-      const respone = await fetch('https://www.googleapis.com/userinfo/v2/me', {
-        headers: {
-          Authorization: `Bearer ${respone.authentication.accessToken}`,
-        },
-      });
-      const user = await respone.json();
-      let checkEmailResult = await onCheckEmail(user.email, 'SIGNUP');
-      if (checkEmailResult.data.response_code === 0) {
-        await AsyncStorage.setItem('email', user.email);
-        onGoogleSignIn();
-      } else {
-        navigation.navigate('Sign Up', {email: user.email, userData: user});
-      }
-      setIsDisabled(false);
-    } catch (error) {
-      console.log(error);
-      setIsDisabled(false);
-    }
-  };
 
   const onToForgotPasswordPress = () => {
     navigation.navigate('Verification', {paramKey: 'CHANGEPASSWORD'});
@@ -66,7 +42,7 @@ const SignInScreen = ({navigation, route}) => {
         setError('');
         await AsyncStorage.setItem('email', result.data.email);
       } else {
-        setError('Wrong username or password');
+        setError(language.err_signin_wrong);
       }
     }
     setIsDisabled(false);
@@ -79,11 +55,11 @@ const SignInScreen = ({navigation, route}) => {
 
   const signInCheck = () => {
     if (username.length === 0) {
-      setError('Username cannot be empty');
+      setError(language.err_empty);
       return false;
     }
     if (password.length === 0) {
-      setError('Password cannot be empty');
+      setError(language.err_empty);
       return false;
     }
     return true;
@@ -122,15 +98,6 @@ const SignInScreen = ({navigation, route}) => {
       }
     } catch (error) {
       console.log(error);
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (e.g. sign in) is in progress already
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
-      } else {
-        // some other error happened
-      }
     }
   };
 
@@ -148,18 +115,18 @@ const SignInScreen = ({navigation, route}) => {
 
   return (
     <CustomView>
-      <CustomImage type={'header'} source={images.app_logo} />
-      <CustomText textColor={'primary'} textStyle={'subtitleBold'}>
-        Welcome to Laptop Store
+      <CustomImage type={'header'} source={images.app_logo_splash} />
+      <CustomText textColor={'text'} textStyle={'subtitleBold'}>
+        {language.login_text_header}
       </CustomText>
       <CustomText textColor={'textVariant'} textStyle={'small'} marginTop={0}>
-        Sign In to continue
+        {language.login_text_sub_header}
       </CustomText>
 
       <CustomInput
         value={username}
         onChangeText={setUsername}
-        placeholder={'username'}
+        placeholder={language.placeholder_username}
         source={images.ic_person}
         disabled={!isDisabled}
         marginTop={50}
@@ -167,48 +134,56 @@ const SignInScreen = ({navigation, route}) => {
       <CustomInput
         value={password}
         onChangeText={setPassword}
-        placeholder={'password'}
+        placeholder={language.placeholder_password}
         source={images.ic_password}
         disabled={!isDisabled}
-        marginTop={8}
+        marginTop={12}
       />
-      <CustomText textColor={'err'} textStyle={'small'} marginTop={0}>
-        {error}
-      </CustomText>
+      {error ? (
+        <CustomText marginTop={4} textColor={'err'} textStyle={'small'}>
+          {error}
+        </CustomText>
+      ) : (
+        <></>
+      )}
       <CustomButton
         onPress={onToForgotPasswordPress}
         alignSelf={'flex-end'}
         type={'tertiary'}
         disabled={isDisabled}
         customStyles={{marginRight: '5%'}}>
-        Forgot password
+        {language.login_button_forgot_password}
       </CustomButton>
       <CustomButton
         onPress={onSignInPress}
         type={'primary'}
         disabled={isDisabled}>
-        Sign In
+        {language.login_button_signin}
       </CustomButton>
-      <CustomText marginTop={18}>OR Sign In with</CustomText>
+      <CustomText marginTop={18}>
+        {language.login_text_other_signin_option}
+      </CustomText>
       <CustomButton
         onPress={onGoogleSignInPressed}
         type={'social'}
         source={images.ic_google}
         disabled={isDisabled}>
-        Google
+        {language.login_button_google_signin}
       </CustomButton>
       <CustomButton
         type={'tertiary'}
         onPress={onToSignUpPress}
         disabled={isDisabled}>
         <CustomView type={'row'} marginTop={24}>
-          <CustomText marginTop={0}>Don't have an account? </CustomText>
+          <CustomText marginTop={0}>
+            {language.login_button_signup_1}{' '}
+          </CustomText>
           <CustomText
             type={'highlight'}
             textColor={'primary'}
-            textStyle={textTheme.text_normalBold}
+            textStyle={'normalBold'}
             marginTop={0}>
-            Sign Up here
+            {language.login_button_signup_2}
           </CustomText>
         </CustomView>
       </CustomButton>

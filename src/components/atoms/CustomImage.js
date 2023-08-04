@@ -1,5 +1,6 @@
 import {StyleSheet, Image} from 'react-native';
 import React from 'react';
+import useThemeColors from '../../themes/colorTheme';
 
 const CustomImage = ({
   source,
@@ -7,8 +8,10 @@ const CustomImage = ({
   marginTop,
   customStyles,
   linkType,
-  tintColor,
+  backgroundColor,
 }) => {
+  const colors = useThemeColors();
+  backgroundColor = backgroundColor ? colors[`${backgroundColor}Color`] : '';
   return (
     <Image
       resizeMode="cover"
@@ -16,7 +19,7 @@ const CustomImage = ({
       style={[
         type != null ? styles[`${type}`] : {},
         marginTop != null ? {marginTop: marginTop} : {},
-        tintColor ? {tintColor: tintColor} : {},
+        backgroundColor ? {backgroundColor: backgroundColor} : {},
         customStyles ? customStyles : {},
       ]}
     />
