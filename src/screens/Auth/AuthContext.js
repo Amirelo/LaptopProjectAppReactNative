@@ -28,8 +28,9 @@ export const AuthContextProvider = ({children}) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [language, setLanguage] = useState(checkLanguage('en'));
 
-  const changeLanguage = lang => {
+  const changeLanguage = async lang => {
     setLanguage(checkLanguage(lang));
+    await AsyncStorage.setItem('language', lang);
   };
 
   const checkSaveUser = async () => {
@@ -294,7 +295,6 @@ export const AuthContextProvider = ({children}) => {
   };
 
   const getCurLanguage = async () => {
-    await AsyncStorage.setItem('language','ja');
     const langKey = await AsyncStorage.getItem('language');
     console.log('key', langKey);
     setLanguage(checkLanguage(langKey));

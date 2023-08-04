@@ -92,6 +92,10 @@ const AccountScreen = ({route, navigation}) => {
     });
   };
 
+  const onSettingsPressed = () => {
+    navigation.navigate('Settings');
+  };
+
   const onCardScreenPressed = () => {
     navigation.navigate('Card', {cards: userCards});
   };
@@ -124,13 +128,18 @@ const AccountScreen = ({route, navigation}) => {
         />
         <AccountTab
           title={language.account_tabHeader_payment}
-          subtitle={'Cash'}
+          subtitle={language.account_tabSub_payment}
           onPress={onCardScreenPressed}
         />
         <AccountTab
           title={language.account_tabHeader_promo}
           subtitle={userPromoCodes.length + ' ' + language.account_tabSub_promo}
           onPress={onPromoCodesScreenPressed}
+        />
+        <AccountTab
+          title={language.account_tabHeader_settings}
+          subtitle={language.account_tabSub_settings}
+          onPress={onSettingsPressed}
         />
         <AccountTab
           title={language.account_tabHeader_changePass}

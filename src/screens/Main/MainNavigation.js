@@ -27,6 +27,7 @@ import InsertCardScreen from './screens/InsertCardScreen';
 import ProductCommentScreen from './screens/ProductCommentScreen';
 import InsertCommentScreen from './screens/InsertCommentScreen';
 import {AuthContext} from '../Auth/AuthContext';
+import SettingScreen from './screens/SettingScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -276,6 +277,14 @@ const MainNavigation = () => {
         }}
         name="Shipping Address"
         component={ShippingAddressScreen}
+      />
+      <Stack.Screen
+        options={{
+          title: language.header_text_settings,
+          headerStyle: customHeaderStyle,
+        }}
+        name="Settings"
+        component={SettingScreen}
       />
     </Stack.Navigator>
   );

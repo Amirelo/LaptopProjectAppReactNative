@@ -56,6 +56,7 @@ const OptionsButton = ({children, onBackgroundPressed}) => {
   }, []);
   return (
     <CustomView
+      marginTop={0}
       type={'absolute'}
       animated={true}
       customStyles={{opacity: backgroundAnimated}}>

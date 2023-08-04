@@ -27,6 +27,7 @@ const languageTheme = {
     header_text_product_ratings: 'Ratings',
     header_text_product_insert_rating: 'New Ratings',
     header_text_update_user: 'Update User Info',
+    header_text_settings: 'Settings',
 
     splash_text_motto: 'Simplify Your Life',
 
@@ -87,13 +88,17 @@ const languageTheme = {
     account_tabHeader_adderss: 'Shipping address',
     account_tabSub_adderss: 'Address(s)',
     account_tabHeader_payment: 'Payment Methods',
-    account_tabSub_payment: '',
+    account_tabSub_payment: 'Cash',
     account_tabHeader_promo: 'Promocodes',
     account_tabSub_promo: 'Promocode(s) Available',
     account_tabHeader_changePass: 'Change Password',
     account_tabSub_changePass: 'Change Your Password',
     account_tabHeader_logout: 'Logout',
     account_tabSub_logout: 'Logout Of Your Account',
+    account_tabHeader_settings: 'Settings',
+    account_tabSub_settings: 'Change Language, Theme',
+
+    settings_text_language: 'Language',
 
     updateInfo_text_change: 'Change',
 
@@ -223,6 +228,7 @@ const languageTheme = {
     header_text_product_ratings: 'Bewertungen',
     header_text_product_insert_rating: 'Neue Bewertungen',
     header_text_update_user: 'Benutzerinformationen aktualisieren',
+    header_text_settings: 'Einstellungen',
 
     splash_text_motto: 'Vereinfachen Sie Ihr Leben',
 
@@ -285,12 +291,17 @@ const languageTheme = {
     account_tabHeader_adderss: 'Lieferadresse',
     account_tabSub_adderss: 'Anschrift(en)',
     account_tabHeader_payment: 'Zahlungsarten',
+    account_tabSub_payment: 'Kasse',
     account_tabHeader_promo: 'Werbegeschenke',
     account_tabSub_promo: 'Promo-Code(s) verfügbar',
     account_tabHeader_changePass: 'Passwort ändern',
     account_tabSub_changePass: 'Ändern Sie Ihr Passwort',
     account_tabHeader_logout: 'Abmelden',
     account_tabSub_logout: 'Von Ihrem Konto abmelden',
+    account_tabHeader_settings: 'Einstellungen',
+    account_tabSub_settings: 'Sprache ändern, Thema',
+
+    settings_text_language: 'Sprache',
 
     updateInfo_text_change: 'Ändern',
 
@@ -420,6 +431,7 @@ const languageTheme = {
     header_text_product_ratings: 'xếp hạng',
     header_text_product_insert_rating: 'Xếp hạng mới',
     header_text_update_user: 'Cập nhật thông tin người dùng',
+    header_text_settings: 'Cài đặt',
 
     splash_text_motto: 'Đơn giản hóa cuộc sống',
 
@@ -480,12 +492,17 @@ const languageTheme = {
     account_tabHeader_adderss: 'Địa chỉ giao hàng',
     account_tabSub_adderss: 'địa chỉ',
     account_tabHeader_payment: 'Phương thức thanh toán',
+    account_tabSub_payment: 'Tiền mặt',
     account_tabHeader_promo: 'Mã số quảng',
     account_tabSub_promo: 'Mã khuyến mãi',
     account_tabHeader_changePass: 'Đổi mật khẩu',
     account_tabSub_changePass: 'Thay đổi mật khẩu của bạn',
     account_tabHeader_logout: 'Đăng xuất',
     account_tabSub_logout: 'Đăng xuất khỏi tài khoản của bạn',
+    account_tabHeader_settings: 'Cài đặt',
+    account_tabSub_settings: 'Đổi ngôn ngữ, giao diện',
+
+    settings_text_language: 'Ngôn ngữ',
 
     updateInfo_text_change: 'Sửa',
 
@@ -615,6 +632,7 @@ const languageTheme = {
     header_text_product_ratings: 'Notations',
     header_text_product_insert_rating: 'Nouvelles évaluations',
     header_text_update_user: "Mise à jour des informations sur l'utilisateur",
+    header_text_settings: 'Paramètres',
 
     splash_text_motto: 'Simplifiez votre vie',
 
@@ -677,12 +695,17 @@ const languageTheme = {
     account_tabHeader_adderss: 'Adresse de livraison',
     account_tabSub_adderss: 'Adresse(s)',
     account_tabHeader_payment: 'Méthodes de paiement',
+    account_tabSub_payment: 'Argent',
     account_tabHeader_promo: 'Code(s) promotionnel(s)',
     account_tabSub_promo: 'Code(s) promotionnel(s) disponible(s)',
     account_tabHeader_changePass: 'Changer le mot de passe',
     account_tabSub_changePass: 'Modifier votre mot de passe',
     account_tabHeader_logout: 'Déconnexion',
     account_tabSub_logout: 'Déconnexion de votre compte',
+    account_tabHeader_settings: 'Paramètres',
+    account_tabSub_settings: 'Changer de langue, de thème',
+
+    settings_text_language: 'Langue',
 
     updateInfo_text_change: 'Modifier le',
 
@@ -812,6 +835,7 @@ const languageTheme = {
     header_text_product_ratings: 'レーティング',
     header_text_product_insert_rating: '新しい評価',
     header_text_update_user: 'ユーザー情報の更新',
+    header_text_settings: '設定',
 
     splash_text_motto: '生活をシンプルに',
 
@@ -872,12 +896,17 @@ const languageTheme = {
     account_tabHeader_adderss: '配送先住所',
     account_tabSub_adderss: '住所',
     account_tabHeader_payment: 'お支払い方法',
+    account_tabSub_payment: '現金',
     account_tabHeader_promo: 'プロモコード',
     account_tabSub_promo: '利用可能なプロモコード',
     account_tabHeader_changePass: 'パスワードの変更',
     account_tabSub_changePass: 'パスワードの変更',
     account_tabHeader_logout: 'ログアウト',
     account_tabSub_logout: 'アカウントからログアウト',
+    account_tabHeader_settings: '設定',
+    account_tabSub_settings: '言語、テーマの変更',
+
+    settings_text_language: '言語',
 
     updateInfo_text_change: '変更',
 
