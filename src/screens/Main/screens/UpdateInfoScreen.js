@@ -1,14 +1,31 @@
 import React, {useContext, useState} from 'react';
+import {NativeModules} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../../Auth/AuthContext';
 import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const UpdateInfoScreen = ({route, navigation}) => {
   const {email, type} = route.params;
   const [data, setData] = useState();
   const [confirmData, setConfirmData] = useState();
+  const language = useLanguage();
+  const {localeIdentifier} = NativeModules.I18nManager;
+  let locale = localeIdentifier.slice(0, 2);
+
+  const languageText =
+    type == 'PHONENUMBER' ? 'phoneNumber' : type.toLowerCase();
+
+  const buttonText =
+    locale == 'en' || locale == 'vn' || locale == 'fr'
+      ? language.updateInfo_text_change +
+        ' ' +
+        language[`placeholder_${languageText}`]
+      : language[`placeholder_${languageText}`] +
+        ' ' +
+        language.updateInfo_text_change;
 
   let inputType = 'default';
   switch (type) {
@@ -51,14 +68,14 @@ const UpdateInfoScreen = ({route, navigation}) => {
     <CustomView>
       <CustomInput
         onChangeText={setData}
-        placeholder={type.toLowerCase()}
+        placeholder={language[`placeholder_${languageText}`]}
         marginTop={103}
         keyboardType={inputType}
       />
       {type == 'PASSWORD' ? (
         <CustomInput
           onChangeText={setConfirmData}
-          placeholder={'Reconfirm ' + type.toLowerCase()}
+          placeholder={language.placeholder_password_confirm}
           marginTop={8}
           keyboardType={inputType}
         />
@@ -68,7 +85,9 @@ const UpdateInfoScreen = ({route, navigation}) => {
       <CustomButton
         onPress={onChangeButtonPresses}
         type={'primary'}
-        marginTop={60}>{`Change ${type.toLowerCase()}`}</CustomButton>
+        marginTop={60}>
+        {buttonText}
+      </CustomButton>
     </CustomView>
   );
 };

@@ -5,11 +5,14 @@ import {MainContext} from '../MainContext';
 import {deviceWidth} from '../../../utils/helper';
 import CommentItem from '../../../components/molecules/CommentItem';
 import CustomButton from '../../../components/molecules/CustomButton';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const ProductCommentScreen = ({navigation, route}) => {
   const {onGetProductRatingsByID} = useContext(MainContext);
   const {productID} = route.params;
   const [comments, setComments] = useState({});
+
+  const language = useLanguage();
 
   const initData = async () => {
     const res = await onGetProductRatingsByID(productID);
@@ -44,7 +47,7 @@ const ProductCommentScreen = ({navigation, route}) => {
         backgroundColor={'warn'}
         type={'primary'}
         marginTop={32}>
-        Add comment
+        {language.rating_button_addComment}
       </CustomButton>
       <CustomText />
     </CustomView>

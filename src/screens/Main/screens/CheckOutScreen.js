@@ -54,23 +54,7 @@ const CheckOutScreen = ({navigation, route}) => {
   return (
     <CustomView>
       <CustomText />
-      <AddressItem
-        onlyInfo={true}
-        data={{
-          address:
-            location.addressName +
-            ', ' +
-            location.ward +
-            ', ' +
-            location.district +
-            ', ' +
-            location.city,
-          fullname: fullName,
-          phonenumber: phoneNumber,
-        }}
-        phonenumber={phoneNumber}
-        fullname={fullName}
-      />
+      <AddressItem onlyInfo={true} data={location} />
       <CustomView type={'rowJustify90'} marginTop={8}>
         <CustomText>{language.checkOut_text_product_price}</CustomText>
         <CustomText>{priceFormat(totalPrice)}</CustomText>

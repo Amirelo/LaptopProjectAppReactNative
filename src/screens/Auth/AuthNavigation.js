@@ -6,11 +6,13 @@ import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import SplashScreen from './screens/SplashScreen';
 import useThemeColors from '../../themes/colorTheme';
+import {useLanguage} from '../../themes/languageTheme';
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigation = () => {
   const colors = useThemeColors();
+  const language = useLanguage();
   const customHeaderStyle = {
     backgroundColor: colors.borderColor,
     elevation: 10,
@@ -30,6 +32,7 @@ const AuthNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_verification,
           headerStyle: customHeaderStyle,
         }}
         name="Verification"
@@ -37,6 +40,7 @@ const AuthNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_changePassword,
           headerStyle: customHeaderStyle,
         }}
         name="Forgot Password"
@@ -44,6 +48,7 @@ const AuthNavigation = () => {
       />
       <Stack.Screen
         options={{
+          title: language.header_text_signUp,
           headerStyle: customHeaderStyle,
         }}
         name="Sign Up"

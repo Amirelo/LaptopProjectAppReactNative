@@ -3,11 +3,14 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButtonBare from '../../../components/atoms/CustomButtonBare';
 import CustomImage from '../../../components/atoms/CustomImage';
 import AccountTab from '../../../components/molecules/AccountTab';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const ProfileScreen = ({route, navigation}) => {
   const {userInfo} = route.params;
   const [user, setUser] = useState(userInfo);
   console.log(userInfo);
+
+  const language = useLanguage();
 
   const onGoBack = (data, type) => {
     setUser({});
@@ -63,19 +66,19 @@ const ProfileScreen = ({route, navigation}) => {
       <AccountTab
         type={'profile'}
         onPress={() => onAccountTabPressed('USERNAME')}
-        title={'Username'}
+        title={language.profile_tab_username}
         subtitle={user.username}
       />
       <AccountTab
         type={'profile'}
         onPress={() => onAccountTabPressed('PHONENUMBER')}
-        title={'Phone number'}
+        title={language.profile_tab_phoneNumber}
         subtitle={user.phonenumber}
       />
       <AccountTab
         type={'profile'}
         onPress={() => onAccountTabPressed('BIRTHDAY')}
-        title={'Birthday'}
+        title={language.profile_tab_birthday}
         subtitle={user.birthday}
       />
     </CustomView>

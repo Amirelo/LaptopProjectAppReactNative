@@ -5,9 +5,11 @@ import CustomText from '../atoms/CustomText';
 import CustomButton from './CustomButton';
 import {deviceHeight} from '../../utils/helper';
 import {useNavigation} from '@react-navigation/native';
+import {useLanguage} from '../../themes/languageTheme';
 
 const LocationOptions = ({data, onLocationSelected, onBackgroundPressed}) => {
   const navigation = useNavigation();
+  const language = useLanguage();
   const animatedValue = useRef(new Animated.Value(255)).current;
   const slideIn = () => {
     Animated.timing(animatedValue, {
@@ -75,11 +77,8 @@ const LocationOptions = ({data, onLocationSelected, onBackgroundPressed}) => {
         customStyles={{transform: [{translateY: animatedValue}]}}
         animated={true}
         type={'absoluteBottomItem'}>
-        <CustomText
-          customStyles={styles.spacing}
-          fontWeight={'heavy'}
-          fontSize={'title'}>
-          Choose Address
+        <CustomText customStyles={styles.spacing} textStyle={'subtitleBold'}>
+          {language.cartRecipient_tabHeader_address}
         </CustomText>
 
         <FlatList
@@ -97,9 +96,9 @@ const LocationOptions = ({data, onLocationSelected, onBackgroundPressed}) => {
                   onPress={() => onLocationSelected(item)}
                   customStyles={styles.spacing}>
                   {item.addressName +
-                    ', P.' +
+                    ', ' +
                     item.ward +
-                    ', Q.' +
+                    ', ' +
                     item.district +
                     ', ' +
                     item.city}
@@ -108,8 +107,11 @@ const LocationOptions = ({data, onLocationSelected, onBackgroundPressed}) => {
             );
           }}
         />
-        <CustomButton onPress={onAddNewAddressPressed} customStyles={{marginBottom: 32}} type={'tertiary'}>
-          Add New Address
+        <CustomButton
+          onPress={onAddNewAddressPressed}
+          customStyles={{marginBottom: 32}}
+          type={'tertiary'}>
+          {language.cartRecipient_tab_addNew}
         </CustomButton>
       </CustomView>
     </CustomView>

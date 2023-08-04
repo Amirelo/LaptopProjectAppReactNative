@@ -6,7 +6,7 @@ import CustomView from '../../../components/atoms/CustomView';
 import CustomButton from '../../../components/molecules/CustomButton';
 import CustomInput from '../../../components/molecules/CustomInput';
 import LocationOptions from '../../../components/molecules/LocationOptions';
-import { useLanguage } from '../../../themes/languageTheme';
+import {useLanguage} from '../../../themes/languageTheme';
 
 const CartRecipientScreen = ({navigation, route}) => {
   const [location, setLocation] = useState();

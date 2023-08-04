@@ -2,6 +2,9 @@ import {NativeModules} from 'react-native';
 
 const languageTheme = {
   en: {
+    header_text_verification: 'Verification',
+    header_text_signUp: 'Sign Up',
+    header_text_changePassword: 'Change Password',
     header_text_home: 'Home',
     header_text_explore: 'Explore',
     header_text_cart: 'Cart',
@@ -23,6 +26,8 @@ const languageTheme = {
     header_text_product_ratings: 'Ratings',
     header_text_product_insert_rating: 'New Ratings',
     header_text_update_user: 'Update User Info',
+
+    splash_text_motto: 'Simplify Your Life',
 
     login_text_header: 'Welcome To Computer Store',
     login_text_sub_header: 'Sign In To Continue',
@@ -63,6 +68,8 @@ const languageTheme = {
     cart_button_order: 'Place Order',
 
     cartRecipient_button_continue: 'Continue To Checkout',
+    cartRecipient_tabHeader_address: 'Choose Address',
+    cartRecipient_tab_addNew: 'Add New Address',
 
     checkOut_text_product_price: 'Product(s) Price',
     checkOut_text_shipping_price: 'Shipping Price',
@@ -87,11 +94,56 @@ const languageTheme = {
     account_tabHeader_logout: 'Logout',
     account_tabSub_logout: 'Logout Of Your Account',
 
+    updateInfo_text_change: 'Change',
+
+    profile_tab_username: 'Username',
+    profile_tab_phoneNumber: 'Phone Number',
+    profile_tab_birthday: 'Birthday',
+
+    rating_button_addComment: 'Add Comments',
+
+    insertRating_button_postComment: 'Post',
+
     order_text_orderNumber: 'Order No.',
     order_text_quantity: 'Quantity',
     order_text_total: 'Total',
     order_text_status: 'Status',
     order_button_detail: 'Detail',
+
+    productDetail_textHeader_general: 'General Information',
+    productDetail_text_generalBrand: 'Brand',
+    productDetail_text_generalRating: 'Rating',
+    productDetail_text_generalModelCode: 'P/N',
+    productDetail_text_generalManufac: 'Manufacturer',
+    productDetail_text_generalWarranty: 'Warranty',
+    productDetail_textHeader_dimension: 'Dimensions and Weight',
+    productDetail_text_dimensionSize: 'Size',
+    productDetail_text_dimensionWeight: 'Weight',
+    productDetail_textHeader_processor: 'Processor',
+    productDetail_text_processorName: 'Name',
+    productDetail_text_processorSpeed: 'Speed',
+    productDetail_text_processorCores: 'Cores',
+    productDetail_text_processorLP: 'Logical Processors',
+    productDetail_text_processorCache: 'Cache Memory',
+    productDetail_textHeader_memory: 'Memory',
+    productDetail_text_memoryRAM: 'RAM',
+    productDetail_text_memoryType: 'Type',
+    productDetail_text_memorySpeed: 'Speed',
+    productDetail_text_memoryASlots: 'Available Slots',
+    productDetail_text_memoryMaxRAM: 'Max RAM',
+    productDetail_textHeader_screen: 'Screen',
+    productDetail_text_screenSize: 'Size',
+    productDetail_text_screenRes: 'Resolution',
+    productDetail_textHeader_storage: 'Storage',
+    productDetail_text_storageType: 'Type',
+    productDetail_text_storageASlots: 'Available Slots',
+    productDetail_text_storageCur: 'Current Storage',
+    productDetail_textHeader_os: 'Operating System',
+    productDetail_text_osName: 'OS',
+    productDetail_text_osVersion: 'Version',
+    productDetail_text_osType: 'Type',
+    productDetail_button_add: 'Add To Cart',
+    productDetail_button_review: 'Go To Review',
 
     orderDetail_textHeader_order: 'Order',
     orderDetail_textHeader_product: 'Product(s)',
@@ -118,6 +170,10 @@ const languageTheme = {
     placeholder_ward: 'Ward',
     placeholder_district: 'District',
     placeholder_city: 'City',
+    placeholder_rating: 'Rating',
+    placeholder_comment: 'Comment',
+    placeholder_search: 'Search',
+    placeholder_note: 'Note',
 
     arr_status_order_0: 'Cancel',
     arr_status_order_1: 'Processing',
@@ -125,6 +181,7 @@ const languageTheme = {
     arr_status_order_3: 'On the way',
     arr_status_order_4: 'Delivered',
 
+    arr_status_address_header: 'Address Status',
     arr_status_address_0: 'Deactive',
     arr_status_address_1: 'Default',
     arr_status_address_2: 'Optional',
@@ -141,6 +198,9 @@ const languageTheme = {
     err_verify_code: 'Invalid Verification Code',
   },
   de: {
+    header_text_verification: 'Überprüfung',
+    header_text_signUp: 'Anmelden',
+    header_text_changePassword: 'Passwort ändern',
     header_text_home: 'Startseite',
     header_text_explore: 'Erkunden Sie',
     header_text_cart: 'Warenkorb',
@@ -162,6 +222,8 @@ const languageTheme = {
     header_text_product_ratings: 'Bewertungen',
     header_text_product_insert_rating: 'Neue Bewertungen',
     header_text_update_user: 'Benutzerinformationen aktualisieren',
+
+    splash_text_motto: 'Vereinfachen Sie Ihr Leben',
 
     login_text_header: 'Willkommen bei Computer Store',
     login_text_sub_header: 'Zum Fortfahren anmelden',
@@ -204,6 +266,8 @@ const languageTheme = {
     cart_button_order: 'Bestellung aufgeben',
 
     cartRecipient_button_continue: 'Weiter zur Kasse',
+    cartRecipient_tabHeader_address: 'Adresse auswählen',
+    cartRecipient_tab_addNew: 'Neue Adresse hinzufügen',
 
     checkOut_text_product_price: 'Produkt(e) Preis',
     checkOut_text_shipping_price: 'Versandpreis',
@@ -227,11 +291,56 @@ const languageTheme = {
     account_tabHeader_logout: 'Abmelden',
     account_tabSub_logout: 'Von Ihrem Konto abmelden',
 
+    updateInfo_text_change: 'Ändern',
+
+    profile_tab_username: 'Benutzername',
+    profile_tab_phoneNumber: 'Telefon-Nummer',
+    profile_tab_birthday: 'Geburtstag',
+
+    rating_button_addComment: 'Kommentare hinzufügen',
+
+    insertRating_button_postComment: 'Beitrag',
+
     order_text_orderNumber: 'Auftrag Nr.',
     order_text_quantity: 'Menge',
     order_text_total: 'Gesamt',
     order_text_status: 'Status',
     order_button_detail: 'Einzelheiten',
+
+    productDetail_textHeader_general: 'Allgemeine Informationen',
+    productDetail_text_generalBrand: 'Marke',
+    productDetail_text_generalRating: 'Bewertung',
+    productDetail_text_generalModelCode: 'P/N',
+    productDetail_text_generalManufac: 'Hersteller',
+    productDetail_text_generalWarranty: 'Garantie',
+    productDetail_textHeader_dimension: 'Abmessungen und Gewicht',
+    productDetail_text_dimensionSize: 'Größe',
+    productDetail_text_dimensionWeight: 'Gewicht',
+    productDetail_textHeader_processor: 'Prozessor',
+    productDetail_text_processorName: 'Bezeichnung',
+    productDetail_text_processorSpeed: 'Geschwindigkeit',
+    productDetail_text_processorCores: 'Kerne',
+    productDetail_text_processorLP: 'Logische Prozessoren',
+    productDetail_text_processorCache: 'Cache-Speicher',
+    productDetail_textHeader_memory: 'Speicher',
+    productDetail_text_memoryRAM: 'RAM',
+    productDetail_text_memoryType: 'Typ',
+    productDetail_text_memorySpeed: 'Geschwindigkeit',
+    productDetail_text_memoryASlots: 'Verfügbare Steckplätze',
+    productDetail_text_memoryMaxRAM: 'Maximaler RAM',
+    productDetail_textHeader_screen: 'Bildschirm',
+    productDetail_text_screenSize: 'Größe',
+    productDetail_text_screenRes: 'Auflösung',
+    productDetail_textHeader_storage: 'Speicher',
+    productDetail_text_storageType: 'Typ',
+    productDetail_text_storageASlots: 'Verfügbare Steckplätze',
+    productDetail_text_storageCur: 'Aktueller Speicher',
+    productDetail_textHeader_os: 'Betriebssytem',
+    productDetail_text_osName: 'OS',
+    productDetail_text_osVersion: 'Version',
+    productDetail_text_osType: 'Typ',
+    productDetail_button_add: 'Zum Warenkorb hinzufügen',
+    productDetail_button_review: 'Zur Rezension gehen',
 
     orderDetail_textHeader_order: 'Bestellung',
     orderDetail_textHeader_product: 'Produkt(e)',
@@ -258,6 +367,10 @@ const languageTheme = {
     placeholder_ward: 'Bezirk',
     placeholder_district: 'Bezirk',
     placeholder_city: 'Stadt',
+    placeholder_rating: 'Bewertung',
+    placeholder_comment: 'Kommentar',
+    placeholder_search: 'Suche',
+    placeholder_note: 'Hinweis',
 
     arr_status_order_0: 'Abbrechen',
     arr_status_order_1: 'Verarbeitung',
@@ -265,6 +378,7 @@ const languageTheme = {
     arr_status_order_3: 'Unterwegs',
     arr_status_order_4: 'Geliefert',
 
+    arr_status_address_header: 'Addresse Status',
     arr_status_address_0: 'Deaktiviert',
     arr_status_address_1: 'Standard',
     arr_status_address_2: 'Wahlweise',
@@ -281,6 +395,9 @@ const languageTheme = {
     err_verify_code: 'Ungültiger Verifizierungscode',
   },
   vn: {
+    header_text_verification: 'Xác thực',
+    header_text_signUp: 'Đăng ký',
+    header_text_changePassword: 'Đổi mật khẩu',
     header_text_home: 'Trang chủ',
     header_text_explore: 'Khám phá',
     header_text_cart: 'Cửa hàng',
@@ -302,6 +419,8 @@ const languageTheme = {
     header_text_product_ratings: 'xếp hạng',
     header_text_product_insert_rating: 'Xếp hạng mới',
     header_text_update_user: 'Cập nhật thông tin người dùng',
+
+    splash_text_motto: 'Đơn giản hóa cuộc sống',
 
     login_text_header: 'Chào mừng bạn đến với cửa hàng máy tính',
     login_text_sub_header: 'Đăng nhập để tiếp tục',
@@ -342,6 +461,8 @@ const languageTheme = {
     cart_button_order: 'đặt hàng',
 
     cartRecipient_button_continue: 'Tới thanh toán',
+    cartRecipient_tabHeader_address: 'Chọn địa chỉ',
+    cartRecipient_tab_addNew: 'Thêm địa chỉ mới',
 
     checkOut_text_product_price: 'Giá các sản phẩm',
     checkOut_text_shipping_price: 'Giá vận chuyển',
@@ -365,11 +486,56 @@ const languageTheme = {
     account_tabHeader_logout: 'Đăng xuất',
     account_tabSub_logout: 'Đăng xuất khỏi tài khoản của bạn',
 
+    updateInfo_text_change: 'Sửa',
+
+    profile_tab_username: 'Tên tài khoản',
+    profile_tab_phoneNumber: 'Số điện thoại',
+    profile_tab_birthday: 'Sinh nhật',
+
+    rating_button_addComment: 'Thêm bình luận',
+
+    insertRating_button_postComment: 'Đăng',
+
     order_text_orderNumber: 'Số thứ tự',
     order_text_quantity: 'Số lượng',
     order_text_total: 'Tổng cộng',
     order_text_status: 'Trạng thái',
     order_button_detail: 'Chi tiết',
+
+    productDetail_textHeader_general: 'Thông tin chung',
+    productDetail_text_generalBrand: 'Thương hiệu',
+    productDetail_text_generalRating: 'Xếp hạng',
+    productDetail_text_generalModelCode: 'P/N',
+    productDetail_text_generalManufac: 'nhà chế tạo',
+    productDetail_text_generalWarranty: 'Sự bảo đảm',
+    productDetail_textHeader_dimension: 'Kích thước và trọng lượng',
+    productDetail_text_dimensionSize: 'Kích cỡ',
+    productDetail_text_dimensionWeight: 'Cân nặng',
+    productDetail_textHeader_processor: 'bộ vi xử lý',
+    productDetail_text_processorName: 'Tên',
+    productDetail_text_processorSpeed: 'Tốc độ',
+    productDetail_text_processorCores: 'lõi',
+    productDetail_text_processorLP: 'Bộ xử lý logic',
+    productDetail_text_processorCache: 'Bộ nhớ đệm',
+    productDetail_textHeader_memory: 'Ký ức',
+    productDetail_text_memoryRAM: 'ĐẬP',
+    productDetail_text_memoryType: 'Kiểu',
+    productDetail_text_memorySpeed: 'Tốc độ',
+    productDetail_text_memoryASlots: 'Khe có sẵn',
+    productDetail_text_memoryMaxRAM: 'RAM tối đa',
+    productDetail_textHeader_screen: 'Màn hình',
+    productDetail_text_screenSize: 'Kích cỡ',
+    productDetail_text_screenRes: 'Nghị quyết',
+    productDetail_textHeader_storage: 'Kho',
+    productDetail_text_storageType: 'Kiểu',
+    productDetail_text_storageASlots: 'Khe có sẵn',
+    productDetail_text_storageCur: 'Bộ nhớ hiện tại',
+    productDetail_textHeader_os: 'Hệ điều hành',
+    productDetail_text_osName: 'hệ điều hành',
+    productDetail_text_osVersion: 'Phiên bản',
+    productDetail_text_osType: 'Kiểu',
+    productDetail_button_add: 'Thêm vào giỏ hàng',
+    productDetail_button_review: 'Chuyển đến Đánh giá',
 
     orderDetail_textHeader_order: 'Đơn hàng',
     orderDetail_textHeader_product: 'Các sản phẩm',
@@ -396,6 +562,10 @@ const languageTheme = {
     placeholder_ward: 'Phường',
     placeholder_district: 'Huyện',
     placeholder_city: 'Thành phố',
+    placeholder_rating: 'Đánh giá',
+    placeholder_comment: 'Bình luận',
+    placeholder_search: 'Tìm kiếm',
+    placeholder_note: 'Ghi chú',
 
     arr_status_order_0: 'Hủy bỏ',
     arr_status_order_1: 'Xử lý',
@@ -403,6 +573,7 @@ const languageTheme = {
     arr_status_order_3: 'Trên đường',
     arr_status_order_4: 'Đã giao hàng',
 
+    arr_status_address_header: 'Trạng thái địa chỉ',
     arr_status_address_0: 'Hủy kích hoạt',
     arr_status_address_1: 'Mặc định',
     arr_status_address_2: 'Không bắt buộc',
@@ -419,6 +590,9 @@ const languageTheme = {
     err_verify_code: 'Mã xác minh không hợp lệ',
   },
   fr: {
+    header_text_verification: 'Vérification',
+    header_text_signUp: "S'inscrire",
+    header_text_changePassword: 'Modifier le mot de passe',
     header_text_home: 'Accueil',
     header_text_explore: 'Explorer',
     header_text_cart: 'Chariot',
@@ -440,6 +614,8 @@ const languageTheme = {
     header_text_product_ratings: 'Notations',
     header_text_product_insert_rating: 'Nouvelles évaluations',
     header_text_update_user: "Mise à jour des informations sur l'utilisateur",
+
+    splash_text_motto: 'Simplifiez votre vie',
 
     login_text_header: 'Bienvenue à Computer Store',
     login_text_sub_header: "S'identifier pour continuer",
@@ -482,6 +658,8 @@ const languageTheme = {
     cart_button_order: 'Passer commande',
 
     cartRecipient_button_continue: 'Passer à la caisse',
+    cartRecipient_tabHeader_address: 'Choisir une adresse',
+    cartRecipient_tab_addNew: 'Ajouter une nouvelle adresse',
 
     checkOut_text_product_price: 'Prix du (des) produit(s)',
     checkOut_text_shipping_price: "Prix d'expédition",
@@ -505,11 +683,56 @@ const languageTheme = {
     account_tabHeader_logout: 'Déconnexion',
     account_tabSub_logout: 'Déconnexion de votre compte',
 
+    updateInfo_text_change: 'Modifier le',
+
+    profile_tab_username: "Nom d'utilisateur",
+    profile_tab_phoneNumber: 'Numéro de téléphone',
+    profile_tab_birthday: 'Anniversaire',
+
+    rating_button_addComment: 'Ajouter des commentaires',
+
+    insertRating_button_postComment: 'Poster',
+
     order_text_orderNumber: 'N° de commande',
     order_text_quantity: 'Quantité',
     order_text_total: 'Total',
     order_text_status: 'Statut de la commande',
     order_button_detail: 'Détail de la commande',
+
+    productDetail_textHeader_general: 'Informations générales',
+    productDetail_text_generalBrand: 'Marque',
+    productDetail_text_generalRating: 'Cote de sécurité',
+    productDetail_text_generalModelCode: 'P/N',
+    productDetail_text_generalManufac: 'Fabricant',
+    productDetail_text_generalWarranty: 'Garantie',
+    productDetail_textHeader_dimension: 'Dimensions et poids',
+    productDetail_text_dimensionSize: 'Taille',
+    productDetail_text_dimensionWeight: 'Poids',
+    productDetail_textHeader_processor: 'Processeur',
+    productDetail_text_processorName: 'Nom du processeur',
+    productDetail_text_processorSpeed: 'Vitesse',
+    productDetail_text_processorCores: 'Cœurs',
+    productDetail_text_processorLP: 'Processeurs logiques',
+    productDetail_text_processorCache: 'Mémoire cache',
+    productDetail_textHeader_memory: 'Mémoire',
+    productDetail_text_memoryRAM: 'RAM',
+    productDetail_text_memoryType: 'Type de mémoire',
+    productDetail_text_memorySpeed: 'Vitesse',
+    productDetail_text_memoryASlots: 'Emplacements disponibles',
+    productDetail_text_memoryMaxRAM: 'RAM max.',
+    productDetail_textHeader_screen: "Taille de l'écran",
+    productDetail_text_screenSize: "Taille de l'écran",
+    productDetail_text_screenRes: 'Résolution',
+    productDetail_textHeader_storage: 'Type de stockage',
+    productDetail_text_storageType: 'Type de mémoire',
+    productDetail_text_storageASlots: 'Emplacements disponibles',
+    productDetail_text_storageCur: 'Stockage actuel',
+    productDetail_textHeader_os: "Système d'exploitation",
+    productDetail_text_osName: "SYSTÈME D'EXPLOITATION",
+    productDetail_text_osVersion: 'Version',
+    productDetail_text_osType: "Type d'ordinateur",
+    productDetail_button_add: 'Ajouter au panier',
+    productDetail_button_review: "Aller à l'évaluation",
 
     orderDetail_textHeader_order: 'Commande',
     orderDetail_textHeader_product: 'Produit(s)',
@@ -536,6 +759,10 @@ const languageTheme = {
     placeholder_ward: 'Quartier',
     placeholder_district: 'District',
     placeholder_city: 'Ville',
+    placeholder_rating: 'Classement',
+    placeholder_comment: 'Commentaire',
+    placeholder_search: 'Recherche',
+    placeholder_note: 'Note',
 
     arr_status_order_0: 'Annuler',
     arr_status_order_1: 'Traitement',
@@ -543,6 +770,7 @@ const languageTheme = {
     arr_status_order_3: 'En route',
     arr_status_order_4: 'Livré',
 
+    arr_status_address_header: "Statut de l'adresse",
     arr_status_address_0: 'Désactivé',
     arr_status_address_1: 'Par défaut',
     arr_status_address_2: 'Facultatif',
@@ -559,6 +787,9 @@ const languageTheme = {
     err_verify_code: 'Code de vérification invalide',
   },
   ja: {
+    header_text_verification: '検証',
+    header_text_signUp: 'サインアップ',
+    header_text_changePassword: 'パスワード変更',
     header_text_home: 'ホーム',
     header_text_explore: '探索',
     header_text_cart: 'カート',
@@ -580,6 +811,8 @@ const languageTheme = {
     header_text_product_ratings: 'レーティング',
     header_text_product_insert_rating: '新しい評価',
     header_text_update_user: 'ユーザー情報の更新',
+
+    splash_text_motto: '生活をシンプルに',
 
     login_text_header: 'コンピュータストアへようこそ',
     login_text_sub_header: 'サインインして続ける',
@@ -620,6 +853,8 @@ const languageTheme = {
     cart_button_order: '注文する',
 
     cartRecipient_button_continue: 'レジへ進む',
+    cartRecipient_tabHeader_address: '住所を選ぶ',
+    cartRecipient_tab_addNew: '新しい住所を追加する',
 
     checkOut_text_product_price: '商品価格',
     checkOut_text_shipping_price: '配送価格',
@@ -643,11 +878,56 @@ const languageTheme = {
     account_tabHeader_logout: 'ログアウト',
     account_tabSub_logout: 'アカウントからログアウト',
 
+    updateInfo_text_change: '変更',
+
+    profile_tab_username: 'ユーザー名',
+    profile_tab_phoneNumber: '電話番号',
+    profile_tab_birthday: '誕生日',
+
+    rating_button_addComment: 'コメントを追加',
+
+    insertRating_button_postComment: '投稿',
+
     order_text_orderNumber: '注文番号',
     order_text_quantity: '数量',
     order_text_total: '合計',
     order_text_status: 'ステータス',
     order_button_detail: '詳細',
+
+    productDetail_textHeader_general: '一般情報',
+    productDetail_text_generalBrand: 'ブランド',
+    productDetail_text_generalRating: '定格',
+    productDetail_text_generalModelCode: 'P/N',
+    productDetail_text_generalManufac: 'メーカー',
+    productDetail_text_generalWarranty: '保証',
+    productDetail_textHeader_dimension: '寸法と重量',
+    productDetail_text_dimensionSize: 'サイズ',
+    productDetail_text_dimensionWeight: '重量',
+    productDetail_textHeader_processor: 'プロセッサー',
+    productDetail_text_processorName: 'プロセッサー名',
+    productDetail_text_processorSpeed: 'スピード',
+    productDetail_text_processorCores: 'コア数',
+    productDetail_text_processorLP: '論理プロセッサ',
+    productDetail_text_processorCache: 'キャッシュメモリ',
+    productDetail_textHeader_memory: 'メモリ',
+    productDetail_text_memoryRAM: 'RAM',
+    productDetail_text_memoryType: 'タイプ',
+    productDetail_text_memorySpeed: '速度',
+    productDetail_text_memoryASlots: '使用可能スロット',
+    productDetail_text_memoryMaxRAM: '最大RAM',
+    productDetail_textHeader_screen: '画面サイズ',
+    productDetail_text_screenSize: 'サイズ',
+    productDetail_text_screenRes: '解像度',
+    productDetail_textHeader_storage: 'ストレージ',
+    productDetail_text_storageType: 'タイプ',
+    productDetail_text_storageASlots: '使用可能スロット',
+    productDetail_text_storageCur: '現在のストレージ',
+    productDetail_textHeader_os: 'オペレーティングシステム',
+    productDetail_text_osName: 'OS',
+    productDetail_text_osVersion: 'バージョン',
+    productDetail_text_osType: 'タイプ',
+    productDetail_button_add: 'カートに入れる',
+    productDetail_button_review: 'レビューへ',
 
     orderDetail_textHeader_order: 'ご注文',
     orderDetail_textHeader_product: '商品',
@@ -674,6 +954,10 @@ const languageTheme = {
     placeholder_ward: '区',
     placeholder_district: '区',
     placeholder_city: '市区町村',
+    placeholder_rating: '評価',
+    placeholder_comment: 'コメント',
+    placeholder_search: '検索',
+    placeholder_note: '注',
 
     arr_status_order_0: 'キャンセル',
     arr_status_order_1: '処理',
@@ -681,6 +965,7 @@ const languageTheme = {
     arr_status_order_3: '配送中',
     arr_status_order_4: '配送中',
 
+    arr_status_address_header: '住所ステータス',
     arr_status_address_0: '無効',
     arr_status_address_1: 'デフォルト',
     arr_status_address_2: 'オプション',
@@ -705,6 +990,5 @@ export const useLanguage = () => {
     return languageTheme['en'];
   }
   let language = languageTheme['ja'];
-  console.log('language', language);
   return language;
 };

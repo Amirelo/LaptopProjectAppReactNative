@@ -62,7 +62,7 @@ const CustomHeader = ({
             source={images.ic_search}
             type={'tertiary'}
             onChangeText={onSearchText}
-            placeholder={'Search'}
+            placeholder={language.placeholder_search}
             width={'90%'}
           />
           <CustomView marginTop={12} type={'rowJustify90Screen'}>

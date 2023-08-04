@@ -6,6 +6,7 @@ import {CustomView} from '../../../components/atoms';
 import {MainContext} from '../MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../../Auth/AuthContext';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const InsertCommentScreen = ({route, navigation}) => {
   const [rating, setRating] = useState();
@@ -14,6 +15,8 @@ const InsertCommentScreen = ({route, navigation}) => {
 
   const {onInsertUserRating} = useContext(MainContext);
   const {onGetUserByEmail} = useContext(AuthContext);
+
+  const language = useLanguage();
 
   const onAddCommentPressed = async () => {
     if (checkError() == false) {
@@ -47,20 +50,20 @@ const InsertCommentScreen = ({route, navigation}) => {
     <CustomView>
       <CustomInput
         onChangeText={setRating}
-        placeholder={'Rating'}
+        placeholder={language.placeholder_rating}
         marginTop={103}
         keyboardType={'numeric'}
       />
       <CustomInput
         onChangeText={setComment}
-        placeholder={'Comment'}
+        placeholder={language.placeholder_comment}
         marginTop={8}
       />
       <CustomButton
         onPress={onAddCommentPressed}
         type={'primary'}
         marginTop={60}>
-        Add Comment
+        {language.insertRating_button_postComment}
       </CustomButton>
     </CustomView>
   );

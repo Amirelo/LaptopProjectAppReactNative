@@ -10,13 +10,16 @@ import CustomImage from '../../../components/atoms/CustomImage';
 import CustomText from '../../../components/atoms/CustomText';
 import CustomButton from '../../../components/molecules/CustomButton';
 import {priceFormat} from '../../../utils/helper';
-import {CustomButtonBare} from '../../../components/atoms';
+import { useLanguage } from '../../../themes/languageTheme';
 
 const ProductDetailScreen = ({route}) => {
   const navigation = useNavigation();
   const {item, itemProcessor, itemMemory, itemScreen, itemStorage} =
     route.params;
   const {onGetUserByEmail} = useContext(AuthContext);
+
+  const language = useLanguage();
+
   const {
     onInsertCart,
     onGetProductImagesByProductID,
@@ -156,11 +159,11 @@ const ProductDetailScreen = ({route}) => {
           textStyle={'subtitleBold'}
           alignSelf={'flex-start'}
           marginTop={20}>
-          General Info
+          {language.productDetail_textHeader_general}
         </CustomText>
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Brand
+            {language.productDetail_text_generalBrand}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.productName.split(' ')[0]}
@@ -169,7 +172,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Rating
+            {language.productDetail_text_generalRating}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.totalRating}/5
@@ -178,7 +181,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            P/N
+            {language.productDetail_text_generalModelCode}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.modelCode}
@@ -187,7 +190,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Manufacturer
+            {language.productDetail_text_generalManufac}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.manufacturer}
@@ -196,7 +199,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Warranty
+            {language.productDetail_text_generalWarranty}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.warranty + ' months'}
@@ -208,11 +211,11 @@ const ProductDetailScreen = ({route}) => {
           textStyle={'subtitleBold'}
           alignSelf={'flex-start'}
           marginTop={20}>
-          Dimensions and weight
+          {language.productDetail_textHeader_dimension}
         </CustomText>
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Size
+            {language.productDetail_text_dimensionSize}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.length + ' x ' + item.width + ' x ' + item.height + ' mm'}
@@ -221,7 +224,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Weight
+            {language.productDetail_text_dimensionWeight}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {item.weight}
@@ -233,12 +236,12 @@ const ProductDetailScreen = ({route}) => {
           textStyle={'subtitleBold'}
           alignSelf={'flex-start'}
           marginTop={20}>
-          Processor
+          {language.productDetail_textHeader_processor}
         </CustomText>
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Name
+            {language.productDetail_text_processorName}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.name}
@@ -247,7 +250,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            CPU speed
+            {language.productDetail_text_processorSpeed}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.CPU_Speed}
@@ -256,7 +259,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Cores
+            {language.productDetail_text_processorCores}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.cores}
@@ -265,7 +268,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Logical processors
+            {language.productDetail_text_processorLP}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.logicalProcessor}
@@ -274,7 +277,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Cache memory
+            {language.productDetail_text_processorCache}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemProcessor.cacheMemory}
@@ -286,11 +289,11 @@ const ProductDetailScreen = ({route}) => {
           textStyle={'subtitleBold'}
           alignSelf={'flex-start'}
           marginTop={20}>
-          Memory/RAM
+          {language.productDetail_textHeader_memory}
         </CustomText>
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            RAM
+            {language.productDetail_text_memoryRAM}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.currentRAM}
@@ -299,7 +302,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Type
+            {language.productDetail_text_memoryType}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.type}
@@ -308,7 +311,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Speed
+            {language.productDetail_text_memorySpeed}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.speed}
@@ -317,7 +320,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Available slots
+            {language.productDetail_text_memoryASlots}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.availableSlots}
@@ -326,7 +329,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Max Memory
+            {language.productDetail_text_memoryMaxRAM}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemMemory.maxRam}
@@ -338,12 +341,12 @@ const ProductDetailScreen = ({route}) => {
           textStyle={'subtitleBold'}
           alignSelf={'flex-start'}
           marginTop={20}>
-          Screen
+          {language.productDetail_textHeader_screen}
         </CustomText>
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Size
+            {language.productDetail_text_screenSize}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemScreen.screenSize}
@@ -352,7 +355,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Resolution
+            {language.productDetail_text_screenRes}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemScreen.resolution}
@@ -364,11 +367,11 @@ const ProductDetailScreen = ({route}) => {
           textStyle={'subtitleBold'}
           alignSelf={'flex-start'}
           marginTop={20}>
-          Storage
+          {language.productDetail_textHeader_storage}
         </CustomText>
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Type
+            {language.productDetail_text_storageType}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemStorage.type}
@@ -377,7 +380,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Available slots
+            {language.productDetail_text_storageASlots}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemStorage.type}
@@ -386,7 +389,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Current storage
+            {language.productDetail_text_storageCur}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemStorage.currentStorage}
@@ -398,12 +401,12 @@ const ProductDetailScreen = ({route}) => {
           textStyle={'subtitleBold'}
           alignSelf={'flex-start'}
           marginTop={20}>
-          Operating System
+          {language.productDetail_textHeader_os}
         </CustomText>
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            OS
+            {language.productDetail_text_osName}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemOS.OS}
@@ -412,7 +415,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Version
+            {language.productDetail_text_osVersion}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemOS.version}
@@ -421,7 +424,7 @@ const ProductDetailScreen = ({route}) => {
 
         <CustomView type={'rowJustify90'}>
           <CustomText marginTop={4} hasFlex={true}>
-            Type
+            {language.productDetail_text_osType}
           </CustomText>
           <CustomText marginTop={4} hasFlex={true} textColor={'textVariant'}>
             {itemOS.type}
@@ -432,7 +435,7 @@ const ProductDetailScreen = ({route}) => {
           onPress={onAddToCartPressed}
           type={'primary'}
           marginTop={32}>
-          Add To Cart
+          {language.productDetail_button_add}
         </CustomButton>
 
         <CustomButton
@@ -440,7 +443,7 @@ const ProductDetailScreen = ({route}) => {
           type={'primary'}
           backgroundColor={'warn'}
           marginTop={8}>
-          User Review
+          {language.productDetail_button_review}
         </CustomButton>
       </CustomView>
     </CustomView>
