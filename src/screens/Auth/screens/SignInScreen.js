@@ -116,7 +116,7 @@ const SignInScreen = ({navigation, route}) => {
   return (
     <CustomView>
       <CustomImage type={'header'} source={images.app_logo_splash} />
-      <CustomText textColor={'text'} textStyle={'subtitleBold'}>
+      <CustomText textColor={'text'} textStyle={'subtitle'}>
         {language.login_text_header}
       </CustomText>
       <CustomText textColor={'textVariant'} textStyle={'small'} marginTop={0}>
