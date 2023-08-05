@@ -1,6 +1,5 @@
 import {Animated, ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {useThemeColors} from '../../themes/colorTheme';
 import {deviceHeight, deviceWidth} from '../../utils/helper';
 import { AuthContext } from '../../screens/Auth/AuthContext';
 

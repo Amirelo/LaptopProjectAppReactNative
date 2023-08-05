@@ -1,6 +1,5 @@
 import {StyleSheet, Image} from 'react-native';
 import React from 'react';
-import {useThemeColors} from '../../themes/colorTheme';
 import {AuthContext} from '../../screens/Auth/AuthContext';
 
 const CustomImage = ({
