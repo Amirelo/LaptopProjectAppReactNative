@@ -28,7 +28,7 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({children}) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [language, setLanguage] = useState(checkLanguage('en'));
-  const [theme, setTheme] = useState(useThemeColors());
+  const [theme, setTheme] = useState(setThemeColors());
 
   const changeLanguage = async lang => {
     setLanguage(checkLanguage(lang));

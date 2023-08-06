@@ -123,7 +123,9 @@ export const useThemeColors = () => {
 
 export const setThemeColors = type => {
   if (Colors[type] == null) {
-    return () => useThemeColors();
+    const colorScheme = useColorScheme();
+    const colors = Colors[colorScheme];
+    return colors;
   }
   return Colors[type];
 };
