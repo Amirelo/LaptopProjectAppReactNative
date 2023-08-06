@@ -43,6 +43,9 @@ const SettingScreen = () => {
     {theme: 'Creme', type: 'light'},
     {theme: 'Latte', type: 'green'},
     {theme: 'Sky', type: 'sky'},
+    {theme: 'Thristle', type: 'thristle'},
+    {theme: 'Gold', type: 'gold'},
+    {theme: 'Pink', type: 'pink'},
     {theme: 'Dark', type: 'dark'},
   ];
 

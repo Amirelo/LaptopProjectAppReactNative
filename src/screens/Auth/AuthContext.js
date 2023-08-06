@@ -316,7 +316,7 @@ export const AuthContextProvider = ({children}) => {
 
   useEffect(() => {
     getCurLanguage();
-    
+    getCurTheme();
   }, []);
 
   return (
