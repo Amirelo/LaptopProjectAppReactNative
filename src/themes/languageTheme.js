@@ -164,6 +164,14 @@ const languageTheme = {
     orderDetail_text_discount: 'Discount',
     orderDetail_text_discountCode: 'Discount Code',
 
+    theme_creme: 'Creme',
+    theme_latte: 'Latte',
+    theme_sky: 'Sky',
+    theme_thristle: 'Thristle',
+    theme_gold: 'Gold',
+    theme_pink: 'Pink',
+    theme_dark: 'Dark',
+
     placeholder_username: 'Username',
     placeholder_fullname: 'Fullname',
     placeholder_password: 'Password',
@@ -368,6 +376,14 @@ const languageTheme = {
     orderDetail_text_discount: 'Rabatt',
     orderDetail_text_discountCode: 'Rabatt-Code',
 
+    theme_creme: 'Creme',
+    theme_latte: 'Latte',
+    theme_sky: 'Himmel',
+    theme_thristle: 'Distel',
+    theme_gold: 'Gold',
+    theme_pink: 'Rosa',
+    theme_dark: 'Dunkel',
+
     placeholder_username: 'Benutzername',
     placeholder_fullname: 'Vollständiger Name',
     placeholder_password: 'Kennwort',
@@ -569,6 +585,14 @@ const languageTheme = {
     orderDetail_text_total: 'Tổng cộng',
     orderDetail_text_discount: 'Giảm giá',
     orderDetail_text_discountCode: 'Mã giảm giá',
+
+    theme_creme: 'Kem',
+    theme_latte: 'Latte',
+    theme_sky: 'Xanh da trời',
+    theme_thristle: 'Kế',
+    theme_gold: 'Vàng',
+    theme_pink: 'Hồng',
+    theme_dark: 'Tối',
 
     placeholder_username: 'tên tài khoản',
     placeholder_fullname: 'Họ và tên',
@@ -774,6 +798,14 @@ const languageTheme = {
     orderDetail_text_discount: 'Remise',
     orderDetail_text_discountCode: 'Code de réduction',
 
+    theme_creme: 'Crème',
+    theme_latte: 'Latte',
+    theme_sky: 'Ciel',
+    theme_thristle: 'Poisson',
+    theme_gold: 'Or',
+    theme_pink: 'Rose',
+    theme_dark: 'Foncé',
+
     placeholder_username: "Nom d'utilisateur",
     placeholder_fullname: 'Nom complet',
     placeholder_password: 'Mot de passe',
@@ -975,6 +1007,14 @@ const languageTheme = {
     orderDetail_text_total: '合計金額',
     orderDetail_text_discount: '割引額',
     orderDetail_text_discountCode: '割引コード',
+
+    theme_creme: 'クリーム',
+    theme_latte: 'ラテ',
+    theme_sky: '空',
+    theme_thristle: 'スライル',
+    theme_gold: 'ゴールド',
+    theme_pink: 'ピンク',
+    theme_dark: 'ダーク',
 
     placeholder_username: 'ユーザー名',
     placeholder_fullname: 'フルネーム',

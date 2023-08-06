@@ -40,13 +40,13 @@ const SettingScreen = () => {
   ];
 
   const availableTheme = [
-    {theme: 'Creme', type: 'light'},
-    {theme: 'Latte', type: 'green'},
-    {theme: 'Sky', type: 'sky'},
-    {theme: 'Thristle', type: 'thristle'},
-    {theme: 'Gold', type: 'gold'},
-    {theme: 'Pink', type: 'pink'},
-    {theme: 'Dark', type: 'dark'},
+    {theme: language.theme_creme, type: 'light'},
+    {theme: language.theme_latte, type: 'green'},
+    {theme: language.theme_sky, type: 'sky'},
+    {theme: language.theme_thristle, type: 'thristle'},
+    {theme: language.theme_gold, type: 'gold'},
+    {theme: language.theme_pink, type: 'pink'},
+    {theme: language.theme_dark, type: 'dark'},
   ];
 
   const onOptionPressed = lang => {
@@ -79,7 +79,7 @@ const SettingScreen = () => {
         {language.settings_text_language}
       </CustomText>
       <CustomButton onPress={setShowLanguageOption} type={'social'}>
-        {curLang}
+        {curLang ? curLang : 'English'}
       </CustomButton>
 
       <CustomText
