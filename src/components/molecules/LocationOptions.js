@@ -84,7 +84,6 @@ const LocationOptions = ({data, onLocationSelected, onBackgroundPressed}) => {
 
         <FlatList
           width={'100%'}
-          marginTop={8}
           contentContainerStyle={{alignItems: 'center'}}
           data={data}
           initialNumToRender={3}

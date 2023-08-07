@@ -25,14 +25,14 @@ const ItemCard = ({data}) => {
       backgroundColor={'backgroundInput'}>
       <CustomText>{cardNumber()}</CustomText>
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
-        <CustomText>Card holder</CustomText>
-        <CustomText>Expiry date</CustomText>
+        <CustomText textStyle={'normalBold'}>Card holder</CustomText>
+        <CustomText textStyle={'normalBold'}>Expiry date</CustomText>
       </CustomView>
       <CustomView backgroundColor={'none'} type={'rowJustify90'}>
         <CustomText>{data.cardHolder}</CustomText>
         <CustomText>{data.expiryMonth + '/' + data.expiryYear}</CustomText>
       </CustomView>
-      <CustomButton onPress={onEditPressed}>Edit</CustomButton>
+      <CustomButton type={'primarySmall'} onPress={onEditPressed}>Edit</CustomButton>
     </CustomView>
   );
 };

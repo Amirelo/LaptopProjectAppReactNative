@@ -13,7 +13,7 @@ const VerificationScreen = ({navigation, route}) => {
   const [verificationCode, setVerificationCode] = useState();
   const [receivedCode, setReceivedCode] = useState();
   const [error, setError] = useState('');
-  const [timer, setTimer] = useState();
+  const [timer, setTimer] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
 
   const {onSendVerificationCode, onCheckEmail, language} =
@@ -29,7 +29,8 @@ const VerificationScreen = ({navigation, route}) => {
       let result2 = await onSendVerificationCode(email);
       setReceivedCode(result2.data);
       if (result2.response_code == 1) {
-        () => myTimer();
+        setTimer(60);
+        myTimer();
         setTimeout(() => {
           setReceivedCode();
         }, 60000);
@@ -43,13 +44,12 @@ const VerificationScreen = ({navigation, route}) => {
   };
 
   const myTimer = () => {
-    setTimer(60);
-    let my = setInterval(() => {
+    setTimeout(() => {
       setTimer(prev => prev - 1);
-      if (timer == 0) {
-        clearInterval(my);
+      if (timer > 0) {
+        myTimer();
       }
-    }, 2000);
+    }, 1000);
   };
 
   const onVerifyPress = () => {
@@ -91,7 +91,7 @@ const VerificationScreen = ({navigation, route}) => {
             disabled={!isDisabled}
           />
           <CustomText
-            textColor={'textVariant'}
+            textColor={'text'}
             textStyle={textTheme.text_normal}
             marginTop={8}>
             {language.verify_text_description}

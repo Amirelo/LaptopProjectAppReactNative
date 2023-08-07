@@ -98,10 +98,10 @@ const Colors = {
     processColor: '#0F01B5',
   },
   dark: {
-    textColor: '#EDEDED',
+    textColor: '#626262',
     textVariantColor: '#F2F2F2',
     textConstrastColor: '#000',
-    backgroundColor: '#7A7D7D',
+    backgroundColor: '#AFAFAF',
     noneColor: '#00000000',
     backgroundInputColor: '#C1BEBE',
     imageBackgroundColor: '#7A7D7D',

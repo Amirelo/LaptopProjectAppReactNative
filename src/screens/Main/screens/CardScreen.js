@@ -12,7 +12,7 @@ const CardScreen = ({route}) => {
     <CustomView>
       {cards != null ? (
         <FlatList
-          width={deviceWidth * 0.9}
+          width={deviceWidth}
           marginTop={12}
           contentContainerStyle={{
             gap: 16,

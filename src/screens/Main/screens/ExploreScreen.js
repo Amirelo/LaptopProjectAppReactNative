@@ -8,7 +8,7 @@ import ProductHItem from '../../../components/molecules/ProductHItem';
 import CustomText from '../../../components/atoms/CustomText';
 import SortOption from '../../../components/molecules/SortOption';
 import {deviceHeight} from '../../../utils/helper';
-import { AuthContext } from '../../Auth/AuthContext';
+import {AuthContext} from '../../Auth/AuthContext';
 
 const ExploreScreen = ({navigation}) => {
   const {onGetAllProduct} = useContext(MainContext);

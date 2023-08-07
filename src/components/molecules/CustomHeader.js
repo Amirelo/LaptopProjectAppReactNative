@@ -72,17 +72,25 @@ const CustomHeader = ({
             width={'90%'}
           />
           <CustomView marginTop={12} type={'rowJustify90Screen'}>
-            <CustomButtonBare type={'rowJustify'} onPress={onFilterPressed}>
+            {/* <CustomButtonBare type={'rowJustify'} onPress={onFilterPressed}>
               <CustomView type={'row'}>
-                <CustomImage source={images.ic_filter} type={'searchBarIcon'} />
+                <CustomImage
+                  tintColor={'text'}
+                  source={images.ic_filter}
+                  type={'searchBarIcon'}
+                />
                 <CustomText textStyle={'normal'} marginTop={0}>
                   {language.explore_text_filter}
                 </CustomText>
-              </CustomView>
-            </CustomButtonBare>
+              </CustomView> 
+            </CustomButtonBare>*/}
             <CustomButtonBare type={'none'} onPress={onSortPressed}>
               <CustomView type={'row'}>
-                <CustomImage source={images.ic_sort} type={'searchBarIcon'} />
+                <CustomImage
+                  tintColor={'text'}
+                  source={images.ic_sort}
+                  type={'searchBarIcon'}
+                />
                 <CustomText textStyle={'normal'} marginTop={0}>
                   {exploreSortArr[sortType]}
                 </CustomText>
@@ -91,6 +99,7 @@ const CustomHeader = ({
             <CustomButtonBare onPress={onViewIconPressed}>
               {viewListPressed ? (
                 <CustomImage
+                  tintColor={'text'}
                   source={images.ic_view_list}
                   type={'searchBarIcon'}
                 />

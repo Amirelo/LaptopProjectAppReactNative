@@ -118,7 +118,7 @@ const SignInScreen = ({navigation, route}) => {
       <CustomText textColor={'text'} textStyle={'subtitle'}>
         {language.login_text_header}
       </CustomText>
-      <CustomText textColor={'textVariant'} textStyle={'small'} marginTop={0}>
+      <CustomText textColor={'text'} textStyle={'small'} marginTop={0}>
         {language.login_text_sub_header}
       </CustomText>
 

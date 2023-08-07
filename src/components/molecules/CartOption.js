@@ -55,6 +55,7 @@ const CartOption = ({onDeletePressed, onBackgroundPressed}) => {
   }, []);
   return (
     <CustomView
+      marginTop={0}
       type={'absolute'}
       animated={true}
       customStyles={{opacity: backgroundAnimated}}>
@@ -68,10 +69,7 @@ const CartOption = ({onDeletePressed, onBackgroundPressed}) => {
         customStyles={{transform: [{translateY: animatedValue}]}}
         animated={true}
         type={'absoluteBottomItem'}>
-        <CustomText
-          customStyles={styles.spacing}
-          fontWeight={'heavy'}
-          fontSize={'title'}>
+        <CustomText customStyles={styles.spacing} textStyle={'subtitleBold'}>
           Action
         </CustomText>
         <CustomButton

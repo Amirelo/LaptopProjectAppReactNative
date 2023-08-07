@@ -101,7 +101,7 @@ const CartScreen = ({navigation}) => {
         }}
       />
       <CustomView type={'rowJustify90'}>
-        <CustomText fontWeight={'heavy'}>{language.cart_text_total}</CustomText>
+        <CustomText textStyle={'subtitleBold'}>{language.cart_text_total}</CustomText>
         <CustomText textColor={'err'} textStyle={'normalBold'}>
           {priceFormat(totalPrice)}
         </CustomText>

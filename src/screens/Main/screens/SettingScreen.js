@@ -4,7 +4,6 @@ import CustomButton from '../../../components/molecules/CustomButton';
 import {AuthContext} from '../../Auth/AuthContext';
 import OptionsButton from '../../../components/molecules/OptionsButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {setThemeColors} from '../../../themes/colorTheme';
 
 const SettingScreen = () => {
   const [showLanguageOption, setShowLanguageOption] = React.useState(false);

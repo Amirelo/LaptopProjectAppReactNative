@@ -8,11 +8,11 @@ const CustomImage = ({
   marginTop,
   customStyles,
   linkType,
-  backgroundColor,
+  tintColor,
 }) => {
   const {theme} = React.useContext(AuthContext);
   const colors = theme;
-  backgroundColor = backgroundColor ? colors[`${backgroundColor}Color`] : '';
+  tintColor = tintColor ? colors[`${tintColor}Color`] : '';
   return (
     <Image
       resizeMode="cover"
@@ -20,7 +20,7 @@ const CustomImage = ({
       style={[
         type != null ? styles[`${type}`] : {},
         marginTop != null ? {marginTop: marginTop} : {},
-        backgroundColor ? {backgroundColor: backgroundColor} : {},
+        tintColor ? {tintColor: tintColor} : {},
         customStyles ? customStyles : {},
       ]}
     />

@@ -217,7 +217,7 @@ const languageTheme = {
     header_text_signUp: 'Anmelden',
     header_text_changePassword: 'Passwort ändern',
     header_text_home: 'Startseite',
-    header_text_explore: 'Erkunden Sie',
+    header_text_explore: 'Erkunden',
     header_text_cart: 'Warenkorb',
     header_text_account: 'Konto',
     header_text_favorite: 'Favorit',
@@ -254,15 +254,15 @@ const languageTheme = {
       'Wir senden Ihnen einen Bestätigungscode an Ihre E-Mail',
     verify_text_code_description:
       'Bitte überprüfen Sie den Code, bevor der Timer abläuft',
-    verify_button_send: 'Senden Sie',
+    verify_button_send: 'Senden',
     verify_button_signin_1: 'Haben Sie bereits ein Konto?',
     verify_button_signin_2: 'Hier anmelden',
     verify_button_resend: 'Verifizierungscode erneut senden',
-    verify_button_verify: 'Überprüfen Sie',
+    verify_button_verify: 'Überprüfen',
 
-    changePass_button_confirm: 'Bestätigen Sie',
+    changePass_button_confirm: 'Bestätigen',
 
-    signUp_button_confirm: 'Bestätigen Sie',
+    signUp_button_confirm: 'Bestätigen',
 
     home_text_banner: 'Willkommen bei Computer Store',
     home_text_popular: 'Beliebt',

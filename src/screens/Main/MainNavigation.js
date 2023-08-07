@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import FavoriteScreen from './screens/FavoriteScreen';
@@ -56,7 +56,7 @@ const TabNavigation = () => {
           tabBarIcon: ({focused}) => {
             return (
               <CustomImage
-                tintColor={focused ? colors.primaryColor : colors.textColor}
+                tintColor={focused ? 'primary' : 'text'}
                 type={'inputIcon'}
                 source={images.ic_home}
               />
@@ -74,7 +74,7 @@ const TabNavigation = () => {
           tabBarIcon: ({focused}) => {
             return (
               <CustomImage
-                tintColor={focused ? colors.primaryColor : colors.textColor}
+                tintColor={focused ? 'primary' : 'text'}
                 type={'inputIcon'}
                 source={images.ic_explore}
               />
@@ -93,7 +93,7 @@ const TabNavigation = () => {
           tabBarIcon: ({focused}) => {
             return (
               <CustomImage
-                tintColor={focused ? colors.primaryColor : colors.textColor}
+                tintColor={focused ? 'primary' : 'text'}
                 type={'inputIcon'}
                 source={images.ic_cart}
               />
@@ -112,7 +112,7 @@ const TabNavigation = () => {
           tabBarIcon: ({focused}) => {
             return (
               <CustomImage
-                tintColor={focused ? colors.primaryColor : colors.textColor}
+                tintColor={focused ? 'primary' : 'text'}
                 type={'inputIcon'}
                 source={images.ic_person}
               />

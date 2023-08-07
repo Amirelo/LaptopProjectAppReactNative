@@ -107,7 +107,7 @@ const InsertAddressScreen = ({route}) => {
         <OptionsButton
           onBackgroundPressed={setShowStatusOption}
           itemChanged={status}>
-          <CustomText textStyle={'normalBold'}>
+          <CustomText textStyle={'subtitleBold'}>
             {language.arr_status_address_header}
           </CustomText>
           {addressStatusArr
